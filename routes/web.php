@@ -14,6 +14,7 @@ use App\Http\Controllers\ClientController;
 |
 */
 
+// ======================= Cient ====================================================
 Route::get('/', function () {
     return redirect('/home');
 });
@@ -42,8 +43,15 @@ Route::group(['prefix' => '/home'], function () {
 
 });
 
-
-
+// ======================= Admin ====================================================
+// Route::get('/admin', function () {
+//     return redirect('/adminpage');
+// });
+Route::group(['prefix' => '/admins'], function (){
+    Route::get('/', function () {
+        return view('admin.home.home');
+    });
+});
 
 
 
