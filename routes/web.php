@@ -18,12 +18,8 @@ Route::get('/', function () {
     return redirect('/home');
 });
 
-Route::get('/home', function () {
-    return view('client.home.home');
-});
-
 Route::group(['prefix' => '/home'], function () {
-    
+
     //Menu Client
     Route::get('/', function () {
         return view('client.home.home');
@@ -43,6 +39,7 @@ Route::group(['prefix' => '/home'], function () {
     Route::get('/contact', function () {
         return view('client.back.contact');
     });
+
 });
 
 
