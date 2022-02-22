@@ -30,6 +30,15 @@ Route::group(['prefix' => '/home'], function () {
     Route::get('/payment', function () {
         return view('client.back.payment');
     });
+    Route::get('/blog', function () {
+        return view('client.back.blog');
+    });
+    Route::get('/about', function () {
+        return view('client.back.about');
+    });
+    Route::get('/contact', function () {
+        return view('client.back.contact');
+    });
 });
 
 

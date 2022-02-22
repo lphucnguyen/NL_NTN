@@ -56,27 +56,27 @@
                     <div class="menu-desktop">
                         <ul class="main-menu">
                             <li class="list-menu">
-                                <a href="./">Home</a>
+                                <a href="/home">Home</a>
                             </li>
 
                             <li class="list-menu">
-                                <a href="home/shop">Shop</a>
+                                <a href="/home/shop">Shop</a>
                             </li>
 
                             <li class="list-menu label1" data-label1="??">
-                                <a href="home/payment">Payment</a>
+                                <a href="/home/payment">Payment</a>
                             </li>
 
                             <li class="list-menu">
-                                <a href="home/blog.html">Blog</a>
+                                <a href="/home/blog">Blog</a>
                             </li>
 
                             <li class="list-menu">
-                                <a href="home/about.html">About</a>
+                                <a href="/home/about">About</a>
                             </li>
 
                             <li class="list-menu">
-                                <a href="home/contact.html">Contact</a>
+                                <a href="/home/contact">Contact</a>
                             </li>
                         </ul>
                     </div>
@@ -135,27 +135,27 @@
 
             <ul class="main-menu-m">
                 <li class="list-menu">
-                    <a href="./">Home</a>
+                    <a href="/home">Home</a>
                 </li>
 
                 <li class="list-menu">
-                    <a href="shop">Shop</a>
+                    <a href="/home/shop">Shop</a>
                 </li>
 
                 <li class="list-menu">
-                    <a href="payment" class="label1 rs1" data-label1="99">Features</a>
+                    <a href="/home/payment" class="label1 rs1" data-label1="99">Features</a>
                 </li>
 
                 <li class="list-menu">
-                    <a href="blog.html">Blog</a>
+                    <a href="/home/blog">Blog</a>
                 </li>
 
                 <li class="list-menu">
-                    <a href="about.html">About</a>
+                    <a href="/home/about">About</a>
                 </li>
 
                 <li class="list-menu">
-                    <a href="contact.html">Contact</a>
+                    <a href="/home/contact">Contact</a>
                 </li>
             </ul>
         </div>
@@ -196,7 +196,7 @@
                 <ul class="header-cart-wrapitem w-full">
                     <li class="header-cart-item flex-w flex-t m-b-12">
                         <div class="header-cart-item-img">
-                            <img src="template_client/images/item-cart-01.jpg" alt="IMG">
+                            <img src="{{asset('template_client/images/item-cart-01.jpg')}}" alt="IMG">
                         </div>
 
                         <div class="header-cart-item-txt p-t-8">
@@ -212,7 +212,7 @@
 
                     <li class="header-cart-item flex-w flex-t m-b-12">
                         <div class="header-cart-item-img">
-                            <img src="template_client/images/item-cart-02.jpg" alt="IMG">
+                            <img src="{{asset('template_client/images/item-cart-02.jpg')}}" alt="IMG">
                         </div>
 
                         <div class="header-cart-item-txt p-t-8">
@@ -228,7 +228,7 @@
 
                     <li class="header-cart-item flex-w flex-t m-b-12">
                         <div class="header-cart-item-img">
-                            <img src="template_client/images/item-cart-03.jpg" alt="IMG">
+                            <img src="{{asset('template_client/images/item-cart-03.jpg')}}" alt="IMG">
                         </div>
 
                         <div class="header-cart-item-txt p-t-8">
