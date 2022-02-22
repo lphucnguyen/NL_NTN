@@ -15,6 +15,10 @@ use App\Http\Controllers\ClientController;
 */
 
 Route::get('/', function () {
+    return redirect('/home');
+});
+
+Route::get('/home', function () {
     return view('client.home.home');
 });
 
