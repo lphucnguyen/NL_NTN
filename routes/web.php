@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home.home');
+    return view('client.home.home');
 });
 
-Route::get('/login', function(){
-    return view('home.login');
+Route::controller(ClientController::class)->group(function () {
+    Route::get('/shop', 'shop');
 });
+
