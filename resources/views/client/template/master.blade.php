@@ -6,34 +6,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="template_client/images/icons/favicon.png" />
+    <link rel="icon" type="image/png" href="{{asset('template_client/images/icons/favicon.png')}}" />
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="template_client/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('template_client/vendor/bootstrap/css/bootstrap.min.css')}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="template_client/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('template_client/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="template_client/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('template_client/fonts/iconic/css/material-design-iconic-font.min.css')}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="template_client/fonts/linearicons-v1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('template_client/fonts/linearicons-v1.0.0/icon-font.min.css')}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="template_client/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('template_client/vendor/animate/animate.css')}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="template_client/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('template_client/vendor/css-hamburgers/hamburgers.min.css')}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="template_client/vendor/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('template_client/vendor/animsition/css/animsition.min.css')}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="template_client/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('template_client/vendor/select2/select2.min.css')}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="template_client/vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('template_client/vendor/daterangepicker/daterangepicker.css')}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="template_client/vendor/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('template_client/vendor/slick/slick.css')}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="template_client/vendor/MagnificPopup/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('template_client/vendor/MagnificPopup/magnific-popup.css')}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="template_client/vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('template_client/vendor/perfect-scrollbar/perfect-scrollbar.css')}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="template_client/css/util.css">
-    <link rel="stylesheet" type="text/css" href="template_client/css/main.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('template_client/css/util.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('template_client/css/main.css')}}">
     <!--===============================================================================================-->
 </head>
 
@@ -49,7 +49,7 @@
 
                     <!-- Logo desktop -->
                     <a href="./" class="logo">
-                        <img src="template_client/images/icons/logo-01.png" alt="IMG-LOGO">
+                        <img src="{{asset('template_client/images/icons/logo-01.png')}}" alt="IMG-LOGO">
                     </a>
 
                     <!-- Menu desktop -->
@@ -103,7 +103,7 @@
         <div class="wrap-header-mobile">
             <!-- Logo moblie -->
             <div class="logo-mobile">
-                <a href="index.html"><img src="template_client/images/icons/logo-01.png" alt="IMG-LOGO"></a>
+                <a href="index.html"><img src="{{asset('template_client/images/icons/logo-01.png')}}" alt="IMG-LOGO"></a>
             </div>
 
             <!-- Icon header -->
@@ -576,14 +576,14 @@
     </div>
 
     <!--===============================================================================================-->
-    <script src="template_client/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="{{asset('template_client/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
     <!--===============================================================================================-->
-    <script src="template_client/vendor/animsition/js/animsition.min.js"></script>
+    <script src="{{asset('template_client/vendor/animsition/js/animsition.min.js')}}"></script>
     <!--===============================================================================================-->
-    <script src="template_client/vendor/bootstrap/js/popper.js"></script>
-    <script src="template_client/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{asset('template_client/vendor/bootstrap/js/popper.js')}}"></script>
+    <script src="{{asset('template_client/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
     <!--===============================================================================================-->
-    <script src="template_client/vendor/select2/select2.min.js"></script>
+    <script src="{{asset('template_client/vendor/select2/select2.min.js')}}"></script>
     <script>
         $(".js-select2").each(function() {
             $(this).select2({
@@ -593,18 +593,18 @@
         })
     </script>
     <!--===============================================================================================-->
-    <script src="template_client/vendor/daterangepicker/moment.min.js"></script>
-    <script src="template_client/vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="{{asset('template_client/vendor/daterangepicker/moment.min.js')}}"></script>
+    <script src="{{asset('template_client/vendor/daterangepicker/daterangepicker.js')}}"></script>
     <!--===============================================================================================-->
-    <script src="template_client/vendor/slick/slick.min.js"></script>
-    <script src="template_client/js/slick-custom.js"></script>
+    <script src="{{asset('template_client/vendor/slick/slick.min.js')}}"></script>
+    <script src="{{asset('template_client/js/slick-custom.js')}}"></script>
     <!--===============================================================================================-->
-    <script src="template_client/vendor/parallax100/parallax100.js"></script>
+    <script src="{{asset('template_client/vendor/parallax100/parallax100.js')}}"></script>
     <script>
         $('.parallax100').parallax100();
     </script>
     <!--===============================================================================================-->
-    <script src="template_client/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+    <script src="{{asset('template_client/vendor/MagnificPopup/jquery.magnific-popup.min.js')}}"></script>
     <script>
         $('.gallery-lb').each(function() { // the containers for all your galleries
             $(this).magnificPopup({
@@ -618,9 +618,9 @@
         });
     </script>
     <!--===============================================================================================-->
-    <script src="template_client/vendor/isotope/isotope.pkgd.min.js"></script>
+    <script src="{{asset('template_client/vendor/isotope/isotope.pkgd.min.js')}}"></script>
     <!--===============================================================================================-->
-    <script src="template_client/vendor/sweetalert/sweetalert.min.js"></script>
+    <script src="{{asset('template_client/vendor/sweetalert/sweetalert.min.js')}}"></script>
     <script>
         $('.js-addwish-b2, .js-addwish-detail').on('click', function(e) {
             e.preventDefault();
@@ -657,7 +657,7 @@
         });
     </script>
     <!--===============================================================================================-->
-    <script src="template_client/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="{{asset('template_client/vendor/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
     <script>
         $('.js-pscroll').each(function() {
             $(this).css('position', 'relative');
@@ -674,8 +674,8 @@
         });
     </script>
     <!--===============================================================================================-->
-    <script src="template_client/js/main.js"></script>
-    <script src="template_client/js/my-custom.js"></script>
+    <script src="{{asset('template_client/js/main.js')}}"></script>
+    <script src="{{asset('template_client/js/my-custom.js')}}"></script>
 
 </body>
 
