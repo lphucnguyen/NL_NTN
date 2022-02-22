@@ -18,20 +18,22 @@ Route::get('/', function () {
     return view('client.home.home');
 });
 
-// Route::group(['prefix' => '/client'], function () {
-//     Route::get('/shop', function () {
-//         return view('client.back.shop');
-//     });
-// });
+Route::group(['prefix' => '/home'], function () {
+    
+    //Menu Client
+    Route::get('/', function () {
+        return view('client.home.home');
+    });
+    Route::get('/shop', function () {
+        return view('client.back.shop');
+    });
+    Route::get('/payment', function () {
+        return view('client.back.payment');
+    });
+});
 
 
-//Menu Client
-Route::get('/shop', function () {
-    return view('client.back.shop');
-});
-Route::get('/payment', function () {
-    return view('client.back.payment');
-});
+
 
 
 
