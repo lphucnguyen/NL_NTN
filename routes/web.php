@@ -40,6 +40,9 @@ Route::group(['prefix' => '/home'], function () {
     Route::get('/contact', function () {
         return view('client.back.contact');
     });
+    Route::get('/hoaithuongmacnie', function () {
+        return view('client.back.contact');
+    });
 
 });
 
@@ -47,10 +50,16 @@ Route::group(['prefix' => '/home'], function () {
 // Route::get('/admin', function () {
 //     return redirect('/adminpage');
 // });
+
 Route::group(['prefix' => '/admins'], function (){
+
     Route::get('/', function () {
         return view('admin.home.home');
     });
+    Route::get('/login', function () {
+        return view('admin.auth.login');
+    });
+
 });
 
 
