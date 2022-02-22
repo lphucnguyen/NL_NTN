@@ -40,10 +40,11 @@
 <body class="animsition">
 
     <!-- Header -->
-    <header>
+    <header class="header-v4">
         <!-- Header desktop -->
         <div class="container-menu-desktop">
-            <div class="wrap-menu-desktop">
+
+            <div class="wrap-menu-desktop how-shadow1">
                 <nav class="limiter-menu-desktop container">
 
                     <!-- Logo desktop -->
@@ -54,32 +55,27 @@
                     <!-- Menu desktop -->
                     <div class="menu-desktop">
                         <ul class="main-menu">
-                            <li class="active-menu">
-                                <a href="index.html">Home</a>
-                                <ul class="sub-menu">
-                                    <li><a href="index.html">Homepage 1</a></li>
-                                    <li><a href="home-02.html">Homepage 2</a></li>
-                                    <li><a href="home-03.html">Homepage 3</a></li>
-                                </ul>
+                            <li class="list-menu">
+                                <a href="./">Home</a>
                             </li>
 
-                            <li>
-                                <a href="product.html">Shop</a>
+                            <li class="list-menu">
+                                <a href="shop">Shop</a>
                             </li>
 
-                            <li class="label1" data-label1="hot">
-                                <a href="shoping-cart.html">Features</a>
+                            <li class="list-menu label1" data-label1="??">
+                                <a href="payment">Payment</a>
                             </li>
 
-                            <li>
+                            <li class="list-menu">
                                 <a href="blog.html">Blog</a>
                             </li>
 
-                            <li>
+                            <li class="list-menu">
                                 <a href="about.html">About</a>
                             </li>
 
-                            <li>
+                            <li class="list-menu">
                                 <a href="contact.html">Contact</a>
                             </li>
                         </ul>
@@ -95,7 +91,7 @@
                             <i class="zmdi zmdi-shopping-cart"></i>
                         </div>
 
-                        <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
+                        <a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
                             <i class="zmdi zmdi-favorite-outline"></i>
                         </a>
                     </div>
@@ -137,37 +133,28 @@
         <!-- Menu Mobile -->
         <div class="menu-mobile">
 
-
             <ul class="main-menu-m">
-                <li>
-                    <a href="index.html">Home</a>
-                    <ul class="sub-menu-m">
-                        <li><a href="index.html">Homepage 1</a></li>
-                        <li><a href="home-02.html">Homepage 2</a></li>
-                        <li><a href="home-03.html">Homepage 3</a></li>
-                    </ul>
-                    <span class="arrow-main-menu-m">
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </span>
+                <li class="list-menu">
+                    <a href="./">Home</a>
                 </li>
 
-                <li>
-                    <a href="product.html">Shop</a>
+                <li class="list-menu">
+                    <a href="shop">Shop</a>
                 </li>
 
-                <li>
-                    <a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
+                <li class="list-menu">
+                    <a href="payment" class="label1 rs1" data-label1="99">Features</a>
                 </li>
 
-                <li>
+                <li class="list-menu">
                     <a href="blog.html">Blog</a>
                 </li>
 
-                <li>
+                <li class="list-menu">
                     <a href="about.html">About</a>
                 </li>
 
-                <li>
+                <li class="list-menu">
                     <a href="contact.html">Contact</a>
                 </li>
             </ul>
@@ -275,9 +262,8 @@
         </div>
     </div>
 
-    <!-- Content -->
+
     @yield('content')
-    <!-- /Content -->
 
 
     <!-- Footer -->
@@ -419,7 +405,7 @@
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     Copyright &copy;<script>
                         document.write(new Date().getFullYear());
-                    </script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                    </script> All rights reserved |Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
                 </p>
@@ -636,7 +622,7 @@
     <!--===============================================================================================-->
     <script src="public/template_client/vendor/sweetalert/sweetalert.min.js"></script>
     <script>
-        $('.js-addwish-b2').on('click', function(e) {
+        $('.js-addwish-b2, .js-addwish-detail').on('click', function(e) {
             e.preventDefault();
         });
 
@@ -689,6 +675,7 @@
     </script>
     <!--===============================================================================================-->
     <script src="public/template_client/js/main.js"></script>
+    <script src="public/template_client/js/my-custom.js"></script>
 
 </body>
 

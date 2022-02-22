@@ -18,7 +18,21 @@ Route::get('/', function () {
     return view('client.home.home');
 });
 
-Route::controller(ClientController::class)->group(function () {
-    Route::get('/shop', 'shop');
+// Route::group(['prefix' => '/client'], function () {
+//     Route::get('/shop', function () {
+//         return view('client.back.shop');
+//     });
+// });
+
+
+//Menu Client
+Route::get('/shop', function () {
+    return view('client.back.shop');
 });
+Route::get('/payment', function () {
+    return view('client.back.payment');
+});
+
+
+
 

@@ -3,6 +3,7 @@
 @section('title', "Home | NTN Shop")
 
 @section('content')
+
 <!-- Slider -->
 <section class="section-slide">
     <div class="wrap-slick1">
@@ -81,7 +82,6 @@
         </div>
     </div>
 </section>
-
 
 <!-- Banner -->
 <div class="sec-banner bg0 p-t-80 p-b-50">
