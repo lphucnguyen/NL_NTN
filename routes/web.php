@@ -47,7 +47,7 @@ Route::group(['prefix' => '/home'], function () {
 
 // ======================= Admin ====================================================
 Route::get('/admin', function () {
-    return redirect('/adminpage');
+    return redirect('/admins');
 });
 
 Route::group(['prefix' => '/admins'], function (){
