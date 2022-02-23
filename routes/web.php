@@ -60,9 +60,3 @@ Route::group(['prefix' => '/admins'], function (){
     });
 
 });
-
-//ple
-
-
-
-//phamle21 line 68
