@@ -17,20 +17,20 @@
     <!-- NProgress -->
     <link href="{{asset('admin/vendors/nprogress/nprogress.css')}}" rel="stylesheet">
     <!-- iCheck -->
-    <link href="admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="{{asset('admin/vendors/iCheck/skins/flat/green.css')}}" rel="stylesheet">
     <!-- bootstrap-wysiwyg -->
-    <link href="admin/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <link href="{{asset('admin/vendors/google-code-prettify/bin/prettify.min.css')}}" rel="stylesheet">
     <!-- Select2 -->
-    <link href="admin/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    <link href="{{asset('admin/vendors/select2/dist/css/select2.min.css')}}" rel="stylesheet">
     <!-- Switchery -->
-    <link href="admin/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    <link href="{{asset('admin/vendors/switchery/dist/switchery.min.css')}}" rel="stylesheet">
     <!-- starrr -->
-    <link href="admin/vendors/starrr/dist/starrr.css" rel="stylesheet">
+    <link href="{{asset('admin/vendors/starrr/dist/starrr.css')}}" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
-    <link href="admin/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="{{asset('admin/vendors/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="admin/build/css/custom.min.css" rel="stylesheet">
+    <link href="{{asset('admin/build/css/custom.min.css')}}" rel="stylesheet">
 </head>
 
 <body class="nav-md">
@@ -47,7 +47,7 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                            <img src="{{asset('images/img.jpg')}}" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
                             <span>Welcome,</span>
@@ -289,40 +289,40 @@
     </div>
 
     <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="{{asset('admin/vendors/jquery/dist/jquery.min.js')}}"></script>
     <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset('admin/vendors/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
     <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <script src="{{asset('admin/vendors/fastclick/lib/fastclick.js')}}"></script>
     <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
+    <script src="{{asset('admin/vendors/nprogress/nprogress.js')}}"></script>
     <!-- bootstrap-progressbar -->
-    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="{{asset('admin/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js')}}"></script>
     <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <script src="{{asset('admin/vendors/iCheck/icheck.min.js')}}"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="{{asset('admin/vendors/moment/min/moment.min.js')}}"></script>
+    <script src="{{asset('admin/vendors/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
     <!-- bootstrap-wysiwyg -->
-    <script src="../vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
-    <script src="../vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
-    <script src="../vendors/google-code-prettify/src/prettify.js"></script>
+    <script src="{{asset('admin/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js')}}"></script>
+    <script src="{{asset('admin/vendors/jquery.hotkeys/jquery.hotkeys.js')}}"></script>
+    <script src="{{asset('admin/vendors/google-code-prettify/src/prettify.js')}}"></script>
     <!-- jQuery Tags Input -->
-    <script src="../vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+    <script src="{{asset('admin/vendors/jquery.tagsinput/src/jquery.tagsinput.js')}}"></script>
     <!-- Switchery -->
-    <script src="../vendors/switchery/dist/switchery.min.js"></script>
+    <script src="{{asset('admin/vendors/switchery/dist/switchery.min.js')}}"></script>
     <!-- Select2 -->
-    <script src="../vendors/select2/dist/js/select2.full.min.js"></script>
+    <script src="{{asset('admin/vendors/select2/dist/js/select2.full.min.js')}}"></script>
     <!-- Parsley -->
-    <script src="../vendors/parsleyjs/dist/parsley.min.js"></script>
+    <script src="{{asset('admin/vendors/parsleyjs/dist/parsley.min.js')}}"></script>
     <!-- Autosize -->
-    <script src="../vendors/autosize/dist/autosize.min.js"></script>
+    <script src="{{asset('admin/vendors/autosize/dist/autosize.min.js')}}"></script>
     <!-- jQuery autocomplete -->
-    <script src="../vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+    <script src="{{asset('admin/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js')}}"></script>
     <!-- starrr -->
-    <script src="../vendors/starrr/dist/starrr.js"></script>
+    <script src="{{asset('admin/vendors/starrr/dist/starrr.js')}}"></script>
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+    <script src="{{asset('admin/build/js/custom.min.js')}}"></script>
 
 </body>
 
