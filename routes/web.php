@@ -22,25 +22,25 @@ Route::group(['prefix' => '/home'], function () {
 
     //Menu Client
     Route::get('/', function () {
-        return view('client.home.home');
+        return view('client_template.home.home');
     });
     Route::get('/shop', function () {
-        return view('client.back.shop');
+        return view('client_template.back.shop');
     });
     Route::get('/payment', function () {
-        return view('client.back.payment');
+        return view('client_template.back.payment');
     });
     Route::get('/blog', function () {
-        return view('client.back.blog');
+        return view('client_template.back.blog');
     });
     Route::get('/about', function () {
-        return view('client.back.about');
+        return view('client_template.back.about');
     });
     Route::get('/contact', function () {
-        return view('client.back.contact');
+        return view('client_template.back.contact');
     });
     Route::get('/hoaithuongmacnie', function () {
-        return view('client.back.contact');
+        return view('client_template.back.contact');
     });
 
 });
@@ -51,10 +51,10 @@ Route::group(['prefix' => '/home'], function () {
 Route::group(['prefix' => '/admin'], function (){
 
     Route::get('/', function () {
-        return view('admin.home.home');
+        return view('admin_template.home.home');
     });
     Route::get('/login', function () {
-        return view('admin.auth.login');
+        return view('admin_template.auth.login');
     });
 
 });
