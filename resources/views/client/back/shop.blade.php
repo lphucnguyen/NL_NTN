@@ -1,4 +1,4 @@
-@extends('client.template.master')
+@extends('client_template.template.master')
 
 @section('title', "Shop | NTN Shop")
 
