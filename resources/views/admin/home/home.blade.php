@@ -1,4 +1,4 @@
-@extends('admin_template.template.master')
+@extends('admin.template.master')
 
 @section('title', "Home | Admin - NTN Shop")
 
