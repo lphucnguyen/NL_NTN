@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="" type="image/x-icon">
 
     <title>@yield('title')</title>
 
@@ -39,7 +40,7 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+                        <a href="" class="site_title"><i class="fa fa-paw"></i> <span>NTN Shop</span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -61,65 +62,47 @@
                     <!-- sidebar menu -->
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <div class="menu_section">
-                            <h3>Store</h3>
+                            <h3>Quản lí cửa hàng</h3>
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-home"></i> Products <span class="fa fa-chevron-down"></span></a>
+                                <li>
+                                    <a><i class="fa fa-home"></i> Hàng hóa <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="index.html">Dashboard</a></li>
+                                        <li><a href="/admin/product">Danh sách hàng hóa</a></li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-edit"></i> Product Types <span class="fa fa-chevron-down"></span></a>
+                                <li>
+                                    <a><i class="fa fa-edit"></i> Loại hàng hóa <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="form.html">General Form</a></li>
+                                        <li><a href="form.html">Dánh sách loại hàng hóa</a></li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-desktop"></i> Personnel <span class="fa fa-chevron-down"></span></a>
+                                <li>
+                                    <a><i class="fa fa-desktop"></i> Nhân viên <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="general_elements.html">General Elements</a></li>
+                                        <li><a href="general_elements.html">Danh sách nhân viên</a></li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-table"></i> Statistics <span class="fa fa-chevron-down"></span></a>
+                                <li>
+                                    <a><i class="fa fa-table"></i> Đơn hàng <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="tables.html">Tables</a></li>
+                                        <li><a href="tables.html">Danh sách đơn hàng</a></li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-bar-chart-o"></i> Promotions <span class="fa fa-chevron-down"></span></a>
+                                <li>
+                                    <a><i class="fa fa-bar-chart-o"></i> Khuyến mãi <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="chartjs.html">Chart JS</a></li>
+                                        <li><a href="chartjs.html">aibietgidau</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-bar-chart-o"></i> Thống kê <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="chartjs.html">Custom</a></li>
                                     </ul>
                                 </li>
                             </ul>
                         </div>
-                        <div class="menu_section">
-                            <h3>System</h3>
-                            <ul class="nav side-menu">
-                                <li><a><i class="fa fa-home"></i> Products <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="index.html">Dashboard</a></li>
-                                    </ul>
-                                </li>
-                                <li><a><i class="fa fa-edit"></i> Product Types <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="form.html">General Form</a></li>
-                                    </ul>
-                                </li>
-                                <li><a><i class="fa fa-desktop"></i> Personnel <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="general_elements.html">General Elements</a></li>
-                                    </ul>
-                                </li>
-                                <li><a><i class="fa fa-table"></i> Statistics <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="tables.html">Tables</a></li>
-                                    </ul>
-                                </li>
-                                <li><a><i class="fa fa-bar-chart-o"></i> Promotions <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="chartjs.html">Chart JS</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                    </div>
                     <!-- /menu footer buttons -->
                 </div>
             </div>
@@ -223,6 +206,7 @@
                 @yield('content')
             </div>
             <!-- /page content -->
+
 
             <!-- footer content -->
             <footer>

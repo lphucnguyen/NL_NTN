@@ -1,7 +1,7 @@
 @extends('admin.template.master')
 
-@section('title', "Order - Admin NTN Shop")
+@section('title', "Product - Admin NTN Shop")
 
 @section('content')
-
+    <h1>Danh sách sản phẩm</h1>
 @stop

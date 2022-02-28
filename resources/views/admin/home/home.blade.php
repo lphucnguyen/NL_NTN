@@ -2,10 +2,8 @@
 
 @section('title', "Home | Admin - NTN Shop")
 
-<!-- @section('heading', "Home") -->
-
 @section('content')
 
-    
+    <h1>Ple</h1>
 
 @stop
