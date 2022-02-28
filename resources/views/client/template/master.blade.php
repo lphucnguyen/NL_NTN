@@ -90,10 +90,6 @@
                         <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
                             <i class="zmdi zmdi-shopping-cart"></i>
                         </div>
-
-                        <a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
-                            <i class="zmdi zmdi-favorite-outline"></i>
-                        </a>
                     </div>
                 </nav>
             </div>
