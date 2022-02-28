@@ -49,7 +49,7 @@
 
                     <!-- Logo desktop -->
                     <a href="./" class="logo">
-                        <img src="{{asset('client/images/icons/logo-01.png')}}" alt="IMG-LOGO">
+                        <img src="{{asset('client_template/images/icons/logo-01.png')}}" alt="IMG-LOGO">
                     </a>
 
                     <!-- Menu desktop -->
@@ -115,10 +115,6 @@
                 <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
                     <i class="zmdi zmdi-shopping-cart"></i>
                 </div>
-
-                <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
-                    <i class="zmdi zmdi-favorite-outline"></i>
-                </a>
             </div>
 
             <!-- Button show menu -->
@@ -196,7 +192,7 @@
                 <ul class="header-cart-wrapitem w-full">
                     <li class="header-cart-item flex-w flex-t m-b-12">
                         <div class="header-cart-item-img">
-                            <img src="{{asset('client/images/item-cart-01.jpg')}}" alt="IMG">
+                            <img src="{{asset('client_template/images/item-cart-01.jpg')}}" alt="IMG">
                         </div>
 
                         <div class="header-cart-item-txt p-t-8">
@@ -212,7 +208,7 @@
 
                     <li class="header-cart-item flex-w flex-t m-b-12">
                         <div class="header-cart-item-img">
-                            <img src="{{asset('client/images/item-cart-02.jpg')}}" alt="IMG">
+                            <img src="{{asset('client_template/images/item-cart-02.jpg')}}" alt="IMG">
                         </div>
 
                         <div class="header-cart-item-txt p-t-8">
@@ -228,7 +224,7 @@
 
                     <li class="header-cart-item flex-w flex-t m-b-12">
                         <div class="header-cart-item-img">
-                            <img src="{{asset('client/images/item-cart-03.jpg')}}" alt="IMG">
+                            <img src="{{asset('client_template/images/item-cart-03.jpg')}}" alt="IMG">
                         </div>
 
                         <div class="header-cart-item-txt p-t-8">
