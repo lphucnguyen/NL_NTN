@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +45,6 @@ Route::group(['prefix' => '/home'], function () {
 
 // ======================= Admin ====================================================
 
-
 Route::group(['prefix' => '/admin'], function (){
 
     Route::get('/', function () {
@@ -53,5 +53,10 @@ Route::group(['prefix' => '/admin'], function (){
     Route::get('/login', function () {
         return view('admin.auth.login');
     });
-
+    Route::get('/product', function () {
+        return view('admin.back.product');
+    });
+    Route::get('/product_type', function () {
+        return view('admin.back.product_type');
+    });
 });
