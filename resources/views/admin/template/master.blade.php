@@ -40,7 +40,7 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="" class="site_title"><i class="fa fa-paw"></i> <span>NTN Shop</span></a>
+                        <a href="/admin" class="site_title"><i class="fa fa-paw"></i> <span>𝓝𝓣𝓝 𝓢𝓽𝓸𝓻𝓮</span></a>
                     </div>
 
                     <div class="clearfix"></div>
