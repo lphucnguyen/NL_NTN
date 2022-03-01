@@ -56,4 +56,7 @@ Route::group(['prefix' => '/admin'], function (){
     Route::get('/product', function () {
         return view('admin.back.product');
     });
+    Route::get('/product_type', function () {
+        return view('admin.back.product_type');
+    });
 });

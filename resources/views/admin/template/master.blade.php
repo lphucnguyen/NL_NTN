@@ -79,7 +79,7 @@
                                 <li>
                                     <a><i class="fa fa-edit"></i> Loại hàng hóa <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="form.html">Dánh sách loại hàng hóa</a></li>
+                                        <li><a href="/admin/product_type">Dánh sách loại hàng hóa</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -239,7 +239,7 @@
             <!-- footer content -->
             <footer>
                 <div class="pull-right">
-                    Copyright &copy; 2022 <a href="#NTN_SHOP">NTN SHOP</a>
+                    Copyright &copy; 2022 <a href="#NTN_SHOP">NTN STORE</a>
                 </div>
                 <div class="clearfix"></div>
             </footer>
@@ -281,21 +281,21 @@
     <!-- starrr -->
     <script src="{{asset('admin_template/vendors/starrr/dist/starrr.js')}}"></script>
     <!-- Datatables -->
-    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
-    <script src="../vendors/jszip/dist/jszip.min.js"></script>
-    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
-    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="{{asset('admin_template/vendors/datatables.net/js/jquery.dataTables.js')}}"></script>
+    <script src="{{asset('admin_template/vendors/datatables.net-bs/js/dataTables.bootstrap.js')}}"></script>
+    <script src="{{asset('admin_template/vendors/datatables.net-buttons/js/dataTables.buttons.js')}}"></script>
+    <script src="{{asset('admin_template/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.js')}}"></script>
+    <script src="{{asset('admin_template/vendors/datatables.net-buttons/js/buttons.flash.js')}}"></script>
+    <script src="{{asset('admin_template/vendors/datatables.net-buttons/js/buttons.html5.js')}}"></script>
+    <script src="{{asset('admin_template/vendors/datatables.net-buttons/js/buttons.print.js')}}"></script>
+    <script src="{{asset('admin_template/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.js')}}"></script>
+    <script src="{{asset('admin_template/vendors/datatables.net-keytable/js/dataTables.keyTable.js')}}"></script>
+    <script src="{{asset('admin_template/vendors/datatables.net-responsive/js/dataTables.responsive.js')}}"></script>
+    <script src="{{asset('admin_template/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js')}}"></script>
+    <script src="{{asset('admin_template/vendors/datatables.net-scroller/js/dataTables.scroller.js')}}"></script>
+    <script src="{{asset('admin_template/vendors/jszip/dist/jszip.min.js')}}"></script>
+    <script src="{{asset('admin_template/vendors/pdfmake/build/pdfmake.min.js')}}"></script>
+    <script src="{{asset('admin_template/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="{{asset('admin_template/build/js/custom.min.js')}}"></script>
