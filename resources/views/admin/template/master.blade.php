@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -203,7 +203,29 @@
 
             <!-- page content -->
             <div class="right_col" role="main">
-                @yield('content')
+                <div class="">
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h1> @yield('heading') <small>@yield('des_heading')</small></h1>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="row" style="display: block;">
+                        <div class="col-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2><b> @yield('x_heading') </b></h2>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    @yield('content')
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- /page content -->
 
@@ -211,7 +233,7 @@
             <!-- footer content -->
             <footer>
                 <div class="pull-right">
-                    NTN Shop by <a href="https://facebook.com/phamle21">P Lê</a>
+                    Copyright &copy; 2022 <a href="#NTN_SHOP">NTN SHOP</a>
                 </div>
                 <div class="clearfix"></div>
             </footer>
