@@ -13,14 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('TaiKhoan', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('HoTen');
+            $table->string('SoDienThoai');
+            $table->string('DiaChi');
+            $table->boolean('GioiTinh');
+            $table->string('Avatar');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->unsignedBigInteger('id_LoaiTaiKhoan');
+ 
+            $table->foreign('id_LoaiTaiKhoan')->references('id')->on('LoaiTaiKhoan');
         });
     }
 
