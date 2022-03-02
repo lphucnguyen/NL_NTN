@@ -30,11 +30,16 @@
     <!-- bootstrap-daterangepicker -->
     <link href="{{asset('admin_template/vendors/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
     <!-- Datatables -->
-    <link href="{{asset('admin_template/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('admin_template/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('admin_template/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('admin_template/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('admin_template/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('admin_template/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')}}"
+        rel="stylesheet">
+    <link href="{{asset('admin_template/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css')}}"
+        rel="stylesheet">
+    <link href="{{asset('admin_template/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}"
+        rel="stylesheet">
+    <link href="{{asset('admin_template/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}"
+        rel="stylesheet">
+    <link href="{{asset('admin_template/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}"
+        rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="{{asset('admin_template/build/css/custom.min.css')}}" rel="stylesheet">
@@ -46,7 +51,8 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="/admin" class="site_title"><i class="fa-solid fa-crown"></i> <span>𝓝𝓣𝓝 𝓢𝓽𝓸𝓻𝓮</span></a>
+                        <a href="/admin" class="site_title"><i class="fa-solid fa-crown"></i> <span>𝓝𝓣𝓝
+                                𝓢𝓽𝓸𝓻𝓮</span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -54,10 +60,11 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img src="{{asset('admin_template/production/images/img.jpg')}}" alt="..." class="img-circle profile_img">
+                            <img src="{{asset('admin_template/production/images/img.jpg')}}" alt="..."
+                                class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
-                            <span>Welcome,</span>
+                            <span>Xin chào, </span>
                             <h2>John Doe</h2>
                         </div>
                     </div>
@@ -71,37 +78,42 @@
                             <h3>Quản lí cửa hàng</h3>
                             <ul class="nav side-menu">
                                 <li>
-                                    <a><i class="fa fa-home"></i> Hàng hóa <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-tag"></i> Hàng hóa <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/product">Danh sách hàng hóa</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-edit"></i> Loại hàng hóa <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-tags"></i> Loại hàng hóa <span
+                                            class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/product_type">Dánh sách loại hàng hóa</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-desktop"></i> Nhân viên <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-users"></i> Nhân viên <span
+                                            class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/staff">Danh sách nhân viên</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-table"></i> Đơn hàng <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-list-alt"></i> Đơn hàng <span
+                                            class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/order">Danh sách đơn hàng</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa-solid fa-percent"></i> Khuyến mãi <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa-solid fa-percent"></i> Khuyến mãi <span
+                                            class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/promotion">Thông tin khuyến mãi</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-bar-chart-o"></i> Thống kê <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-bar-chart-o"></i> Thống kê <span
+                                            class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/statistic">Thống kê doanh thu</a></li>
                                     </ul>
@@ -122,26 +134,30 @@
                     <nav class="nav navbar-nav">
                         <ul class=" navbar-right">
                             <li class="nav-item dropdown open" style="padding-left: 15px;">
-                                <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
+                                    id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
                                     <img src="{{asset('admin_template/production/images/img.jpg')}}" alt="">John Doe
                                 </a>
-                                <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="javascript:;"> Profile</a>
+                                <div class="dropdown-menu dropdown-usermenu pull-right"
+                                    aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="javascript:;"> Thông tin</a>
                                     <a class="dropdown-item" href="javascript:;">
-                                        <span class="badge bg-red pull-right">50%</span>
-                                        <span>Settings</span>
+                                        <span>Cài đặt</span>
                                     </a>
-                                    <a class="dropdown-item" href="javascript:;">Help</a>
-                                    <a class="dropdown-item" href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                    <a class="dropdown-item" href="javascript:;">Giup đỡ</a>
+                                    <a class="dropdown-item" href="login.html"><i class="fa fa-sign-out pull-right"></i>
+                                        Đăng xuất</a>
                                 </div>
                             </li>
 
                             <li role="presentation" class="nav-item dropdown open">
-                                <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
+                                <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1"
+                                    data-toggle="dropdown" aria-expanded="false">
                                     <i class="fa fa-envelope-o"></i>
                                     <span class="badge bg-green">6</span>
                                 </a>
-                                <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
+                                <ul class="dropdown-menu list-unstyled msg_list" role="menu"
+                                    aria-labelledby="navbarDropdown1">
                                     <li class="nav-item">
                                         <a class="dropdown-item">
                                             <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
@@ -150,7 +166,8 @@
                                                 <span class="time">3 mins ago</span>
                                             </span>
                                             <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                Film festivals used to be do-or-die moments for movie makers. They were
+                                                where...
                                             </span>
                                         </a>
                                     </li>
@@ -162,7 +179,8 @@
                                                 <span class="time">3 mins ago</span>
                                             </span>
                                             <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                Film festivals used to be do-or-die moments for movie makers. They were
+                                                where...
                                             </span>
                                         </a>
                                     </li>
@@ -174,7 +192,8 @@
                                                 <span class="time">3 mins ago</span>
                                             </span>
                                             <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                Film festivals used to be do-or-die moments for movie makers. They were
+                                                where...
                                             </span>
                                         </a>
                                     </li>
@@ -186,7 +205,8 @@
                                                 <span class="time">3 mins ago</span>
                                             </span>
                                             <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                Film festivals used to be do-or-die moments for movie makers. They were
+                                                where...
                                             </span>
                                         </a>
                                     </li>

@@ -10,6 +10,17 @@
 
 @section('content')
 
+<div>
+    <div class="text-center">
+        Ngày bắt đầu: 
+        <select name="" id=""></select>
+    </div>
+    <div class="text-center">
+        Ngày kết thúc: 
+        <select name="" id=""></select>
+    </div>
+</div>
+
 
 <table id="datatable" class="table table-striped table-bordered" style="width:100%">
     <thead>

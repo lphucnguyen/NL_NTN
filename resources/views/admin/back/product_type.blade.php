@@ -13,8 +13,8 @@
 <table id="datatable-fixed-header" class="table table-striped table-bordered" style="width:100%">
     <thead>
         <tr class="text-center">
-            <th>MSLHH</th>
-            <th>Loại hàng hóa</th>
+            <th>MSLSP</th>
+            <th>Loại sản phẩm</th>
             <th>Thao tác</th>
         </tr>
     </thead>
