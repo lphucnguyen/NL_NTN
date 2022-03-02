@@ -65,6 +65,9 @@ Route::group(['prefix' => '/admin'], function (){
     Route::get('/order', function () {
         return view('admin.back.order');
     });
+    Route::get('/promotion', function () {
+        return view('admin.back.promotion');
+    });
     Route::get('/statistic', function () {
         return view('admin.back.statistic');
     });

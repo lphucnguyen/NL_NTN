@@ -23,10 +23,11 @@
             <th>Tài khoản</th>
             <th>Mật khẩu</th>
             <th>Ảnh đại diện</th>
+            <th>Thao tác</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr class="text-center">
             <td>admin</td>
             <td>Nixon</td>
             <td>0123456789</td>
@@ -37,9 +38,11 @@
             <td>
                 <img src="" alt="ảnh đại diện">
             </td>
-
+            <td class="text-center">
+                <button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Sửa</button>
+                <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Xóa</button>
+            </td>
         </tr>
-
     </tbody>
 </table>
 
