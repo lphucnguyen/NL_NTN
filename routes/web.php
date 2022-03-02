@@ -59,4 +59,13 @@ Route::group(['prefix' => '/admin'], function (){
     Route::get('/product_type', function () {
         return view('admin.back.product_type');
     });
+    Route::get('/staff', function () {
+        return view('admin.back.staff');
+    });
+    Route::get('/order', function () {
+        return view('admin.back.order');
+    });
+    Route::get('/statistic', function () {
+        return view('admin.back.statistic');
+    });
 });

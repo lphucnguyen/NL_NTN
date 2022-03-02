@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="" type="image/x-icon">
-
+    <script src="https://kit.fontawesome.com/2f6a0f247f.js" crossorigin="anonymous"></script>
     <title>@yield('title')</title>
 
     <!-- Bootstrap -->
@@ -85,25 +85,25 @@
                                 <li>
                                     <a><i class="fa fa-desktop"></i> Nhân viên <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="general_elements.html">Danh sách nhân viên</a></li>
+                                        <li><a href="/admin/staff">Danh sách nhân viên</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a><i class="fa fa-table"></i> Đơn hàng <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="tables.html">Danh sách đơn hàng</a></li>
+                                        <li><a href="/admin/order">Danh sách đơn hàng</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-bar-chart-o"></i> Khuyến mãi <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa-solid fa-percent"></i> Khuyến mãi <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="chartjs.html">aibietgidau</a></li>
+                                        <li><a href="/admin/promotion">Thông tin khuyến mãi</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a><i class="fa fa-bar-chart-o"></i> Thống kê <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="chartjs.html">Custom</a></li>
+                                        <li><a href="/admin/statistic">Thống kê doanh thu</a></li>
                                     </ul>
                                 </li>
                             </ul>
