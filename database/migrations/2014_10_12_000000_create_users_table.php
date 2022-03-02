@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('TaiKhoan', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('HoTen');
             $table->string('SoDienThoai')->unique();
             $table->string('DiaChi');
@@ -25,10 +25,9 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->unsignedBigInteger('id_LoaiTaiKhoan');
- 
-            $table->foreign('id_LoaiTaiKhoan')->references('id')->on('LoaiTaiKhoan');
+            $table->unsignedBigInteger('id_LoaiTaiKhoan')->nullable(false);
         });
+        
     }
 
     /**

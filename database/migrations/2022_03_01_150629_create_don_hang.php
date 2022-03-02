@@ -14,12 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('DonHang', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedInteger('id_TaiKhoan');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_TaiKhoan');
             $table->unsignedBigInteger('id_HoaDon');
-
-            $table->foreignId('id_TaiKhoan')->references('id')->on('TaiKhoan');
-            $table->foreignId('id_HoaDon')->references('id')->on('HoaDon');
             $table->timestamps();
         });
     }
