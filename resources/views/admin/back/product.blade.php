@@ -13,7 +13,7 @@
 
 <table id="datatable" class="table table-striped table-bordered" style="width:100%">
     <thead>
-        <tr>
+        <tr class="text-center">
             <th>MSHH</th>
             <th>Hàng hóa</th>
             <th>Hình ảnh</th>
@@ -27,15 +27,15 @@
 
     <tbody>
         <tr>
-            <td>Donna Snider</td>
-            <td>Customer Support</td>
-            <td>New York</td>
+            <td>001</td>
+            <td>Ring Gold</td>
+            <td>Images</td>
             <td>27</td>
-            <td>2011/01/25</td>
+            <td>Nhẫn vàng</td>
             <td>$112,000</td>
-            <td>
-                <button class="btn p-2">Sửa</button>
-                <button class="btn p-2">Xóa</button>
+            <td class="text-center">
+                <button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Sửa</button>
+                <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Xóa</button>
             </td>
         </tr>
     </tbody>
