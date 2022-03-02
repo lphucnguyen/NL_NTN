@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('TaiKhoan', function (Blueprint $table) {
             $table->id();
             $table->string('HoTen');
-            $table->string('SoDienThoai');
+            $table->string('SoDienThoai')->unique();
             $table->string('DiaChi');
             $table->boolean('GioiTinh');
             $table->string('Avatar');
