@@ -10,6 +10,7 @@ class Admin_AuthController extends Controller
     public function __construct()
     {
         @session_start();
+        $this->middleware('CheckLogoutAdmin');
     }
 
     //View Login
@@ -29,9 +30,11 @@ class Admin_AuthController extends Controller
         $login_sdt = ['SoDienThoai' => $request->username, 'password' => $request->password];
 
         if ( Auth::attempt($login_email) || Auth::attempt($login_sdt)) {
-            return redirect('/admin/login')->with('noice', 'Đăng nhập thành công');
+            return redirect('/admin');
         } else {
-            return redirect('/admin/login')->with('noice', 'Tài khoản hoặc mật khẩu sai!');
+            return back()->with('noice', 'Tài khoản hoặc mật khẩu sai!');
         }
     }
+
+    
 }
