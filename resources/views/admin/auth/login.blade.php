@@ -30,13 +30,23 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form action="" id="login_admin" method="post">
+            <form action="/admin/login" id="login_admin" method="post">
+              @csrf
               <h1 class="text-capitalize">Đăng nhập</h1>
+
+              @if (session('noice'))
+              <div class="row text-center">
+                <div class="col">
+                  <p class="text-danger">{{ session('noice') }}</p>
+                </div>
+              </div>
+              @endif
+
               <div>
-                <input type="text" name="username" class="form-control" placeholder="Username" required="" />
+                <input type="text" name="username" class="form-control" placeholder="Phone, Email" />
               </div>
               <div>
-                <input type="password" name="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" name="password" class="form-control" placeholder="Password"  />
               </div>
               <div>
                 <button class="btn submit" type="submit" from="login_admin">Đăng nhập</button>

@@ -48,18 +48,11 @@ Route::group(['prefix' => '/home'], function () {
 
 Route::group(['prefix' => '/admin'], function (){
 
-    Route::get('/', function () {
-        return view('admin.home.home');
-    });
-    Route::get('/login', function () {
-        return view('admin.auth.login');
-    });
-    Route::post('/login', [Admin_AuthController::class, 'login']);
+    Route::view('/', 'admin.home.home');
+    
+    Route::get('/login', [Admin_AuthController::class, 'getLogin']);
+    Route::post('/login', [Admin_AuthController::class, 'postLogin']);
 
-    Route::get('/product', function () {
-        return view('admin.back.product');
-    });
-    Route::get('/product_type', function () {
-        return view('admin.back.product_type');
-    });
+    Route::view('/product', 'admin.back.product');
+    Route::view('/product_type', 'admin.back.product_type');
 });
