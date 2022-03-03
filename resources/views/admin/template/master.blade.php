@@ -40,6 +40,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Custom Theme Style -->
     <link href="{{asset('admin_template/build/css/custom.min.css')}}" rel="stylesheet">
+    <!-- Jquery 3.6 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="nav-md">
@@ -76,32 +78,32 @@
                             <h3>Quản lí cửa hàng</h3>
                             <ul class="nav side-menu">
                                 <li>
-                                    <a><i class="fa fa-home"></i> Hàng hóa <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-cube"></i> Hàng hóa <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/product">Danh sách hàng hóa</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-edit"></i> Loại hàng hóa <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-cubes"></i> Loại hàng hóa <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/product_type">Dánh sách loại hàng hóa</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-desktop"></i> Nhân viên <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-user"></i> Nhân viên <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/staff">Danh sách nhân viên</a></li>
                                         <li><a href="/admin/addstaff">Tạo tài khoản</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-table"></i> Đơn hàng <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-files-o"></i> Đơn hàng <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/order">Danh sách đơn hàng</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-bar-chart-o"></i> Khuyến mãi <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-money"></i> Khuyến mãi <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/promotion">Danh sách mã khuyến mãi</a></li>
                                     </ul>
@@ -129,7 +131,7 @@
                         <ul class=" navbar-right">
                             <li class="nav-item dropdown open" style="padding-left: 15px;">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{asset('admin_template/production/images/img.jpg')}}" alt="">{{ Auth::user()->HoTen }}
+                                    <img src="{{asset('images/avatar')}}/{{Auth::user()->Avatar}}" alt="">{{ Auth::user()->HoTen }}
                                 </a>
                                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="javascript:;"> Profile</a>

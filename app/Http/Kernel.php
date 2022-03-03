@@ -15,8 +15,6 @@ class Kernel extends HttpKernel
      */
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,
-        \App\Http\Middleware\CheckLoginAdmin::class,
-        \App\Http\Middleware\CheckLogoutAdmin::class,
         \App\Http\Middleware\TrustProxies::class,
         \Fruitcake\Cors\HandleCors::class,
         \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
@@ -57,6 +55,7 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
+        'client' => \App\Http\Middleware\client::class,
         'CheckLogoutAdmin' => \App\Http\Middleware\CheckLogoutAdmin::class,
         'CheckLoginAdmin' => \App\Http\Middleware\CheckLoginAdmin::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,

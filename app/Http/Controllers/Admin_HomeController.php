@@ -10,9 +10,11 @@ class Admin_HomeController extends Controller
 {
     public function __construct()
     {
+        @session_start();
         //Đăng nhập mới được vào các route bên dưới
         $this->middleware('CheckLoginAdmin');
     }
+
 
 
     //Logout
@@ -63,7 +65,9 @@ class Admin_HomeController extends Controller
     public function addstaff(){
         return view('admin.back.addstaff');
     }
-
+    public function postaddstaff(Request $request){
+        echo $request->all();
+    }
 
     //order
     public function order(){

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin_AuthController;
 use App\Http\Controllers\Admin_HomeController;
+use App\Http\Controllers\Client_HomeController;
 use App\Http\Middleware\CheckAuthAdmin;
 /*
 |--------------------------------------------------------------------------
@@ -24,24 +25,11 @@ Route::get('/', function () {
 Route::group(['prefix' => '/home'], function () {
 
     //Menu Client
-    Route::get('/', function () {
-        return view('client.home.home');
-    });
-    Route::get('/shop', function () {
-        return view('client.back.shop');
-    });
-    Route::get('/payment', function () {
-        return view('client.back.payment');
-    });
-    Route::get('/blog', function () {
-        return view('client.back.blog');
-    });
-    Route::get('/about', function () {
-        return view('client.back.about');
-    });
-    Route::get('/contact', function () {
-        return view('client.back.contact');
-    });
+    Route::get('/', [Client_HomeController::class, 'home']);
+    Route::get('/shop', [Client_HomeController::class, 'shop']);
+    Route::get('/payment', [Client_HomeController::class, 'payment']);
+    Route::get('/about', [Client_HomeController::class, 'about']);
+    Route::get('/contact', [Client_HomeController::class, 'contact']);
 
 });
 
@@ -54,6 +42,7 @@ Route::group(['prefix' => '/admin'], function (){
     
     //Admin_HomeController
     Route::get('/logout', [Admin_HomeController::class, 'logout']);
+    
     Route::get('', [Admin_HomeController::class, 'home'])->name('admin');
 
     Route::get('/product', [Admin_HomeController::class, 'product']);

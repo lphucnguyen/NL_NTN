@@ -29,12 +29,10 @@ class Admin_AuthController extends Controller
         $login_email = ['email' => $request->username, 'password' => $request->password];
         $login_sdt = ['SoDienThoai' => $request->username, 'password' => $request->password];
 
-        if ( Auth::attempt($login_email) || Auth::attempt($login_sdt)) {
+        if (Auth::attempt($login_email) || Auth::attempt($login_sdt)) {
             return redirect('/admin');
         } else {
             return back()->with('noice', 'Tài khoản hoặc mật khẩu sai!');
         }
     }
-
-    
 }
