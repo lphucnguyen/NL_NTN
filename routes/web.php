@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin_AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +14,11 @@ use App\Http\Controllers\Controller;
 |
 */
 
-// ======================= Cient ====================================================
 Route::get('/', function () {
     return redirect('/home');
 });
+
+// ======================= Cient ====================================================
 
 Route::group(['prefix' => '/home'], function () {
 
@@ -53,6 +54,8 @@ Route::group(['prefix' => '/admin'], function (){
     Route::get('/login', function () {
         return view('admin.auth.login');
     });
+    Route::post('/login', [Admin_AuthController::class, 'login']);
+
     Route::get('/product', function () {
         return view('admin.back.product');
     });
