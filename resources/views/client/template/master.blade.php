@@ -2,9 +2,12 @@
 <html lang="en">
 
 <head>
-    <title>@yield('title')</title>
+    <link rel="shortcut icon" href="{{ asset('images/system/logo.png') }}" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>@yield('title')</title>
+    
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="{{asset('client_template/images/icons/favicon.png')}}" />
     <!--===============================================================================================-->

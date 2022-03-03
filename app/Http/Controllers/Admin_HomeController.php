@@ -14,6 +14,7 @@ class Admin_HomeController extends Controller
         $this->middleware('CheckLoginAdmin');
     }
 
+
     //Logout
     public function logout()
     {
@@ -21,11 +22,13 @@ class Admin_HomeController extends Controller
         return redirect('/admin/login');
     }
 
+
     //home
     public function home()
     {
         return view('admin.home.home');
     }
+
 
     //product
     public function product()
@@ -33,26 +36,34 @@ class Admin_HomeController extends Controller
         return view('admin.back.product');
     }
 
+
     //product_type
     public function product_type()
     {
         return view('admin.back.product_type');
     }
 
+
     //promotion
     public function promotion(){
         return view('admin.back.promotion');
     }
+
 
     //statistical
     public function statistical(){
         return view('admin.back.statistical');
     }
 
+
     //staff
     public function staff(){
         return view('admin.back.staff');
     }
+    public function addstaff(){
+        return view('admin.back.addstaff');
+    }
+
 
     //order
     public function order(){

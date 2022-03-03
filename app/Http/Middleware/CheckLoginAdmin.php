@@ -18,7 +18,7 @@ class CheckLoginAdmin
     public function handle(Request $request, Closure $next)
     {
         if (! Auth::check() || Auth::user()->id_LoaiTaiKhoan != '1') {
-            return redirect('/admin/login');
+            return redirect()->route('login');
         }
         return $next($request);
     }

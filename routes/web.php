@@ -59,6 +59,7 @@ Route::group(['prefix' => '/admin'], function (){
     Route::get('/product', [Admin_HomeController::class, 'product']);
     Route::get('/promotion', [Admin_HomeController::class, 'promotion']);
     Route::get('/staff', [Admin_HomeController::class, 'staff']);
+    Route::get('/addstaff', [Admin_HomeController::class, 'addstaff']);
     Route::get('/order', [Admin_HomeController::class, 'order']);
     Route::get('/statistical', [Admin_HomeController::class, 'statistical']);
     Route::get('/product_type', [Admin_HomeController::class, 'product_type']);

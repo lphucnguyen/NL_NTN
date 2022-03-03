@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" href="" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('images/system/logo.png') }}" type="image/x-icon">
 
     <title>@yield('title')</title>
 
@@ -48,7 +48,10 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="/admin" class="site_title"><i class="far fa-gem"></i> <span>𝓝𝓣𝓝 𝓢𝓽𝓸𝓻𝓮</span></a>
+                        <a href="/admin" class="site_title">
+                            <img src="{{ asset('images/system/logo.png') }}" class="bg-light" width="40" style="border-radius:50%;" alt="logo" /> 
+                            <span>𝓝𝓣𝓝 𝓢𝓽𝓸𝓻𝓮</span>
+                        </a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -56,7 +59,7 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img src="{{asset('admin_template/production/images/img.jpg')}}" alt="..." class="img-circle profile_img">
+                            <img src="{{asset('images/avatar')}}/{{Auth::user()->Avatar}}" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
                             <span>Xin chào,</span>
@@ -88,6 +91,7 @@
                                     <a><i class="fa fa-desktop"></i> Nhân viên <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/staff">Danh sách nhân viên</a></li>
+                                        <li><a href="/admin/addstaff">Tạo tài khoản</a></li>
                                     </ul>
                                 </li>
                                 <li>

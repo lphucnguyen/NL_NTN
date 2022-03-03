@@ -18,7 +18,7 @@ class CheckLogoutAdmin
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check() && Auth::user()->id_LoaiTaiKhoan == '1'){
-            return redirect('/admin');
+            return redirect()->route('admin');
         }
 
         return $next($request);

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('SoDienThoai')->unique();
             $table->string('DiaChi');
             $table->boolean('GioiTinh');
-            $table->string('Avatar');
+            $table->string('Avatar')->default('avatar-default.jpg');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
