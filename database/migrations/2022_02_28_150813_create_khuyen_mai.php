@@ -16,8 +16,9 @@ return new class extends Migration
     {
         Schema::create('KhuyenMai', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_LoaiSanPham');
+            // $table->unsignedBigInteger('id_LoaiSanPham');
             $table->string('MaKH');
+            
             $table->integer('GiaTriKhuyenMai');//10-20-99-50 (%)
             $table->string('NoiDung');
             $table->date('NgayBatDau');

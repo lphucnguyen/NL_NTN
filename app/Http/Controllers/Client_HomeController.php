@@ -36,4 +36,9 @@ class Client_HomeController extends Controller
     public function contact(){
         return view('client.back.contact');
     }
+
+    //product_detail
+    public function product_detail(){
+        return view('client.back.product_detail');
+    }
 }

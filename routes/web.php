@@ -30,6 +30,7 @@ Route::group(['prefix' => '/home'], function () {
     Route::get('/payment', [Client_HomeController::class, 'payment']);
     Route::get('/about', [Client_HomeController::class, 'about']);
     Route::get('/contact', [Client_HomeController::class, 'contact']);
+    Route::get('/product_detail', [Client_HomeController::class, 'product_detail']);
 
 });
 

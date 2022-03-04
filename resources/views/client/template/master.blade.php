@@ -70,10 +70,6 @@
                             </li>
 
                             <li class="list-menu">
-                                <a href="/home/blog">Blog</a>
-                            </li>
-
-                            <li class="list-menu">
                                 <a href="/home/about">About</a>
                             </li>
 
@@ -243,12 +239,8 @@
                     </div>
 
                     <div class="header-cart-buttons flex-w w-full">
-                        <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+                        <a href="/home/payment" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
                             View Cart
-                        </a>
-
-                        <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-                            Check Out
                         </a>
                     </div>
                 </div>
@@ -419,7 +411,8 @@
         <div class="container">
             <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
                 <button class="how-pos3 hov3 trans-04 js-hide-modal1">
-                    <img src="client/images/icons/icon-close.png" alt="CLOSE">
+                    {{-- <img src="client/images/icons/icon-close.png" alt="CLOSE"> --}}
+                    <i class="fa fa-times"></i>
                 </button>
 
                 <div class="row">
