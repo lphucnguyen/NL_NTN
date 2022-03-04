@@ -110,6 +110,7 @@ class Admin_HomeController extends Controller
 
     //profile
     public function profile($id){
-        return view('admin.back.profile');
+        $info = DB::table('taikhoan')->first();
+        return view('admin.back.profile', compact('info'));
     }
 }

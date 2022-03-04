@@ -6,18 +6,18 @@
 
 @section('des_heading', "")
 
-@section('x_heading', "Tạo tài khoản mới")
+@section('x_heading', "Thông tin profile")
 
 @section('content')
 <div class="x_content">
     <div class="col-md-3 col-sm-3  profile_left">
         <div class="profile_img">
-            <div id="crop-avatar">
+            <div id="crop-avatar ">
                 <!-- Current avatar -->
-                <img class="img-responsive avatar-view" src="images/picture.jpg" alt="Avatar" title="Change the avatar">
+                <img class="img-responsive avatar-view img-fluid border-secondary rounded"  src="{{asset('images/avatar')}}/{{ $info->Avatar }}" alt="Avatar" title="Change the avatar">
             </div>
         </div>
-        <h3>Samuel Doe</h3>
+        <h3>{{ $info->HoTen }}</h3>
 
         <ul class="list-unstyled user_data">
             <li><i class="fa fa-map-marker user-profile-icon"></i> San Francisco, California, USA
@@ -68,22 +68,6 @@
 
     </div>
     <div class="col-md-9 col-sm-9 ">
-
-        <div class="profile_title">
-            <div class="col-md-6">
-                <h2>User Activity Report</h2>
-            </div>
-            <div class="col-md-6">
-                <div id="reportrange" class="pull-right" style="margin-top: 5px; background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #E6E9ED">
-                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                    <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
-                </div>
-            </div>
-        </div>
-        <!-- start of user-activity-graph -->
-        <div id="graph_bar" style="width:100%; height:280px;"></div>
-        <!-- end of user-activity-graph -->
-
         <div class="" role="tabpanel" data-example-id="togglable-tabs">
             <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Recent Activity</a>
