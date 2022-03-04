@@ -54,6 +54,7 @@ Route::group(['prefix' => '/admin'], function (){
     Route::post('/addstaff', [Admin_HomeController::class, 'postaddstaff']);
 
     Route::get('/order', [Admin_HomeController::class, 'order']);
+    Route::get('/profile{id}', [Admin_HomeController::class, 'profile']);
 
     Route::get('/statistical', [Admin_HomeController::class, 'statistical']);
 

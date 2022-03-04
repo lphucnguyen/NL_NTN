@@ -107,4 +107,9 @@ class Admin_HomeController extends Controller
     {
         return view('admin.back.order');
     }
+
+    //profile
+    public function profile($id){
+        return view('admin.back.profile');
+    }
 }

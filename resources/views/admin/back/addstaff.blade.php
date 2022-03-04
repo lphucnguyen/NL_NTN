@@ -32,21 +32,19 @@
     </div>
     @endif
     <section class="login_content">
-        <form action="" id="frmAddStaff" method="post" autocomplete="off">
+        <form action="" id="frmAddStaff" class="form-horizontal form-label-left" method="post" autocomplete="off">
             @csrf
 
-
             <div>
-                <input type="text" class="form-control" name="fullname" placeholder="Full name" required="" />
+                <input type="text" class="form-control " name="fullname" placeholder="Full name" required="" />
             </div>
-            <div class="mb-3">
+            <div class="mb-3 text-left ">
                 <select name="gender" required id="" class="form-control">
                     <option disabled selected value="Gender">Gender</option>
                     <option value="Nam">Nam</option>
                     <option value="Nữ">Nữ</option>
                 </select>
                 <p id="err_gender" class="text-left text-danger"></p>
-
             </div>
             <div>
                 <input type="text" class="form-control" name="phone" placeholder="Phone" required="" />
