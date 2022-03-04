@@ -26,7 +26,9 @@ class Admin_AuthController extends Controller
             return redirect('/admin/login')->with('noice', 'Tài khoản hoặc mật khẩu không được trống!');
         }
 
-        $login_email = ['email' => $request->username, 'password' => $request->password];
+
+        //NHỚ SỬA LẠI $REQUEST->EMAIL, AND PASSWORD
+        $login_email = ['email' => 'admin', 'password' => 'admin'];
         $login_sdt = ['SoDienThoai' => $request->username, 'password' => $request->password];
 
         if (Auth::attempt($login_email) || Auth::attempt($login_sdt)) {

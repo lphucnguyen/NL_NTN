@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('HoTen');
             $table->string('SoDienThoai')->unique();
             $table->string('DiaChi');
-            $table->boolean('GioiTinh');
+            $table->string('GioiTinh');
             $table->string('Avatar')->default('avatar-default.jpg');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -28,6 +28,21 @@ return new class extends Migration
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
             $table->unsignedBigInteger('id_LoaiTaiKhoan')->nullable(false);
+        });
+
+        Schema::create('TaiKhoanKhachHang', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('HoTen');
+            $table->string('SoDienThoai')->unique();
+            $table->string('DiaChi');
+            $table->boolean('GioiTinh');
+            $table->string('Avatar')->default('avatar-default-client.jpg');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
         
     }
@@ -39,6 +54,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('TaiKhoan');
+        Schema::dropIfExists('TaiKhoanKhachHang');
     }
 };

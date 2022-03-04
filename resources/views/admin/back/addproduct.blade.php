@@ -10,6 +10,6 @@
 
 @section('content')
 
-
+<!-- form add product -->
 
 @stop
