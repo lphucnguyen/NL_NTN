@@ -2,14 +2,13 @@
 <html lang="en">
 
 <head>
-    <link rel="shortcut icon" href="{{ asset('images/system/logo.png') }}" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <title>@yield('title')</title>
     
-    <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="{{asset('client_template/images/icons/favicon.png')}}" />
+    <link rel="shortcut icon" href="{{ asset('images/system/logo.png') }}" type="image/x-icon">
+    
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{asset('client_template/vendor/bootstrap/css/bootstrap.min.css')}}">
     <!--===============================================================================================-->
@@ -51,8 +50,8 @@
                 <nav class="limiter-menu-desktop container">
 
                     <!-- Logo desktop -->
-                    <a href="./" class="logo">
-                        <img src="{{asset('client_template/images/icons/logo-01.png')}}" alt="IMG-LOGO">
+                    <a href="./" class="logo text-dark">
+                        <img src="{{ asset('images/system/logo.png') }}" alt="IMG-LOGO">
                     </a>
 
                     <!-- Menu desktop -->

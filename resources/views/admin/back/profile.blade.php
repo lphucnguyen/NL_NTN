@@ -33,38 +33,10 @@
             </li>
         </ul>
 
+        @if( $info->id == Auth::user()->id)
         <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+        @endif
         <br />
-
-        <!-- start skills -->
-        <h4>Skills</h4>
-        <ul class="list-unstyled user_data">
-            <li>
-                <p>Web Applications</p>
-                <div class="progress progress_sm">
-                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                </div>
-            </li>
-            <li>
-                <p>Website Design</p>
-                <div class="progress progress_sm">
-                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="70"></div>
-                </div>
-            </li>
-            <li>
-                <p>Automation & Testing</p>
-                <div class="progress progress_sm">
-                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="30"></div>
-                </div>
-            </li>
-            <li>
-                <p>UI / UX</p>
-                <div class="progress progress_sm">
-                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                </div>
-            </li>
-        </ul>
-        <!-- end of skills -->
 
     </div>
     <div class="col-md-9 col-sm-9 ">

@@ -11,9 +11,9 @@
 @section('content')
 <div id="register" class="form ">
     <div class="text-center">
-        <img src="{{ asset('images/system/logo.png') }}" width="120" alt="logo" />
-        <h1>NTN Store</h1>
+        <img src="{{ asset('images/system/logo.png') }}" width="280" alt="logo" />
     </div>
+
     @if (session('notify_success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{ session('notify_success') }}

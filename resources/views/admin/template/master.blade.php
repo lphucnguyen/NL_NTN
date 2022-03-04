@@ -85,6 +85,7 @@
                                     <a><i class="fa fa-cube"></i> Hàng hóa <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/product">Danh sách hàng hóa</a></li>
+                                        <li><a href="/admin/addproduct">Thêm hàng hóa</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -138,7 +139,7 @@
                                     <img src="{{asset('images/avatar')}}/{{Auth::user()->Avatar}}" alt="">{{ Auth::user()->HoTen }}
                                 </a>
                                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/admin/profile{{ Auth::id() }}"> Profile</a>
+                                    <a class="dropdown-item" href="/admin/profile{{ Auth::user()->id }}"> Profile</a>
                                     <a class="dropdown-item" href="/admin/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                                 </div>
                             </li>

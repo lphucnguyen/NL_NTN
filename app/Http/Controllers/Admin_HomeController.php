@@ -37,7 +37,10 @@ class Admin_HomeController extends Controller
     {
         return view('admin.back.product');
     }
-
+    public function addproduct()
+    {
+        return view('admin.back.addproduct');
+    }
 
     //product_type
     public function product_type()
@@ -110,7 +113,7 @@ class Admin_HomeController extends Controller
 
     //profile
     public function profile($id){
-        $info = DB::table('taikhoan')->first();
+        $info = DB::table('taikhoan')->where('id',$id)->first();
         return view('admin.back.profile', compact('info'));
     }
 }
