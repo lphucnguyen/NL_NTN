@@ -81,10 +81,10 @@
                             <h3>Quản lí cửa hàng</h3>
                             <ul class="nav side-menu">
                                 <li>
-                                    <a><i class="fa fa-cube"></i> Hàng hóa <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-cube"></i> Sản phẩm <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="/admin/product">Danh sách hàng hóa</a></li>
-                                        <li><a href="/admin/addproduct">Thêm hàng hóa</a></li>
+                                        <li><a href="/admin/product">Danh sách sản phẩm</a></li>
+                                        <li><a href="/admin/addproduct">Thêm sản phẩm</a></li>
                                     </ul>
                                 </li>
                                 <li>

@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('HinhAnh', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('DuongDan');
+            $table->string('TenHinhAnh');
             $table->unsignedBigInteger('id_SanPham')->nullable(false);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
