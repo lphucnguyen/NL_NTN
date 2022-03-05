@@ -9,7 +9,23 @@
 @section('x_heading', 'Danh sách hàng hóa')
 
 @section('content')
+    @if (session('notify_success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('notify_success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
 
+    @if (session('notify_fail'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('notify_fail') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr class="text-center">
@@ -30,9 +46,13 @@
                     <td class="text-center">{{ $v->SoLuong }}</td>
                     <td class="text-center">{{ number_format($v->Gia) }} VNĐ</td>
                     <td class="text-center">
-                        <a class="btn btn-success btn-sm text-light" onclick="showPD({{ $v->id }})" data-bs-toggle="modal" data-bs-target="#viewProductDetail"><i class="far fa-eye"></i> Chi tiết</a>
+                        <a class="btn btn-success btn-sm text-light" onclick="showPD({{ $v->id }})"
+                            data-bs-toggle="modal" data-bs-target="#viewProductDetail"><i class="far fa-eye"></i> Chi
+                            tiết</a>
                         <a class="btn btn-primary btn-sm text-light"><i class="fa fa-edit"></i> Sửa</a>
-                        <a class="btn btn-danger btn-sm text-light"><i class="fas fa-trash"></i> Xóa</a>
+                        <a class="btn btn-danger btn-sm text-light"
+                            onclick="deleteProduct({{ $v->id }}, '{{ $v->TenSanPham }}')"><i
+                                class="fas fa-trash"></i> Xóa</a>
                     </td>
                 </tr>
             @endforeach

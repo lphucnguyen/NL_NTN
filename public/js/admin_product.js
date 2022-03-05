@@ -1,3 +1,4 @@
+//Chi tiết sản phẩm
 function showPD(id){
     $.ajaxSetup({
         headers: {
@@ -11,4 +12,13 @@ function showPD(id){
             $('#modal_product_detail').html(result);
         }
     })
+}
+
+//Xoa san pham
+function deleteProduct(id, name){
+    var c = confirm("Bạn có chắc muốn xóa sản phẩm \""+name+"\"")
+
+    if (c){
+        window.location.href = "/admin/product/delete/"+id
+    }
 }

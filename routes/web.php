@@ -50,6 +50,7 @@ Route::group(['prefix' => '/admin'], function (){
     Route::get('/addproduct', [Admin_HomeController::class, 'addproduct']);
     Route::post('/addproduct', [Admin_HomeController::class, 'postaddproduct']);
     Route::post('/product/pd/{id}', [Admin_HomeController::class, 'product_detail']);
+    Route::get('/product/delete/{id}', [Admin_HomeController::class, 'delete_product']);
 
     Route::get('/promotion', [Admin_HomeController::class, 'promotion']);
 

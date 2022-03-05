@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class Admin_HomeController extends Controller
 {
@@ -137,6 +138,25 @@ class Admin_HomeController extends Controller
         return view('admin.ajax.product_detail', compact('product', 'img'));
     }
 
+    //delete product
+    public function delete_product($id){
+
+        //Xoa file hinh trong public/images/products
+        $arr_img = DB::table('hinhanh')->where('id_SanPham', $id)->get();
+        foreach($arr_img as $k => $v){
+            $file_path = public_path()."/images/products/".$v->TenHinhAnh;
+
+            File::delete($file_path);
+        }
+
+        $delete = DB::table('sanpham')->where('id', $id)->delete();
+
+        if ($delete){
+            return redirect('/admin/product')->with('notify_success', 'Xóa sản phẩm thành công');
+        }else{
+            return redirect('/admin/product')->with('notify_fail', 'Xóa sản phẩm thất bại!!!');
+        }
+    }
 
     //product_type
     public function product_type()
@@ -159,15 +179,20 @@ class Admin_HomeController extends Controller
     }
 
 
-    //staff
+    //staff list
     public function staff()
     {
-        return view('admin.back.staff');
+        $staff = DB::table('taikhoan')->get();
+        return view('admin.back.staff', compact('staff'));
     }
+
+    //Form thêm tài khoản nhân viên
     public function addstaff()
     {
         return view('admin.back.addstaff');
     }
+
+    //post add staff
     public function postaddstaff(Request $request)
     {
         $checkTK = DB::table('taikhoan')
