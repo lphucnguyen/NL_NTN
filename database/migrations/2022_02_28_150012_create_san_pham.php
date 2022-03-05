@@ -18,13 +18,13 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('TenSanPham');
             $table->unsignedBigInteger('id_LoaiSanPham')->nullable(false);
-            $table->string('MoTa');
+            $table->string('MoTa', 10000);
             $table->double('Gia');
             $table->integer('SoLuong');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
-        
+
     }
 
     /**

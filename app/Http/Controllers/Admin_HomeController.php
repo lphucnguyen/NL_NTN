@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use App\Models\SanPham;
 
 class Admin_HomeController extends Controller
 {
@@ -33,19 +32,24 @@ class Admin_HomeController extends Controller
     }
 
 
-    //product
+    //product list
     public function product()
     {
         $list_product = DB::table('sanpham as a')
-                        ->leftjoin('loaisanpham as b','a.id_LoaiSanPham','b.id')
+                        ->leftJoin('loaisanpham as b','a.id_LoaiSanPham','b.id')
+                        ->select('a.*', 'b.TenLoaiSanPham')
                         ->get();
         return view('admin.back.product', compact('list_product'));
     }
+
+    //add product
     public function addproduct()
     {
         $product_type = DB::table('loaisanpham')->get();
         return view('admin.back.addproduct', compact('product_type'));
     }
+
+    //post add product
     public function postaddproduct(Request $request)
     {
         //Hàm xóa dấu tiếng việt
@@ -121,6 +125,18 @@ class Admin_HomeController extends Controller
             return back()->with('notify_fail', 'Lỗi thêm sản phẩm thất bại!!!');
         }
     }
+
+    //ajax product detail
+    public function product_detail($id){
+        $product = DB::table('sanpham as a')
+                ->leftJoin('loaisanpham as b', 'a.id_LoaiSanPham', 'b.id')
+                ->select('a.*', 'b.TenLoaiSanPham')
+                ->where('a.id', $id)->first();
+
+        $img = DB::table('hinhanh')->where('id_SanPham', $id)->get();
+        return view('admin.ajax.product_detail', compact('product', 'img'));
+    }
+
 
     //product_type
     public function product_type()

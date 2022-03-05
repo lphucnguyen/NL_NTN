@@ -12,39 +12,53 @@
     <title>@yield('title')</title>
 
     <!-- Bootstrap -->
-    <link href="{{asset('admin_template/vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('admin_template/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="{{asset('admin_template/vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('admin_template/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- NProgress -->
-    <link href="{{asset('admin_template/vendors/nprogress/nprogress.css')}}" rel="stylesheet">
+    <link href="{{ asset('admin_template/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
     <!-- iCheck -->
-    <link href="{{asset('admin_template/vendors/iCheck/skins/flat/green.css')}}" rel="stylesheet">
+    <link href="{{ asset('admin_template/vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
     <!-- bootstrap-wysiwyg -->
-    <link href="{{asset('admin_template/vendors/google-code-prettify/bin/prettify.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('admin_template/vendors/google-code-prettify/bin/prettify.min.css') }}" rel="stylesheet">
     <!-- Select2 -->
-    <link href="{{asset('admin_template/vendors/select2/dist/css/select2.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('admin_template/vendors/select2/dist/css/select2.min.css') }}" rel="stylesheet">
     <!-- Switchery -->
-    <link href="{{asset('admin_template/vendors/switchery/dist/switchery.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('admin_template/vendors/switchery/dist/switchery.min.css') }}" rel="stylesheet">
     <!-- starrr -->
-    <link href="{{asset('admin_template/vendors/starrr/dist/starrr.css')}}" rel="stylesheet">
+    <link href="{{ asset('admin_template/vendors/starrr/dist/starrr.css') }}" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
-    <link href="{{asset('admin_template/vendors/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
+    <link href="{{ asset('admin_template/vendors/bootstrap-daterangepicker/daterangepicker.css') }}"
+        rel="stylesheet">
     <!-- Datatables -->
-    <link href="{{asset('admin_template/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('admin_template/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('admin_template/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('admin_template/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('admin_template/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('admin_template/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}"
+        rel="stylesheet">
+    <link href="{{ asset('admin_template/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}"
+        rel="stylesheet">
+    <link
+        href="{{ asset('admin_template/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css') }}"
+        rel="stylesheet">
+    <link href="{{ asset('admin_template/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css') }}"
+        rel="stylesheet">
+    <link href="{{ asset('admin_template/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}"
+        rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
     <!-- Custom Theme Style -->
-    <link href="{{asset('admin_template/build/css/custom.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('admin_template/build/css/custom.min.css') }}" rel="stylesheet">
     <!-- Jquery 3.6 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    @livewireStyles
 </head>
 
 <body class="nav-md">
@@ -54,7 +68,8 @@
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
                         <a href="/admin" class="site_title">
-                            <img src="{{ asset('images/system/logo.png') }}" class="bg-light" width="40" style="border-radius:50%;" alt="logo" />
+                            <img src="{{ asset('images/system/logo.png') }}" class="bg-light" width="40"
+                                style="border-radius:50%;" alt="logo" />
                             <span>𝓝𝓣𝓝 𝓢𝓽𝓸𝓻𝓮</span>
                         </a>
                     </div>
@@ -64,7 +79,8 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img src="{{asset('images/avatar')}}/{{Auth::user()->Avatar}}" alt="..." class="img-circle profile_img">
+                            <img src="{{ asset('images/avatar') }}/{{ Auth::user()->Avatar }}" alt="..."
+                                class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
                             <span>Xin chào,</span>
@@ -81,33 +97,38 @@
                             <h3>Quản lí cửa hàng</h3>
                             <ul class="nav side-menu">
                                 <li>
-                                    <a><i class="fa fa-cube"></i> Sản phẩm <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-cube"></i> Sản phẩm <span
+                                            class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/product">Danh sách sản phẩm</a></li>
                                         <li><a href="/admin/addproduct">Thêm sản phẩm</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-cubes"></i> Loại hàng hóa <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-cubes"></i> Loại hàng hóa <span
+                                            class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/product_type">Dánh sách loại hàng hóa</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-user"></i> Nhân viên <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-user"></i> Nhân viên <span
+                                            class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/staff">Danh sách nhân viên</a></li>
                                         <li><a href="/admin/addstaff">Tạo tài khoản</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-files-o"></i> Đơn hàng <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-files-o"></i> Đơn hàng <span
+                                            class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/order">Danh sách đơn hàng</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-money"></i> Khuyến mãi <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-money"></i> Khuyến mãi <span
+                                            class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/promotion">Danh sách mã khuyến mãi</a></li>
                                     </ul>
@@ -135,12 +156,17 @@
                     <nav class="nav navbar-nav">
                         <ul class=" navbar-right">
                             <li class="nav-item dropdown open" style="padding-left: 15px;">
-                                <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{asset('images/avatar')}}/{{Auth::user()->Avatar}}" alt="">{{ Auth::user()->HoTen }}
+                                <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
+                                    id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="{{ asset('images/avatar') }}/{{ Auth::user()->Avatar }}"
+                                        alt="">{{ Auth::user()->HoTen }}
                                 </a>
-                                <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/admin/profile/{{ Auth::user()->id }}"> Profile</a>
-                                    <a class="dropdown-item" href="/admin/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                <div class="dropdown-menu dropdown-usermenu pull-right"
+                                    aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/admin/profile/{{ Auth::user()->id }}">
+                                        Profile</a>
+                                    <a class="dropdown-item" href="/admin/logout"><i
+                                            class="fa fa-sign-out pull-right"></i> Log Out</a>
                                 </div>
                             </li>
 
@@ -154,7 +180,8 @@
                                     aria-labelledby="navbarDropdown1">
                                     <li class="nav-item">
                                         <a class="dropdown-item">
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                            <span class="image"><img src="images/img.jpg"
+                                                    alt="Profile Image" /></span>
                                             <span>
                                                 <span>John Smith</span>
                                                 <span class="time">3 mins ago</span>
@@ -167,7 +194,8 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="dropdown-item">
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                            <span class="image"><img src="images/img.jpg"
+                                                    alt="Profile Image" /></span>
                                             <span>
                                                 <span>John Smith</span>
                                                 <span class="time">3 mins ago</span>
@@ -180,7 +208,8 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="dropdown-item">
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                            <span class="image"><img src="images/img.jpg"
+                                                    alt="Profile Image" /></span>
                                             <span>
                                                 <span>John Smith</span>
                                                 <span class="time">3 mins ago</span>
@@ -193,7 +222,8 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="dropdown-item">
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                            <span class="image"><img src="images/img.jpg"
+                                                    alt="Profile Image" /></span>
                                             <span>
                                                 <span>John Smith</span>
                                                 <span class="time">3 mins ago</span>
@@ -262,58 +292,59 @@
     </div>
 
     <!-- jQuery -->
-    <script src="{{asset('admin_template/vendors/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{ asset('admin_template/vendors/jquery/dist/jquery.min.js') }}"></script>
     <!-- Bootstrap -->
-    <script src="{{asset('admin_template/vendors/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ asset('admin_template/vendors/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <!-- FastClick -->
-    <script src="{{asset('admin_template/vendors/fastclick/lib/fastclick.js')}}"></script>
+    <script src="{{ asset('admin_template/vendors/fastclick/lib/fastclick.js') }}"></script>
     <!-- NProgress -->
-    <script src="{{asset('admin_template/vendors/nprogress/nprogress.js')}}"></script>
+    <script src="{{ asset('admin_template/vendors/nprogress/nprogress.js') }}"></script>
     <!-- bootstrap-progressbar -->
-    <script src="{{asset('admin_template/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js')}}"></script>
+    <script src="{{ asset('admin_template/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js') }}"></script>
     <!-- iCheck -->
-    <script src="{{asset('admin_template/vendors/iCheck/icheck.min.js')}}"></script>
+    <script src="{{ asset('admin_template/vendors/iCheck/icheck.min.js') }}"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="{{asset('admin_template/vendors/moment/min/moment.min.js')}}"></script>
-    <script src="{{asset('admin_template/vendors/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+    <script src="{{ asset('admin_template/vendors/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset('admin_template/vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
     <!-- bootstrap-wysiwyg -->
-    <script src="{{asset('admin_template/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js')}}"></script>
-    <script src="{{asset('admin_template/vendors/jquery.hotkeys/jquery.hotkeys.js')}}"></script>
-    <script src="{{asset('admin_template/vendors/google-code-prettify/src/prettify.js')}}"></script>
+    <script src="{{ asset('admin_template/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js') }}"></script>
+    <script src="{{ asset('admin_template/vendors/jquery.hotkeys/jquery.hotkeys.js') }}"></script>
+    <script src="{{ asset('admin_template/vendors/google-code-prettify/src/prettify.js') }}"></script>
     <!-- jQuery Tags Input -->
-    <script src="{{asset('admin_template/vendors/jquery.tagsinput/src/jquery.tagsinput.js')}}"></script>
+    <script src="{{ asset('admin_template/vendors/jquery.tagsinput/src/jquery.tagsinput.js') }}"></script>
     <!-- Switchery -->
-    <script src="{{asset('admin_template/vendors/switchery/dist/switchery.min.js')}}"></script>
+    <script src="{{ asset('admin_template/vendors/switchery/dist/switchery.min.js') }}"></script>
     <!-- Select2 -->
-    <script src="{{asset('admin_template/vendors/select2/dist/js/select2.full.min.js')}}"></script>
+    <script src="{{ asset('admin_template/vendors/select2/dist/js/select2.full.min.js') }}"></script>
     <!-- Parsley -->
-    <script src="{{asset('admin_template/vendors/parsleyjs/dist/parsley.min.js')}}"></script>
+    <script src="{{ asset('admin_template/vendors/parsleyjs/dist/parsley.min.js') }}"></script>
     <!-- Autosize -->
-    <script src="{{asset('admin_template/vendors/autosize/dist/autosize.min.js')}}"></script>
+    <script src="{{ asset('admin_template/vendors/autosize/dist/autosize.min.js') }}"></script>
     <!-- jQuery autocomplete -->
-    <script src="{{asset('admin_template/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js')}}"></script>
+    <script src="{{ asset('admin_template/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js') }}"></script>
     <!-- starrr -->
-    <script src="{{asset('admin_template/vendors/starrr/dist/starrr.js')}}"></script>
+    <script src="{{ asset('admin_template/vendors/starrr/dist/starrr.js') }}"></script>
     <!-- Datatables -->
-    <script src="{{asset('admin_template/vendors/datatables.net/js/jquery.dataTables.js')}}"></script>
-    <script src="{{asset('admin_template/vendors/datatables.net-bs/js/dataTables.bootstrap.js')}}"></script>
-    <script src="{{asset('admin_template/vendors/datatables.net-buttons/js/dataTables.buttons.js')}}"></script>
-    <script src="{{asset('admin_template/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.js')}}"></script>
-    <script src="{{asset('admin_template/vendors/datatables.net-buttons/js/buttons.flash.js')}}"></script>
-    <script src="{{asset('admin_template/vendors/datatables.net-buttons/js/buttons.html5.js')}}"></script>
-    <script src="{{asset('admin_template/vendors/datatables.net-buttons/js/buttons.print.js')}}"></script>
-    <script src="{{asset('admin_template/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.js')}}"></script>
-    <script src="{{asset('admin_template/vendors/datatables.net-keytable/js/dataTables.keyTable.js')}}"></script>
-    <script src="{{asset('admin_template/vendors/datatables.net-responsive/js/dataTables.responsive.js')}}"></script>
-    <script src="{{asset('admin_template/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js')}}"></script>
-    <script src="{{asset('admin_template/vendors/datatables.net-scroller/js/dataTables.scroller.js')}}"></script>
-    <script src="{{asset('admin_template/vendors/jszip/dist/jszip.min.js')}}"></script>
-    <script src="{{asset('admin_template/vendors/pdfmake/build/pdfmake.min.js')}}"></script>
-    <script src="{{asset('admin_template/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
+    <script src="{{ asset('admin_template/vendors/datatables.net/js/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('admin_template/vendors/datatables.net-bs/js/dataTables.bootstrap.js') }}"></script>
+    <script src="{{ asset('admin_template/vendors/datatables.net-buttons/js/dataTables.buttons.js') }}"></script>
+    <script src="{{ asset('admin_template/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.js') }}"></script>
+    <script src="{{ asset('admin_template/vendors/datatables.net-buttons/js/buttons.flash.js') }}"></script>
+    <script src="{{ asset('admin_template/vendors/datatables.net-buttons/js/buttons.html5.js') }}"></script>
+    <script src="{{ asset('admin_template/vendors/datatables.net-buttons/js/buttons.print.js') }}"></script>
+    <script src="{{ asset('admin_template/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.js') }}"></script>
+    <script src="{{ asset('admin_template/vendors/datatables.net-keytable/js/dataTables.keyTable.js') }}"></script>
+    <script src="{{ asset('admin_template/vendors/datatables.net-responsive/js/dataTables.responsive.js') }}"></script>
+    <script src="{{ asset('admin_template/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js') }}"></script>
+    <script src="{{ asset('admin_template/vendors/datatables.net-scroller/js/dataTables.scroller.js') }}"></script>
+    <script src="{{ asset('admin_template/vendors/jszip/dist/jszip.min.js') }}"></script>
+    <script src="{{ asset('admin_template/vendors/pdfmake/build/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('admin_template/vendors/pdfmake/build/vfs_fonts.js') }}"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="{{asset('admin_template/build/js/custom.min.js')}}"></script>
+    <script src="{{ asset('admin_template/build/js/custom.min.js') }}"></script>
 
+    @livewireScripts
 </body>
 
 </html>

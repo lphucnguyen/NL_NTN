@@ -40,15 +40,16 @@ Route::group(['prefix' => '/admin'], function (){
     //Admin_AuthContrller
     Route::get('/login', [Admin_AuthController::class, 'getLogin'])->name('login');
     Route::post('/login', [Admin_AuthController::class, 'postLogin']);
-    
+
     //Admin_HomeController
     Route::get('/logout', [Admin_HomeController::class, 'logout']);
-    
+
     Route::get('', [Admin_HomeController::class, 'home'])->name('admin');
 
     Route::get('/product', [Admin_HomeController::class, 'product']);
     Route::get('/addproduct', [Admin_HomeController::class, 'addproduct']);
     Route::post('/addproduct', [Admin_HomeController::class, 'postaddproduct']);
+    Route::post('/product/pd/{id}', [Admin_HomeController::class, 'product_detail']);
 
     Route::get('/promotion', [Admin_HomeController::class, 'promotion']);
 
