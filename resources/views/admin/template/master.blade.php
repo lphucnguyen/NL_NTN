@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ asset('images/system/logo.png') }}" type="image/x-icon">
-
     <title>@yield('title')</title>
 
     <!-- Bootstrap -->
@@ -114,7 +113,8 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-bar-chart-o"></i> Thống kê <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-bar-chart-o"></i> Thống kê <span
+                                            class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/statistical">Custom</a></li>
                                     </ul>
@@ -145,11 +145,13 @@
                             </li>
 
                             <li role="presentation" class="nav-item dropdown open">
-                                <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
+                                <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1"
+                                    data-toggle="dropdown" aria-expanded="false">
                                     <i class="fa fa-envelope-o"></i>
                                     <span class="badge bg-green">6</span>
                                 </a>
-                                <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
+                                <ul class="dropdown-menu list-unstyled msg_list" role="menu"
+                                    aria-labelledby="navbarDropdown1">
                                     <li class="nav-item">
                                         <a class="dropdown-item">
                                             <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
@@ -158,7 +160,8 @@
                                                 <span class="time">3 mins ago</span>
                                             </span>
                                             <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                Film festivals used to be do-or-die moments for movie makers. They were
+                                                where...
                                             </span>
                                         </a>
                                     </li>
@@ -170,7 +173,8 @@
                                                 <span class="time">3 mins ago</span>
                                             </span>
                                             <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                Film festivals used to be do-or-die moments for movie makers. They were
+                                                where...
                                             </span>
                                         </a>
                                     </li>
@@ -182,7 +186,8 @@
                                                 <span class="time">3 mins ago</span>
                                             </span>
                                             <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                Film festivals used to be do-or-die moments for movie makers. They were
+                                                where...
                                             </span>
                                         </a>
                                     </li>
@@ -194,7 +199,8 @@
                                                 <span class="time">3 mins ago</span>
                                             </span>
                                             <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                Film festivals used to be do-or-die moments for movie makers. They were
+                                                where...
                                             </span>
                                         </a>
                                     </li>

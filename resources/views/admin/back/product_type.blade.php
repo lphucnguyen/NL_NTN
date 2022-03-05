@@ -12,9 +12,9 @@
 
 <table id="datatable-fixed-header" class="table table-striped table-bordered" style="width:100%">
     <thead>
-        <tr>
-            <th>MSLHH</th>
-            <th>Loại hàng hóa</th>
+        <tr class="text-center">
+            <th>MSLSP</th>
+            <th>Loại sản phẩm</th>
             <th>Thao tác</th>
         </tr>
     </thead>
@@ -24,9 +24,9 @@
         <tr>
             <td>Tiger Nixon</td>
             <td>System Architect</td>
-            <td>
-                <button class="btn p-2" >Sửa</button>
-                <button class="btn p-2" >Xóa</button>
+            <td class="text-center">
+                <button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Sửa</button>
+                <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Xóa</button>
             </td>
         </tr>
     </tbody>

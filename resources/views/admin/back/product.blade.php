@@ -15,7 +15,7 @@
     <thead>
         <tr class="text-center">
             <th>MSHH</th>
-            <th>Hàng hóa</th>
+            <th>Sản phẩm</th>
             <th>Hình ảnh</th>
             <th>Số lượng</th>
             <th>Mô tả</th>
