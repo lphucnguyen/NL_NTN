@@ -7,8 +7,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="" type="image/x-icon">
-    <script src="https://kit.fontawesome.com/2f6a0f247f.js" crossorigin="anonymous"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon" href="{{ asset('images/system/logo.png') }}" type="image/x-icon">
     <title>@yield('title')</title>
 
     <!-- Bootstrap -->
@@ -30,19 +30,21 @@
     <!-- bootstrap-daterangepicker -->
     <link href="{{asset('admin_template/vendors/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
     <!-- Datatables -->
-    <link href="{{asset('admin_template/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')}}"
-        rel="stylesheet">
-    <link href="{{asset('admin_template/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css')}}"
-        rel="stylesheet">
-    <link href="{{asset('admin_template/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}"
-        rel="stylesheet">
-    <link href="{{asset('admin_template/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}"
-        rel="stylesheet">
-    <link href="{{asset('admin_template/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}"
-        rel="stylesheet">
-
+    <link href="{{asset('admin_template/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('admin_template/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('admin_template/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('admin_template/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('admin_template/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <!-- Custom Theme Style -->
     <link href="{{asset('admin_template/build/css/custom.min.css')}}" rel="stylesheet">
+    <!-- Jquery 3.6 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="nav-md">
@@ -51,8 +53,10 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="/admin" class="site_title"><i class="fa-solid fa-crown"></i> <span>𝓝𝓣𝓝
-                                𝓢𝓽𝓸𝓻𝓮</span></a>
+                        <a href="/admin" class="site_title">
+                            <img src="{{ asset('images/system/logo.png') }}" class="bg-light" width="40" style="border-radius:50%;" alt="logo" />
+                            <span>𝓝𝓣𝓝 𝓢𝓽𝓸𝓻𝓮</span>
+                        </a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -60,12 +64,11 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img src="{{asset('admin_template/production/images/img.jpg')}}" alt="..."
-                                class="img-circle profile_img">
+                            <img src="{{asset('images/avatar')}}/{{Auth::user()->Avatar}}" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
-                            <span>Xin chào, </span>
-                            <h2>John Doe</h2>
+                            <span>Xin chào,</span>
+                            <h2>{{ Auth::user()->HoTen }}</h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
@@ -78,44 +81,42 @@
                             <h3>Quản lí cửa hàng</h3>
                             <ul class="nav side-menu">
                                 <li>
-                                    <a><i class="fa fa-tag"></i> Hàng hóa <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-cube"></i> Hàng hóa <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/product">Danh sách hàng hóa</a></li>
+                                        <li><a href="/admin/addproduct">Thêm hàng hóa</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-tags"></i> Loại hàng hóa <span
-                                            class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-cubes"></i> Loại hàng hóa <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/product_type">Dánh sách loại hàng hóa</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-users"></i> Nhân viên <span
-                                            class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-user"></i> Nhân viên <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/staff">Danh sách nhân viên</a></li>
+                                        <li><a href="/admin/addstaff">Tạo tài khoản</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-list-alt"></i> Đơn hàng <span
-                                            class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-files-o"></i> Đơn hàng <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/order">Danh sách đơn hàng</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa-solid fa-percent"></i> Khuyến mãi <span
-                                            class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-money"></i> Khuyến mãi <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="/admin/promotion">Thông tin khuyến mãi</a></li>
+                                        <li><a href="/admin/promotion">Danh sách mã khuyến mãi</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a><i class="fa fa-bar-chart-o"></i> Thống kê <span
                                             class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="/admin/statistic">Thống kê doanh thu</a></li>
+                                        <li><a href="/admin/statistical">Custom</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -134,19 +135,12 @@
                     <nav class="nav navbar-nav">
                         <ul class=" navbar-right">
                             <li class="nav-item dropdown open" style="padding-left: 15px;">
-                                <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
-                                    id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{asset('admin_template/production/images/img.jpg')}}" alt="">John Doe
+                                <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="{{asset('images/avatar')}}/{{Auth::user()->Avatar}}" alt="">{{ Auth::user()->HoTen }}
                                 </a>
-                                <div class="dropdown-menu dropdown-usermenu pull-right"
-                                    aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="javascript:;"> Thông tin</a>
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <span>Cài đặt</span>
-                                    </a>
-                                    <a class="dropdown-item" href="javascript:;">Giup đỡ</a>
-                                    <a class="dropdown-item" href="login.html"><i class="fa fa-sign-out pull-right"></i>
-                                        Đăng xuất</a>
+                                <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/admin/profile/{{ Auth::user()->id }}"> Profile</a>
+                                    <a class="dropdown-item" href="/admin/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                                 </div>
                             </li>
 

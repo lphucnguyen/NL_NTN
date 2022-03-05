@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -16,8 +17,8 @@ return new class extends Migration
         Schema::create('LoaiTaiKhoan', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('TenLoaiTaiKhoan');
-            $table->string('MoTa');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('loai_tai_khoan');
+        Schema::dropIfExists('LoaiTaiKhoan');
     }
 };

@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Controller;
-
+use App\Http\Controllers\Admin_AuthController;
+use App\Http\Controllers\Admin_HomeController;
+use App\Http\Controllers\Client_HomeController;
+use App\Http\Middleware\CheckAuthAdmin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,61 +16,49 @@ use App\Http\Controllers\Controller;
 |
 */
 
-// ======================= Cient ====================================================
 Route::get('/', function () {
     return redirect('/home');
 });
 
+// ======================= Cient ====================================================
+
 Route::group(['prefix' => '/home'], function () {
 
     //Menu Client
-    Route::get('/', function () {
-        return view('client.home.home');
-    });
-    Route::get('/shop', function () {
-        return view('client.back.shop');
-    });
-    Route::get('/payment', function () {
-        return view('client.back.payment');
-    });
-    Route::get('/blog', function () {
-        return view('client.back.blog');
-    });
-    Route::get('/about', function () {
-        return view('client.back.about');
-    });
-    Route::get('/contact', function () {
-        return view('client.back.contact');
-    });
+    Route::get('/', [Client_HomeController::class, 'home']);
+    Route::get('/shop', [Client_HomeController::class, 'shop']);
+    Route::get('/payment', [Client_HomeController::class, 'payment']);
+    Route::get('/about', [Client_HomeController::class, 'about']);
+    Route::get('/contact', [Client_HomeController::class, 'contact']);
+    Route::get('/product_detail', [Client_HomeController::class, 'product_detail']);
 
 });
 
 // ======================= Admin ====================================================
 
 Route::group(['prefix' => '/admin'], function (){
+    //Admin_AuthContrller
+    Route::get('/login', [Admin_AuthController::class, 'getLogin'])->name('login');
+    Route::post('/login', [Admin_AuthController::class, 'postLogin']);
+    
+    //Admin_HomeController
+    Route::get('/logout', [Admin_HomeController::class, 'logout']);
+    
+    Route::get('', [Admin_HomeController::class, 'home'])->name('admin');
 
-    Route::get('/', function () {
-        return view('admin.home.home');
-    });
-    Route::get('/login', function () {
-        return view('admin.auth.login');
-    });
-    Route::get('/product', function () {
-        return view('admin.back.product');
-    });
-    Route::get('/product_type', function () {
-        return view('admin.back.product_type');
-    });
-    Route::get('/staff', function () {
-        return view('admin.back.staff');
-    });
-    Route::get('/order', function () {
-        return view('admin.back.order');
-    });
-    Route::get('/promotion', function () {
-        return view('admin.back.promotion');
-    });
-    Route::get('/statistic', function () {
-        return view('admin.back.statistic');
-    });
+    Route::get('/product', [Admin_HomeController::class, 'product']);
+    Route::get('/addproduct', [Admin_HomeController::class, 'addproduct']);
+
+    Route::get('/promotion', [Admin_HomeController::class, 'promotion']);
+
+    Route::get('/staff', [Admin_HomeController::class, 'staff']);
+    Route::get('/addstaff', [Admin_HomeController::class, 'addstaff']);
+    Route::post('/addstaff', [Admin_HomeController::class, 'postaddstaff']);
+
+    Route::get('/order', [Admin_HomeController::class, 'order']);
+    Route::get('/profile/{id}', [Admin_HomeController::class, 'profile']);
+
+    Route::get('/statistical', [Admin_HomeController::class, 'statistical']);
+
+    Route::get('/product_type', [Admin_HomeController::class, 'product_type']);
 });

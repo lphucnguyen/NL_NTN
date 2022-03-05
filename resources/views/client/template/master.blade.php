@@ -2,11 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>@yield('title')</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="{{asset('client_template/images/icons/favicon.png')}}" />
+    
+    <title>@yield('title')</title>
+    
+    <link rel="shortcut icon" href="{{ asset('images/system/logo.png') }}" type="image/x-icon">
+    
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{asset('client_template/vendor/bootstrap/css/bootstrap.min.css')}}">
     <!--===============================================================================================-->
@@ -48,8 +50,8 @@
                 <nav class="limiter-menu-desktop container">
 
                     <!-- Logo desktop -->
-                    <a href="./" class="logo">
-                        <img src="{{asset('client_template/images/icons/logo-01.png')}}" alt="IMG-LOGO">
+                    <a href="./" class="logo text-dark">
+                        <img src="{{ asset('images/system/logo.png') }}" alt="IMG-LOGO">
                     </a>
 
                     <!-- Menu desktop -->
@@ -65,10 +67,6 @@
 
                             <li class="list-menu label1" data-label1="??">
                                 <a href="/home/payment">Payment</a>
-                            </li>
-
-                            <li class="list-menu">
-                                <a href="/home/blog">Blog</a>
                             </li>
 
                             <li class="list-menu">
@@ -241,12 +239,8 @@
                     </div>
 
                     <div class="header-cart-buttons flex-w w-full">
-                        <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+                        <a href="/home/payment" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
                             View Cart
-                        </a>
-
-                        <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-                            Check Out
                         </a>
                     </div>
                 </div>
@@ -417,7 +411,8 @@
         <div class="container">
             <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
                 <button class="how-pos3 hov3 trans-04 js-hide-modal1">
-                    <img src="client/images/icons/icon-close.png" alt="CLOSE">
+                    {{-- <img src="client/images/icons/icon-close.png" alt="CLOSE"> --}}
+                    <i class="fa fa-times"></i>
                 </button>
 
                 <div class="row">
