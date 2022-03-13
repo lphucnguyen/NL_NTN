@@ -39,6 +39,8 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
+/* 
 @font-face {
   font-family: Poppins-Regular;
   src: url('../fonts/Poppins/Poppins-Regular.ttf'); 
@@ -72,7 +74,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 @font-face {
   font-family: Poppins-SemiBold;
   src: url('../fonts/Poppins/Poppins-SemiBold.ttf'); 
-}
+} */
 
 
 /*//////////////////////////////////////////////////////////////////
@@ -91,7 +93,9 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 .slick-slide {outline: none !important;}
 
 
-
+html {
+  font-family: 'Roboto', sans-serif !important;
+}
 
 
 /*//////////////////////////////////////////////////////////////////

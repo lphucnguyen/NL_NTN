@@ -93,35 +93,24 @@
     <div class="container">
         <div class="p-b-10">
             <h3 class="ltext-103 text-center cl5">
-                Product Overview
+                Sản phẩm cửa hàng
             </h3>
         </div>
 
         <div class="flex-c p-b-52">
             <div class="flex-w flex-l-m filter-tope-group m-tb-10">
                 <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-                    All Products
+                    Tất cả sản phẩm
                 </button>
 
                 <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-                    Women
+                    Sản phẩm mới
                 </button>
 
                 <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-                    Men
+                    Sản phẩm được mua nhiều nhất
                 </button>
 
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-                    Bag
-                </button>
-
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-                    Shoes
-                </button>
-
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                    Watches
-                </button>
             </div>
 
         </div>
@@ -130,7 +119,9 @@
         {{-- List product --}}
         <div class="row isotope-grid">
 
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
+            @livewire('product')
+
+            {{-- <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
                 <!-- Block2 -->
                 <div class="block2">
                     <div class="block2-pic hov-img0">
@@ -439,7 +430,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <!-- Load more -->
