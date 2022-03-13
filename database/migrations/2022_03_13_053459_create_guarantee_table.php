@@ -14,17 +14,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('SanPham', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('TenSanPham');
-            $table->unsignedBigInteger('id_LoaiSanPham')->nullable(false);
-            $table->string('MoTa', 10000);
-            $table->double('Gia');
-            $table->integer('SoLuong');
+        Schema::create('guarantee', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('order_detail_id');
+            $table->date('start_at');
+            $table->date('end_at');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
-
     }
 
     /**
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('SanPham');
+        Schema::dropIfExists('guarantee');
     }
 };

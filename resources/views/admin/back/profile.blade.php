@@ -1,6 +1,6 @@
 @extends('admin.template.master')
 
-@section('title', "Add Staff | Admin - NTN Shop")
+@section('title', "Profile | Admin - NTN Shop")
 
 @section('heading', "")
 
@@ -33,9 +33,8 @@
             </li>
         </ul>
 
-        @if( $info->id == Auth::user()->id)
-        <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
-        @endif
+        {{-- <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a> --}}
+
         <br />
 
     </div>

@@ -17,10 +17,10 @@ class CheckLogoutAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->id_LoaiTaiKhoan == '1'){
-            return redirect()->route('admin');
+        if (Auth::guest()){
+            return $next($request);
+        }else{
+            return back();
         }
-
-        return $next($request);
     }
 }

@@ -14,10 +14,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('LoaiSanPham', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('TenLoaiSanPham');
-            $table->string('MoTa');
+        Schema::create('evaluate', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('product_id');
+            $table->string('content');
+            $table->integer('start');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('LoaiSanPham');
+        Schema::dropIfExists('evaluate');
     }
 };

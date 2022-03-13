@@ -14,9 +14,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('LoaiTaiKhoan', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('TenLoaiTaiKhoan');
+        Schema::create('promotion', function (Blueprint $table) {
+            $table->id();
+            $table->string('code');
+            $table->integer('percent');
+            $table->string('content');
+            $table->date('start_at');
+            $table->date('end_at');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
@@ -29,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('LoaiTaiKhoan');
+        Schema::dropIfExists('promotion');
     }
 };

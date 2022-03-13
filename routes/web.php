@@ -1,10 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin_AuthController;
-use App\Http\Controllers\Admin_HomeController;
-use App\Http\Controllers\Client_HomeController;
-use App\Http\Middleware\CheckAuthAdmin;
+use App\Http\Controllers\Client\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,52 +14,23 @@ use App\Http\Middleware\CheckAuthAdmin;
 |
 */
 
+// Route::get('/admin/login',[App\Http\Controllers\Admin\LoginController::class, 'getLogin'])->name('admin.login');
+// Route::post('/admin/login',[App\Http\Controllers\Admin\LoginController::class, 'postLogin']);
+// Route::get('/admin',[App\Http\Controllers\Admin\HomeController::class, 'home']);
+
 Route::get('/', function () {
     return redirect('/home');
 });
 
-// ======================= Cient ====================================================
+// ======================= HomeController ====================================================
 
 Route::group(['prefix' => '/home'], function () {
 
     //Menu Client
-    Route::get('/', [Client_HomeController::class, 'home']);
-    Route::get('/shop', [Client_HomeController::class, 'shop']);
-    Route::get('/payment', [Client_HomeController::class, 'payment']);
-    Route::get('/about', [Client_HomeController::class, 'about']);
-    Route::get('/contact', [Client_HomeController::class, 'contact']);
-    Route::get('/product_detail', [Client_HomeController::class, 'product_detail']);
-
-});
-
-// ======================= Admin ====================================================
-
-Route::group(['prefix' => '/admin'], function (){
-    //Admin_AuthContrller
-    Route::get('/login', [Admin_AuthController::class, 'getLogin'])->name('login');
-    Route::post('/login', [Admin_AuthController::class, 'postLogin']);
-
-    //Admin_HomeController
-    Route::get('/logout', [Admin_HomeController::class, 'logout']);
-
-    Route::get('', [Admin_HomeController::class, 'home'])->name('admin');
-
-    Route::get('/product', [Admin_HomeController::class, 'product']);
-    Route::get('/addproduct', [Admin_HomeController::class, 'addproduct']);
-    Route::post('/addproduct', [Admin_HomeController::class, 'postaddproduct']);
-    Route::post('/product/pd/{id}', [Admin_HomeController::class, 'product_detail']);
-    Route::get('/product/delete/{id}', [Admin_HomeController::class, 'delete_product']);
-
-    Route::get('/promotion', [Admin_HomeController::class, 'promotion']);
-
-    Route::get('/staff', [Admin_HomeController::class, 'staff']);
-    Route::get('/addstaff', [Admin_HomeController::class, 'addstaff']);
-    Route::post('/addstaff', [Admin_HomeController::class, 'postaddstaff']);
-
-    Route::get('/order', [Admin_HomeController::class, 'order']);
-    Route::get('/profile/{id}', [Admin_HomeController::class, 'profile']);
-
-    Route::get('/statistical', [Admin_HomeController::class, 'statistical']);
-
-    Route::get('/product_type', [Admin_HomeController::class, 'product_type']);
+    Route::get('/', [HomeController::class, 'home']);
+    Route::get('/shop', [HomeController::class, 'shop']);
+    Route::get('/payment', [HomeController::class, 'payment']);
+    Route::get('/about', [HomeController::class, 'about']);
+    Route::get('/contact', [HomeController::class, 'contact']);
+    Route::get('/product_detail', [HomeController::class, 'product_detail']);
 });

@@ -58,7 +58,6 @@
     <!-- Jquery 3.6 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    @livewireStyles
 </head>
 
 <body class="nav-md">
@@ -79,12 +78,13 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img src="{{ asset('images/avatar') }}/{{ Auth::user()->Avatar }}" alt="..."
+                            <img src="{{ asset('images/avatar') }}/{{ Auth::user()->avatar }}" alt="..."
                                 class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
                             <span>Xin chào,</span>
-                            <h2>{{ Auth::user()->HoTen }}</h2>
+
+                            <h2>{{ Auth::user()->fullname }}</h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
@@ -105,10 +105,11 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-cubes"></i> Loại hàng hóa <span
+                                    <a><i class="fa fa-cubes"></i> Loại sản phẩm <span
                                             class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="/admin/product_type">Dánh sách loại hàng hóa</a></li>
+                                        <li><a href="/admin/product_type">Dánh sách loại sản phẩm</a></li>
+                                        <li><a href="/admin/addproduct_type">Thêm loại sản phẩm</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -158,12 +159,12 @@
                             <li class="nav-item dropdown open" style="padding-left: 15px;">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
                                     id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{ asset('images/avatar') }}/{{ Auth::user()->Avatar }}"
-                                        alt="">{{ Auth::user()->HoTen }}
+                                    <img src="{{ asset('images/avatar') }}/{{ Auth::user()->avatar }}" --}}
+                                        alt="">{{ Auth::user()->fullname }}
                                 </a>
                                 <div class="dropdown-menu dropdown-usermenu pull-right"
                                     aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/admin/profile/{{ Auth::user()->id }}">
+                                    <a class="dropdown-item" href="/admin/profile/{{ Auth::id() }}">
                                         Profile</a>
                                     <a class="dropdown-item" href="/admin/logout"><i
                                             class="fa fa-sign-out pull-right"></i> Log Out</a>
@@ -344,7 +345,6 @@
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('admin_template/build/js/custom.min.js') }}"></script>
 
-    @livewireScripts
 </body>
 
 </html>

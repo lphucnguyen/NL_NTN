@@ -14,12 +14,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('DanhGia', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_TaiKhoanKhachHang');
-            $table->unsignedBigInteger('id_SanPham');
-            $table->string('NoiDung');
-            $table->integer('SoSao');
+        Schema::create('user_type', function (Blueprint $table) {
+            $table->id();
+            $table->string('user_type');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('DanhGia');
+        Schema::dropIfExists('user_type');
     }
 };

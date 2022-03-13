@@ -14,12 +14,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('DonHang', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_TaiKhoan');//Nhan vien
-            $table->unsignedBigInteger('id_TaiKhoanKhachHang');// Khach hang
-            $table->string('PhuongThucThanhToan');//Tiền mặt, Momo, QR,...
-            $table->double('TongTien')->default(0);
+        Schema::create('order', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('admin_id');
+            $table->string('payment_method');
+            $table->double('total');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('DonHang');
+        Schema::dropIfExists('order');
     }
 };
