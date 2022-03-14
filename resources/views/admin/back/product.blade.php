@@ -38,20 +38,20 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($list_product as $k => $v)
+            @foreach ($product_list as $k => $v)
                 <tr>
                     <td class="text-center">{{ $k + 1 }}</td>
-                    <td>{{ $v->TenLoaiSanPham }}</td>
-                    <td>{{ $v->TenSanPham }}</td>
-                    <td class="text-center">{{ $v->SoLuong }}</td>
-                    <td class="text-center">{{ number_format($v->Gia) }} VNĐ</td>
+                    <td>{{ $v->name_type }}</td>
+                    <td>{{ $v->name }}</td>
+                    <td class="text-center">{{ $v->quantity }}</td>
+                    <td class="text-center">{{ number_format($v->price) }} VNĐ</td>
                     <td class="text-center">
                         <a class="btn btn-success btn-sm text-light" onclick="showPD({{ $v->id }})"
                             data-bs-toggle="modal" data-bs-target="#viewProductDetail"><i class="far fa-eye"></i> Chi
                             tiết</a>
                         <a class="btn btn-primary btn-sm text-light"><i class="fa fa-edit"></i> Sửa</a>
                         <a class="btn btn-danger btn-sm text-light"
-                            onclick="deleteProduct({{ $v->id }}, '{{ $v->TenSanPham }}')"><i
+                            onclick="deleteProduct({{ $v->id }}, '{{ $v->name }}')"><i
                                 class="fas fa-trash"></i> Xóa</a>
                     </td>
                 </tr>

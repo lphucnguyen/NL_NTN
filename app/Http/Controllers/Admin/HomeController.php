@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use App\Models\User;
+use App\Models\User_Type;
+use App\Models\Product;
+use App\Models\Product_Imgae;
+use App\Models\Product_Type;
 
 class HomeController extends Controller
 {
@@ -35,17 +40,17 @@ class HomeController extends Controller
     //product list
     public function product()
     {
-        $list_product = DB::table('sanpham as a')
-            ->leftJoin('loaisanpham as b', 'a.id_LoaiSanPham', 'b.id')
-            ->select('a.*', 'b.TenLoaiSanPham')
+        $product_list = DB::table('product as a')
+            ->leftJoin('product_type as b', 'a.type', 'b.id')
+            ->select('a.*', 'b.name_type')
             ->get();
-        return view('admin.back.product', compact('list_product'));
+        return view('admin.back.product', compact('product_list'));
     }
 
     //add product
     public function addproduct()
     {
-        $product_type = DB::table('loaisanpham')->get();
+        $product_type = DB::table('product_type')->get();
         return view('admin.back.addproduct', compact('product_type'));
     }
 
@@ -74,20 +79,20 @@ class HomeController extends Controller
             $img3->move('images/products/', $name_img3);
         }
 
-        $addP = DB::table('sanpham')->insert([
-            'id_LoaiSanPham' => $request->product_type,
-            'TenSanPham' => $request->product_name,
-            'MoTa' => $request->product_des,
-            'Gia' => $request->product_price,
-            'SoLuong' => $request->product_quantity,
+        $addP = DB::table('product')->insert([
+            'type' => $request->product_type,
+            'name' => $request->product_name,
+            'description' => $request->product_des,
+            'price' => $request->product_price,
+            'quantity' => $request->product_quantity,
         ]);
 
-        $lastid =  DB::getPdo('sanpham')->lastInsertId();
+        $lastid =  DB::getPdo('product')->lastInsertId();
         if ($addP) {
-            $addImg = DB::table('hinhanh')->insert([
-                ['TenHinhAnh' => $name_img1, 'id_SanPham' => $lastid],
-                ['TenHinhAnh' => $name_img2, 'id_SanPham' => $lastid],
-                ['TenHinhAnh' => $name_img3, 'id_SanPham' => $lastid]
+            $addImg = DB::table('product_images')->insert([
+                ['name' => $name_img1, 'product_id' => $lastid],
+                ['name' => $name_img2, 'product_id' => $lastid],
+                ['name' => $name_img3, 'product_id' => $lastid]
             ]);
 
             if ($addImg) {
@@ -103,12 +108,12 @@ class HomeController extends Controller
     //ajax product detail
     public function product_detail($id)
     {
-        $product = DB::table('sanpham as a')
-            ->leftJoin('loaisanpham as b', 'a.id_LoaiSanPham', 'b.id')
-            ->select('a.*', 'b.TenLoaiSanPham')
+        $product = DB::table('product as a')
+            ->leftJoin('product_type as b', 'a.type', 'b.id')
+            ->select('a.*', 'b.name_type')
             ->where('a.id', $id)->first();
 
-        $img = DB::table('hinhanh')->where('id_SanPham', $id)->get();
+        $img = DB::table('product_images')->where('product_id', $id)->get();
         return view('admin.ajax.product_detail', compact('product', 'img'));
     }
 
@@ -117,14 +122,14 @@ class HomeController extends Controller
     {
 
         //Xoa file hinh trong public/images/products
-        $arr_img = DB::table('hinhanh')->where('id_SanPham', $id)->get();
+        $arr_img = DB::table('product_images')->where('product_id', $id)->get();
         foreach ($arr_img as $k => $v) {
-            $file_path = public_path() . "/images/products/" . $v->TenHinhAnh;
+            $file_path = public_path() . "/images/products/" . $v->name;
 
             File::delete($file_path);
         }
 
-        $delete = DB::table('sanpham')->where('id', $id)->delete();
+        $delete = DB::table('product')->where('id', $id)->delete();
 
         if ($delete) {
             return redirect('/admin/product')->with('notify_success', 'Xóa sản phẩm thành công');
@@ -136,7 +141,7 @@ class HomeController extends Controller
     //product_type list
     public function product_type()
     {
-        $list = DB::table('loaisanpham')->get();
+        $list = DB::table('product_type')->get();
         return view('admin.back.product_type', compact('list'));
     }
     //add product type (giao dien)
@@ -147,9 +152,8 @@ class HomeController extends Controller
     //post add product type
     public function postaddproduct_type(Request $request)
     {
-        $add = DB::table('loaisanpham')->insert([
-            'TenLoaiSanPham' => $request->product_type_name,
-            'MoTa' => ""
+        $add = DB::table('product_type')->insert([
+            'name_type' => $request->product_type_name
         ]);
 
         if ($add) {
@@ -162,7 +166,7 @@ class HomeController extends Controller
     //delete product type
     public function delete_addproduct_type($id)
     {
-        $del = DB::table('loaisanpham')->where('id', $id)->delete();
+        $del = DB::table('product_type')->where('id', $id)->delete();
         if ($del) {
             return back()->with('notify_success', 'Xóa loại sản phẩm thành công');
         } else {
@@ -188,7 +192,12 @@ class HomeController extends Controller
     //staff list
     public function staff()
     {
-        $staff = DB::table('taikhoan')->get();
+        $staff = DB::table('users')
+            ->where([
+                ['role', '<', 3],
+                ['role', '<>', 1],
+            ])
+            ->get();
         return view('admin.back.staff', compact('staff'));
     }
 
@@ -201,8 +210,8 @@ class HomeController extends Controller
     //post add staff
     public function postaddstaff(Request $request)
     {
-        $checkTK = DB::table('taikhoan')
-            ->where('SoDienThoai', $request->phone)
+        $checkTK = DB::table('users')
+            ->where('phone', $request->phone)
             ->orWhere('email', $request->email)
             ->get();
 
@@ -214,13 +223,13 @@ class HomeController extends Controller
             return back()->with('notify_fail', 'Mật khẩu xác nhận không chính xác');
         }
 
-        $createTK = DB::table('taikhoan')->insert([
-            'HoTen' => $request->fullname,
+        $createTK = DB::table('users')->insert([
+            'fullname' => $request->fullname,
             'email' => $request->email,
-            'SoDienThoai' => $request->phone,
-            'GioiTinh' => $request->gender,
+            'phone' => $request->phone,
+            'gender' => $request->gender,
             'password' => bcrypt($request->password),
-            'id_LoaiTaiKhoan' => 1,
+            'role' => 2,
         ]);
 
         if ($createTK) {
@@ -239,7 +248,7 @@ class HomeController extends Controller
     //profile
     public function profile($id)
     {
-        $info = DB::table('taikhoan')->where('id', $id)->first();
+        $info = DB::table('users')->where('id', $id)->first();
         return view('admin.back.profile', compact('info'));
     }
 }

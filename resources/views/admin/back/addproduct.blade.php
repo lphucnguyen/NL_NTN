@@ -1,6 +1,6 @@
 @extends('admin.template.master')
 
-@section('title', 'Add Staff | Admin - NTN Shop')
+@section('title', 'Add Product | Admin - NTN Shop')
 
 @section('heading', '')
 

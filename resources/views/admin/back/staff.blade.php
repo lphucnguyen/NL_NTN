@@ -30,14 +30,14 @@
                     <td>
                         <div class="row text-center">
                             <div class="col d-flex flex-column align-items-center">
-                                <img src="{{ asset('images/avatar/'. $v->Avatar) }}" class="img-thumbnail rounded" width="100" alt="ảnh đại diện">
-                                <b>{{ $v->HoTen }}</b>
+                                <img src="{{ asset('images/avatar/'. $v->avatar) }}" class="img-thumbnail rounded" width="100" alt="ảnh đại diện">
+                                <b>{{ $v->fullname }}</b>
                             </div>
                         </div>
                     </td>
-                    <td>{{ $v->SoDienThoai }}</td>
-                    <td>{{ $v->GioiTinh }}</td>
-                    <td>{{ $v->DiaChi }}</td>
+                    <td>{{ $v->phone }}</td>
+                    <td>{{ $v->gender }}</td>
+                    <td>{{ $v->address }}</td>
                     <td class="text-center">
                         <button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Sửa</button>
                         <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Xóa</button>
