@@ -1,0 +1,13 @@
+.textarea_des{
+    width: 100%;
+    resize: none;
+    border: 0;
+    height: 200px;
+}
+.textarea_des:focus{
+    outline: none;
+}
+.img-product-detail{
+    width: 200px !important;
+    height: 200px !important;
+}

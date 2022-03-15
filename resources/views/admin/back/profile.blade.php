@@ -14,10 +14,10 @@
         <div class="profile_img">
             <div id="crop-avatar ">
                 <!-- Current avatar -->
-                <img class="img-responsive avatar-view img-fluid border-secondary rounded"  src="{{asset('images/avatar')}}/{{ $info->Avatar }}" alt="Avatar" title="Change the avatar">
+                <img class="img-responsive avatar-view img-fluid border-secondary rounded"  src="{{asset('images/avatar')}}/{{ $info->avatar }}" alt="Avatar" title="Change the avatar">
             </div>
         </div>
-        <h3>{{ $info->HoTen }}</h3>
+        <h3>{{ $info->fullname }}</h3>
 
         <ul class="list-unstyled user_data">
             <li><i class="fa fa-map-marker user-profile-icon"></i> San Francisco, California, USA

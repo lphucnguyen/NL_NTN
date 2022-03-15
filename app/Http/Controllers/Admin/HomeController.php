@@ -11,7 +11,7 @@ use App\Models\User;
 use App\Models\User_Type;
 use App\Models\Product;
 use App\Models\Product_Imgae;
-use App\Models\Product_Type;
+use App\Models\ProductType;
 
 class HomeController extends Controller
 {
@@ -161,6 +161,12 @@ class HomeController extends Controller
         } else {
             return back()->with('notify_fail', 'Thêm loại sản phẩm thất bại!!!');
         }
+    }
+
+    //edit product type
+    public function edit_product_type($id){
+        $pt = ProductType::where('id',$id)->first();
+        return view('admin.ajax.edit_product_type', compact('pt'));
     }
 
     //delete product type

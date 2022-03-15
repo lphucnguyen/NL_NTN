@@ -39,6 +39,7 @@
                     <td>{{ $v->gender }}</td>
                     <td>{{ $v->address }}</td>
                     <td class="text-center">
+                        <a class="btn btn-success btn-sm" href="/admin/profile/{{ $v->id }}"><i class="fa fa-book"></i> Profile</a>
                         <button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Sửa</button>
                         <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Xóa</button>
                     </td>

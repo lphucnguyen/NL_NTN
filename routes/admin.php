@@ -47,5 +47,6 @@ Route::get('/product_type', [HomeController::class, 'product_type']);
 Route::get('/addproduct_type', [HomeController::class, 'addproduct_type']);
 Route::post('/addproduct_type', [HomeController::class, 'postaddproduct_type']);
 Route::get('/product_type/del/{id_PT}', [HomeController::class, 'delete_addproduct_type']);
+Route::post('/product_type/edit/{id_PT}', [HomeController::class, 'edit_product_type']);
 
 

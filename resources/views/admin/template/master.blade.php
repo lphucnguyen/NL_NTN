@@ -55,9 +55,15 @@
     </script>
     <!-- Custom Theme Style -->
     <link href="{{ asset('admin_template/build/css/custom.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/myStyle.css') }}">
     <!-- Jquery 3.6 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <style>
+        table tbody tr td{
+            vertical-align: middle !important;
+        }
+    </style>
 </head>
 
 <body class="nav-md">

@@ -44,8 +44,8 @@
                         class="required">*</span></label>
                 <div class="col-md-6 col-sm-6">
                     <select class="form-control" name="product_type" id="" required>
-                        @foreach ($product_type as $k => $v)
-                            <option value="{{ $v->id }}">{{ $v->TenLoaiSanPham }}</option>
+                        @foreach ($product_type as $v)
+                            <option value="{{ $v->id }}">{{ $v->name_type }}</option>
                         @endforeach
                     </select>
                 </div>
