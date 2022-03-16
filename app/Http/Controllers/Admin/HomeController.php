@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use App\Models\User;
-use App\Models\User_Type;
+use App\Models\UserType;
 use App\Models\Product;
-use App\Models\Product_Imgae;
+use App\Models\ProductImage;
 use App\Models\ProductType;
 
 class HomeController extends Controller
@@ -29,14 +29,14 @@ class HomeController extends Controller
         return redirect('/admin/login');
     }
 
-
+    // ======================================HOME=======================================================
     //home
     public function home()
     {
         return view('admin.home.home');
     }
 
-
+    // =====================================PRODUCT====================================================
     //product list
     public function product()
     {
@@ -57,28 +57,6 @@ class HomeController extends Controller
     //post add product
     public function postaddproduct(Request $request)
     {
-        //Kiểm tra file img1
-        if ($request->hasFile('product_img1')) {
-            $img1 = $request->product_img1;
-
-            $name_img1 = date("Y_m_d", time()) . "_img1_" . "._" . time() . $img1->getClientOriginalExtension();
-            $img1->move('images/products/', $name_img1);
-        }
-        //Kiểm tra file img2
-        if ($request->hasFile('product_img2')) {
-            $img2 = $request->product_img2;
-
-            $name_img2 = date("Y_m_d", time()) . "_img2_" . "._" . time() . $img2->getClientOriginalExtension();
-            $img2->move('images/products/', $name_img2);
-        }
-        //Kiểm tra file img3
-        if ($request->hasFile('product_img3')) {
-            $img3 = $request->product_img3;
-
-            $name_img3 = date("Y_m_d", time()) . "_img3_" . "._" . time() . $img3->getClientOriginalExtension();
-            $img3->move('images/products/', $name_img3);
-        }
-
         $addP = DB::table('product')->insert([
             'type' => $request->product_type,
             'name' => $request->product_name,
@@ -88,8 +66,32 @@ class HomeController extends Controller
         ]);
 
         $lastid =  DB::getPdo('product')->lastInsertId();
+
+
         if ($addP) {
-            $addImg = DB::table('product_images')->insert([
+            //Kiểm tra file img1
+            if ($request->hasFile('product_img1')) {
+                $img1 = $request->product_img1;
+
+                $name_img1 = "img1_" . date("Y_m_d", time()) . "_" . $lastid . "." . $img1->getClientOriginalExtension();
+                $img1->move('images/products/', $name_img1);
+            }
+            //Kiểm tra file img2
+            if ($request->hasFile('product_img2')) {
+                $img2 = $request->product_img2;
+
+                $name_img2 = "img2_" . date("Y_m_d", time()) . "_" . $lastid . "." . $img2->getClientOriginalExtension();
+                $img2->move('images/products/', $name_img2);
+            }
+            //Kiểm tra file img3
+            if ($request->hasFile('product_img3')) {
+                $img3 = $request->product_img3;
+
+                $name_img3 = "img3_" . date("Y_m_d", time()) . "_" . $lastid . "." . $img3->getClientOriginalExtension();
+                $img3->move('images/products/', $name_img3);
+            }
+
+            $addImg = ProductImage::insert([
                 ['name' => $name_img1, 'product_id' => $lastid],
                 ['name' => $name_img2, 'product_id' => $lastid],
                 ['name' => $name_img3, 'product_id' => $lastid]
@@ -117,6 +119,87 @@ class HomeController extends Controller
         return view('admin.ajax.product_detail', compact('product', 'img'));
     }
 
+    //ajax edit product
+    public function edit_product($id)
+    {
+        $product = Product::where('id', $id)->first();
+        $product_type = ProductType::get();
+        $img = ProductImage::where('product_id', $id)->get();
+        return view('admin.ajax.edit_product', compact('product', 'product_type', 'img'));
+    }
+    //post edit product
+    public function post_edit_product(Request $request, $id)
+    {
+
+        $update = Product::find($request->id);
+        $update->name = $request->name;
+        $update->type = $request->type;
+        $update->price = $request->price;
+        $update->quantity = $request->quantity;
+        $update->description = $request->description;
+
+        if ($update->save()) {
+
+            //Kiểm tra file img1
+            if ($request->hasFile('img1')) {
+                $img1 = $request->img1;
+
+                $name_img1 = "img1_" . date("Y_m_d", time()) . "_" . $id . "." . $img1->getClientOriginalExtension();
+                $img1->move('images/products/', $name_img1);
+
+                //Xoa file hinh trong public/images/products
+                $file_img1 = ProductImage::whereId($request->id_img1_old)->first();
+                $file_path1 = public_path() . "/images/products/" . $file_img1->name;
+                File::delete($file_path1);
+
+                ProductImage::whereId($request->id_img1_old)
+                    ->update([
+                        'name' => $name_img1,
+                    ]);
+            }
+
+            //Kiểm tra file img2
+            if ($request->hasFile('img2')) {
+                $img2 = $request->img2;
+
+                $name_img2 = "img2_" . date("Y_m_d", time()) . "_" . $id . "." . $img2->getClientOriginalExtension();
+                $img2->move('images/products/', $name_img2);
+
+                //Xoa file hinh trong public/images/products
+                $file_img2 = ProductImage::whereId($request->id_img2_old)->first();
+                $file_path2 = public_path() . "/images/products/" . $file_img2->name;
+                File::delete($file_path2);
+
+                ProductImage::whereId($request->id_img2_old)
+                    ->update([
+                        'name' => $name_img2,
+                    ]);
+            }
+
+            //Kiểm tra file img3
+            if ($request->hasFile('img3')) {
+                $img3 = $request->img3;
+
+                $name_img3 = "img3_" . date("Y_m_d", time()) . "_" . $id . "." . $img3->getClientOriginalExtension();
+                $img3->move('images/products/', $name_img3);
+
+                //Xoa file hinh trong public/images/products
+                $file_img3 = ProductImage::whereId($request->id_img3_old)->first();
+                $file_path3 = public_path() . "/images/products/" . $file_img3->name;
+                File::delete($file_path3);
+
+                ProductImage::whereId($request->id_img3_old)
+                    ->update([
+                        'name' => $name_img3,
+                    ]);
+            }
+
+            return redirect('/admin/product')->with('notify_success', 'Thay đổi thông tin sán phẩm thành công!');
+        } else {
+            return redirect('/admin/product')->with('notify_fail', 'Thay đổi thông tin sản phẩm thất bại');
+        }
+    }
+
     //delete product
     public function delete_product($id)
     {
@@ -138,6 +221,8 @@ class HomeController extends Controller
         }
     }
 
+
+    // ===================================PRODUCT TYPE====================================================
     //product_type list
     public function product_type()
     {
@@ -164,9 +249,22 @@ class HomeController extends Controller
     }
 
     //edit product type
-    public function edit_product_type($id){
-        $pt = ProductType::where('id',$id)->first();
+    public function edit_product_type($id)
+    {
+        $pt = ProductType::where('id', $id)->first();
         return view('admin.ajax.edit_product_type', compact('pt'));
+    }
+
+    //post edit product type
+    public function post_edit_product_type(Request $request, $id)
+    {
+        $update = ProductType::find($id);
+        $update->name_type = $request->name_type;
+        if ($update->save()) {
+            return redirect('/admin/product_type')->with('notify_success', 'Đã thay đổi tên từ "' . $request->old_name . '" thành "' . $request->name_type . '" thành công!');
+        } else {
+            return redirect('/admin/product_type')->with('notify_fail', 'Thay đổi tên loại sản phẩm thất bại');
+        }
     }
 
     //delete product type
@@ -181,20 +279,21 @@ class HomeController extends Controller
     }
 
 
+    // =====================================PROMOTION==================================================
     //promotion
     public function promotion()
     {
         return view('admin.back.promotion');
     }
 
-
+    // ================================STATISTICAL (Thống kê)===========================================
     //statistical
     public function statistical()
     {
         return view('admin.back.statistical');
     }
 
-
+    // ======================================STAFF======================================================
     //staff list
     public function staff()
     {
@@ -245,12 +344,14 @@ class HomeController extends Controller
         }
     }
 
+    // ====================================ORDER==================================================
     //order
     public function order()
     {
         return view('admin.back.order');
     }
 
+    // ====================================PROFILE==================================================
     //profile
     public function profile($id)
     {

@@ -1,16 +1,32 @@
-<form>
+<form action="/admin/product_type/edit/{{ $pt->id }}" method="post" onsubmit="return checkFrmEditProductType()">
+    @csrf
     <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        <label for="idProductType" class="form-label">ID Loại sản phẩm:</label>
+        <input type="text" name="id" class="form-control" id="idProductType" readonly value="{{ $pt->id }}">
     </div>
     <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
+        <label for="oldNamePT" class="form-label">Tên loại sản phẩm hiện tại:</label>
+        <input type="text" class="form-control" name="old_name" id="oldNamePT" readonly value="{{ $pt->name_type }}">
     </div>
-    <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    <div class="mb-5">
+        <label for="newNamePT" class="form-label">Tên loại sản phẩm mới:</label>
+        <input type="text" class="form-control" name="name_type" id="newNamePT">
+        <div><p class="text-danger" id="err_newNamePT"></p></div>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="mt-3 text-right">
+        <button type="submit" class="btn btn-primary">Lưu</button>
+        <button type="reset" class="btn btn-success">Reset</button>
+    </div>
 </form>
+
+<script>
+    function checkFrmEditProductType(){
+        var v = document.getElementById('newNamePT').value
+        if(v.length <1 ){
+            document.getElementById('err_newNamePT').innerHTML = "Trường này không được bỏ trống!";
+            return false
+        }
+
+        return true
+    }
+</script>

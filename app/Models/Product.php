@@ -10,5 +10,6 @@ class Product extends Model
     use HasFactory;
 
     protected $table = 'product';
-
+    
+    protected $dates = ['deleted_at'];
 }

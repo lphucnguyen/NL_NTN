@@ -49,7 +49,8 @@
                         <a class="btn btn-success btn-sm text-light" onclick="showPD({{ $v->id }})"
                             data-bs-toggle="modal" data-bs-target="#viewProductDetail"><i class="far fa-eye"></i> Chi
                             tiết</a>
-                        <a class="btn btn-primary btn-sm text-light"><i class="fa fa-edit"></i> Sửa</a>
+                        <a class="btn btn-primary btn-sm text-light"onclick="editProduct({{ $v->id }})"
+                            data-bs-toggle="modal" data-bs-target="#editProduct"><i class="fa fa-edit"></i> Sửa</a>
                         <a class="btn btn-danger btn-sm text-light"
                             onclick="deleteProduct({{ $v->id }}, '{{ $v->name }}')"><i
                                 class="fas fa-trash"></i> Xóa</a>
@@ -78,6 +79,23 @@
         </div>
     </div>
 
+    <!-- Modal Edit Product-->
+    <div class="modal fade " id="editProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 100vh">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><b> Chỉnh sửa sản phẩm </b></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body" id="modal_editProduct">
+                    {{-- content modal --}}
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     {{-- JavaScript --}}
     <script src="{{ asset('js/admin_product.js') }}"></script>

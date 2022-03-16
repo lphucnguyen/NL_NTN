@@ -14,6 +14,21 @@ function showPD(id){
     })
 }
 
+function editProduct(id){
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        type: 'get',
+        url: '/admin/product/edit/'+id,
+        success: function(result){
+            $('#modal_editProduct').html(result);
+        }
+    })
+}
+
 //Xoa san pham
 function deleteProduct(id, name){
     var c = confirm("Bạn có chắc muốn xóa sản phẩm \""+name+"\"")
@@ -41,7 +56,7 @@ function editProductType(id){
         }
     });
     $.ajax({
-        type: 'post',
+        type: 'get',
         url: '/admin/product_type/edit/'+id,
         success: function(result){
             $('#modal_editProductType').html(result);

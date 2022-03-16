@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col d-flex justify-content-center">
             @foreach ($img as $k => $v)
-                <img src="{{ asset('images/products') }}/{{ $v->name }}" class="m-1 img-thumbnail rounded img-product-detail"
-                    alt="{{ $product->name }}" width="150">
+                <img src="{{ asset('images/products') }}/{{ $v->name }}"
+                    class="m-1 img-thumbnail rounded img-product-detail" alt="{{ $product->name }}" width="150">
             @endforeach
         </div>
     </div>
@@ -40,9 +40,7 @@
                         Mô tả
                     </p>
                     <hr class="mt-0">
-                    <textarea class="textarea_des" readonly>
-                            {{ $product->description }}
-                        </textarea>
+                    <textarea class="textarea_des p-0" readonly>{{ $product->description }}</textarea>
                 </div>
             </div>
         </div>
