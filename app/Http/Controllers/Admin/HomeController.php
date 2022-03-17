@@ -270,7 +270,19 @@ class HomeController extends Controller
     //delete product type
     public function delete_addproduct_type($id)
     {
+        //Xoa file hinh trong public/images/products
+        $arr_product = Product::where('type', $id)->get();
+        foreach ($arr_product as $value){
+            $arr_img = ProductImage::where('product_id', $value->id)->get();
+            foreach ($arr_img as $v) {
+                $file_path = public_path() . "/images/products/" . $v->name;
+
+                File::delete($file_path);
+            }
+        }
+
         $del = DB::table('product_type')->where('id', $id)->delete();
+        
         if ($del) {
             return back()->with('notify_success', 'Xóa loại sản phẩm thành công');
         } else {

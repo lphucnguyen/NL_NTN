@@ -80,6 +80,14 @@ return new class extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
+
+        //Staff History - Users
+        Schema::table('staff_history', function (Blueprint $table) {
+            $table->foreign('staff_id')
+            ->references('id')->on('users')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+        });
     }
 
     /**

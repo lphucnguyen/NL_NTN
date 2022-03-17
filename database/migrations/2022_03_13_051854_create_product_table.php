@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('type');
-            $table->string('description');
+            $table->string('description', 10000);
             $table->double('price');
             $table->integer('quantity');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

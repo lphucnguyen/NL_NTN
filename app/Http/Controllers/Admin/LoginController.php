@@ -11,7 +11,7 @@ class LoginController extends Controller
     public function __construct()
     {
         @session_start();
-        // $this->middleware('CheckLogoutAdmin');
+        $this->middleware('CheckLogoutAdmin');
     }
 
     //View Login

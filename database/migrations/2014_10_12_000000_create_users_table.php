@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('role');//loai tai khoan
             $table->string('fullname');
             $table->string('email')->unique();
-            $table->string('phone', 10)->unique();
+            $table->string('phone', 20)->unique();
             $table->string('avatar')->default('avatar-default.jpg');
             $table->string('address')->nullable();
             $table->string('gender');

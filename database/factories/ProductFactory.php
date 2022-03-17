@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Product;
+use App\Models\ProductType;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
@@ -22,10 +23,10 @@ class ProductFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'type' => $this->fake->numberBetween($min = 1, $max = 4),
-            'description' => $this->faker->sentence(),
-            'price' => $this->faker->numberBetween($min = 1000000, $max = 99000000),
-            'quantity' => $this->faker->numberBetween($min = 1, $max = 200),
+            'type' => ProductType::all()->random()->id,
+            'description' => $this->faker->sentence(500),
+            'price' => $this->faker->numberBetween(1000000,99999999),
+            'quantity' => $this->faker->numberBetween(1,500),
         ];
     }
 }
