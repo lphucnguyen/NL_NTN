@@ -50,5 +50,7 @@ class DatabaseSeeder extends Seeder
             ],
         ]);
 
+        \App\Models\Product::factory(10)->create();
+
     }
 }

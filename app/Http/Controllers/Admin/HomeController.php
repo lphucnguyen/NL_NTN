@@ -330,6 +330,7 @@ class HomeController extends Controller
 
         $createTK = DB::table('users')->insert([
             'fullname' => $request->fullname,
+            'address' => $request->address,
             'email' => $request->email,
             'phone' => $request->phone,
             'gender' => $request->gender,

@@ -31,7 +31,7 @@
         </button>
     </div>
     @endif
-    
+
     <section class="login_content">
         <form action="" id="frmAddStaff" class="form-horizontal form-label-left" method="post" autocomplete="off">
             @csrf
@@ -48,7 +48,10 @@
                 <p id="err_gender" class="text-left text-danger"></p>
             </div>
             <div>
-                <input type="text" class="form-control" name="phone" placeholder="Phone" required="" />
+                <input type="text" class="form-control" name="address" placeholder="Address" required="" />
+            </div>
+            <div>
+                <input type="text" class="form-control" name="phone" maxlength="10" placeholder="Phone" required="" />
             </div>
             <div>
                 <input type="email" class="form-control" name="email" placeholder="Email" required="" />
