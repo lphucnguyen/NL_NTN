@@ -93,8 +93,38 @@
 
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                        <table class="data table table-striped no-margin">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Tên Khách Hàng</th>
+                                    <th>Phương Thức Thành Toán</th>
+                                    <th>Tổng Tiền</th>
+                                    <th>Trạng Thái</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (count($order) < 1)
+                                    <tr>
+                                        <td class="fw-bold fs-6 text-center" colspan="5">
+                                            Chưa duyệt đơn hàng nào
+                                        </td>
+                                    </tr>
+                                @endif
+                                @foreach ($order as $k => $v)
+                                    <tr>
+                                        <td>{{ $k + 1 }}</td>
+                                        <td>{{ $v->fullname }}</td>
+                                        <td>{{ $v->payment_method }}</td>
+                                        <td>{{ $v->total }}</td>
+                                        <td class="vertical-align-mid">
+                                            {{ $v->status }}
+                                        </td>
+                                    </tr>
+                                @endforeach
 
-
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

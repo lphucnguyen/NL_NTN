@@ -16,10 +16,13 @@ return new class extends Migration
     {
         Schema::create('order', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('admin_id');
-            $table->string('payment_method');
-            $table->double('total');
+            $table->unsignedBigInteger('user_id');//người đặt hàng
+            $table->unsignedBigInteger('admin_id');//Người duyệt đơn hàng
+            $table->string('payment_method');//Phương thức thành toán
+            $table->double('total');//Tổng giá trị đơn hàng
+            $table->string('status');//Trạng thái đơn hàng
+            $table->date('order_date');//Ngày đặt hàng
+            $table->date('delivery_date');//Ngày giao hàng
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });

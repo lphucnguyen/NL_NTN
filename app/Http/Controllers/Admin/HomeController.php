@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -58,6 +59,7 @@ class HomeController extends Controller
     //post add product
     public function postaddproduct(Request $request)
     {
+
         $addP = DB::table('product')->insert([
             'type' => $request->product_type,
             'name' => $request->product_name,
@@ -70,6 +72,17 @@ class HomeController extends Controller
 
 
         if ($addP) {
+
+            $history = new StaffHistory;
+            $history->staff_id = Auth::id();
+            $history->title = "Thêm sản phẩm mới";
+            $history->content = "● Tên sản phẩm: $request->product_name\n" .
+                "● Loại sản phẩm: " . ProductType::whereId($request->product_type)->first()->name_type . "\n" .
+                "● Giá sản phẩm: " . number_format($request->product_price) . "\n" .
+                "● Số lượng sản phẩm: $request->product_quantity\n" .
+                "● Mô tả sản phẩm: \n$request->product_des";
+            $history->save();
+
             //Kiểm tra file img1
             if ($request->hasFile('product_img1')) {
                 $img1 = $request->product_img1;
@@ -149,13 +162,13 @@ class HomeController extends Controller
                 . ProductType::whereId($request->type)->first()->name_type . "\n";
         }
         if ($old->price != $request->price) {
-            $price = "● Giá: ".number_format($old->price)." ➔ ".number_format($request->price)." \n";
+            $price = "● Giá: " . number_format($old->price) . " ➔ " . number_format($request->price) . " \n";
         }
         if ($old->quantity != $request->quantity) {
             $quantity = "● Số lượng: $old->quantity ➔ $request->quantity \n";
         }
         if ($old->description != $request->description) {
-            $description = "● Mô tả cũ: \n$old->description\n● Mô tả mới:\n$request->description \n";
+            $description = "● Mô tả cũ: \n$old->description\n● Mô tả mới:\n$request->description";
         }
         if ($request->hasFile('img1')) {
             $image1 = "● Đã thay đổi ảnh 1\n";
@@ -252,7 +265,19 @@ class HomeController extends Controller
             File::delete($file_path);
         }
 
-        $delete = DB::table('product')->where('id', $id)->delete();
+        $product = Product::find($id);
+        $history = new StaffHistory;
+        $history->staff_id = Auth::id();
+        $history->title = "Xóa sản phẩm";
+        $history->content = "Sản phẩm và các hình ảnh liên quan đã bị xóa\nThông tin sản phẩm đã xóa:\n" .
+            "● Tên sản phẩm: $product->name\n" .
+            "● Loại sản phẩm: " . ProductType::whereId($product->type)->first()->name_type . "\n" .
+            "● Giá sản phẩm: " . number_format($product->price) . "\n" .
+            "● Số lượng sản phẩm: $product->quantity\n" .
+            "● Mô tả sản phẩm: \n$product->description";
+        $history->save();
+
+        $delete = DB::table('product')->whereId($id)->delete();
 
         if ($delete) {
             return redirect('/admin/product')->with('notify_success', 'Xóa sản phẩm thành công');
@@ -282,6 +307,13 @@ class HomeController extends Controller
         ]);
 
         if ($add) {
+
+            $history = new StaffHistory;
+            $history->staff_id = Auth::id();
+            $history->title = "Thêm loại sản phẩm";
+            $history->content = "Đã thêm loại sản phẩm mới: \"$request->product_type_name\"\n" .
+                $history->save();
+
             return back()->with('notify_success', 'Thêm loại sản phẩm thành công');
         } else {
             return back()->with('notify_fail', 'Thêm loại sản phẩm thất bại!!!');
@@ -410,6 +442,9 @@ class HomeController extends Controller
     {
         $info = User::whereId($id)->first();
         $history = StaffHistory::where('staff_id', $id)->get();
-        return view('admin.back.profile', compact('info', 'history'));
+        $order = Order::leftjoin('users', 'admin_id', 'users.id')
+            ->select('*', 'users.fullname')
+            ->get();
+        return view('admin.back.profile', compact('info', 'history', 'order'));
     }
 }
