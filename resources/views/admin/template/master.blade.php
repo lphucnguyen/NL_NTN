@@ -73,8 +73,7 @@
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
                         <a href="/admin" class="site_title">
-                            <img src="{{ asset('images/system/logo.png') }}" class="bg-light" width="40"
-                                style="border-radius:50%;" alt="logo" />
+                            <img src="{{ asset('images/system/logo.png') }}" class="bg-light rounded-circle" width="40" alt="logo" />
                             <span>𝓝𝓣𝓝 𝓢𝓽𝓸𝓻𝓮</span>
                         </a>
                     </div>

@@ -12,6 +12,7 @@ use App\Models\UserType;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\ProductType;
+use App\Models\StaffHistory;
 
 class HomeController extends Controller
 {
@@ -130,6 +131,45 @@ class HomeController extends Controller
     //post edit product
     public function post_edit_product(Request $request, $id)
     {
+        $name = $type = $price = $description = $quantity = $image1 = $image2 = $image3 = null;
+
+        $old = Product::find($request->id);
+
+        $history = new StaffHistory;
+        $history->staff_id = Auth::id();
+        $history->title = "Chỉnh sửa sản phẩm (ID Product: " . $id . ", $old->name)";
+
+        if ($old->name != $request->name) {
+            $name = "● Tên: $old->name ➔ $request->name \n";
+        }
+        if ($old->type != $request->type) {
+            $type = "● Loại: "
+                . ProductType::whereId($old->type)->first()->name_type .
+                "  ➔ "
+                . ProductType::whereId($request->type)->first()->name_type . "\n";
+        }
+        if ($old->price != $request->price) {
+            $price = "● Giá: ".number_format($old->price)." ➔ ".number_format($request->price)." \n";
+        }
+        if ($old->quantity != $request->quantity) {
+            $quantity = "● Số lượng: $old->quantity ➔ $request->quantity \n";
+        }
+        if ($old->description != $request->description) {
+            $description = "● Mô tả cũ: \n$old->description\n● Mô tả mới:\n$request->description \n";
+        }
+        if ($request->hasFile('img1')) {
+            $image1 = "● Đã thay đổi ảnh 1\n";
+        }
+        if ($request->hasFile('img2')) {
+            $image2 = "● Đã thay đổi ảnh 2\n";
+        }
+        if ($request->hasFile('img3')) {
+            $image3 = "● Đã thay đổi ảnh 3\n";
+        }
+
+        $history->content = $name . $image1 . $image2 . $image3 .  $type . $price . $quantity . $description;
+
+        $history->save();
 
         $update = Product::find($request->id);
         $update->name = $request->name;
@@ -272,7 +312,7 @@ class HomeController extends Controller
     {
         //Xoa file hinh trong public/images/products
         $arr_product = Product::where('type', $id)->get();
-        foreach ($arr_product as $value){
+        foreach ($arr_product as $value) {
             $arr_img = ProductImage::where('product_id', $value->id)->get();
             foreach ($arr_img as $v) {
                 $file_path = public_path() . "/images/products/" . $v->name;
@@ -282,7 +322,7 @@ class HomeController extends Controller
         }
 
         $del = DB::table('product_type')->where('id', $id)->delete();
-        
+
         if ($del) {
             return back()->with('notify_success', 'Xóa loại sản phẩm thành công');
         } else {
@@ -368,7 +408,8 @@ class HomeController extends Controller
     //profile
     public function profile($id)
     {
-        $info = DB::table('users')->where('id', $id)->first();
-        return view('admin.back.profile', compact('info'));
+        $info = User::whereId($id)->first();
+        $history = StaffHistory::where('staff_id', $id)->get();
+        return view('admin.back.profile', compact('info', 'history'));
     }
 }

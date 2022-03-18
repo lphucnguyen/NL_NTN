@@ -17,7 +17,8 @@ return new class extends Migration
         Schema::create('staff_history', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('staff_id');
-            $table->string('action');
+            $table->string('title');
+            $table->string('content', 10000);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
