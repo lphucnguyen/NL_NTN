@@ -107,10 +107,6 @@
                     Sản phẩm mới
                 </button>
 
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-                    Sản phẩm được mua nhiều nhất
-                </button>
-
             </div>
 
         </div>
@@ -119,7 +115,7 @@
         {{-- List product --}}
         <div class="row isotope-grid">
 
-            @livewire('product')
+            @livewire('products')
 
             {{-- <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
                 <!-- Block2 -->
