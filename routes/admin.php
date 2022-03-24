@@ -19,16 +19,19 @@ Route::get('', [HomeController::class, 'home'])->name('admin.home');
 Route::get('/logout', [HomeController::class, 'logout']);
 
 //Product
-Route::get('/product', [HomeController::class, 'product']);
-Route::get('/addproduct', [HomeController::class, 'addproduct']);
-Route::post('/addproduct', [HomeController::class, 'postaddproduct']);
+Route::get('/product', [HomeController::class, 'product'])->name('admin.product');
+Route::get('/product_delete', [HomeController::class, 'product_delete_list'])->name('admin.product.deletelist')->middleware('UserAdmin');
+Route::post('/addproduct', [HomeController::class, 'postaddproduct'])->name('admin.product.add');
 Route::post('/product/pd/{id}', [HomeController::class, 'product_detail']);
 Route::get('/product/delete/{id}', [HomeController::class, 'delete_product']);
 Route::get('/product/edit/{id}', [HomeController::class, 'edit_product']);
 Route::post('/product/edit/{id}', [HomeController::class, 'post_edit_product']);
+Route::get('/product/restore/{id}', [HomeController::class, 'post_restore_product']);
+Route::post('/product/restore/list', [HomeController::class, 'post_restore_product_list'])->name('admin.product.restorelist');
 
 //promotion
-Route::get('/promotion', [HomeController::class, 'promotion']);
+Route::get('/promotion', [HomeController::class, 'promotion'])->name('admin.promotion');
+Route::post('/promotion/add', [HomeController::class, 'post_add_promotion'])->name('admin.promotion.add');
 
 //staff
 Route::get('/staff', [HomeController::class, 'staff']);
@@ -39,15 +42,15 @@ Route::post('/addstaff', [HomeController::class, 'postaddstaff']);
 Route::get('/order', [HomeController::class, 'order']);
 
 //profile
-Route::get('/profile/{id}', [HomeController::class, 'profile']);
+Route::get('/profile/{id}', [HomeController::class, 'profile'])->name('admin.profile');
+Route::post('/profile/edit', [HomeController::class, 'post_edit_profile'])->name('admin.profile.edit');
 
 //statistical
 Route::get('/statistical', [HomeController::class, 'statistical']);
 
 //product_type
 Route::get('/product_type', [HomeController::class, 'product_type']);
-Route::get('/addproduct_type', [HomeController::class, 'addproduct_type']);
-Route::post('/addproduct_type', [HomeController::class, 'postaddproduct_type']);
+Route::post('/addproduct_type', [HomeController::class, 'postaddproduct_type'])->name('admin.product_type.add');
 Route::get('/product_type/del/{id_PT}', [HomeController::class, 'delete_addproduct_type']);
 Route::get('/product_type/edit/{id_PT}', [HomeController::class, 'edit_product_type']);
 Route::post('/product_type/edit/{id_PT}', [HomeController::class, 'post_edit_product_type']);

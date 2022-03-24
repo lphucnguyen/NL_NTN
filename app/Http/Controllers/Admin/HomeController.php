@@ -13,6 +13,7 @@ use App\Models\UserType;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\ProductType;
+use App\Models\Promotion;
 use App\Models\StaffHistory;
 
 class HomeController extends Controller
@@ -22,7 +23,6 @@ class HomeController extends Controller
         @session_start();
         $this->middleware('CheckLoginAdmin');
     }
-
 
     //Logout
     public function logout()
@@ -42,18 +42,21 @@ class HomeController extends Controller
     //product list
     public function product()
     {
-        $product_list = DB::table('product as a')
-            ->leftJoin('product_type as b', 'a.type', 'b.id')
-            ->select('a.*', 'b.name_type')
+        $product_list = Product::leftJoin('product_type as b', 'product.type', 'b.id')
+            ->select('product.*', 'b.name_type')
             ->get();
-        return view('admin.back.product', compact('product_list'));
+        $product_type = ProductType::all();
+        return view('admin.back.product', compact('product_list', 'product_type'));
     }
-
-    //add product
-    public function addproduct()
+    //product delete list
+    public function product_delete_list()
     {
-        $product_type = DB::table('product_type')->get();
-        return view('admin.back.addproduct', compact('product_type'));
+        $product_list = Product::onlyTrashed()
+            ->leftJoin('product_type as b', 'product.type', 'b.id')
+            ->select('product.*', 'b.name_type')
+            ->get();
+        $product_type = ProductType::all();
+        return view('admin.back.product_delete', compact('product_list', 'product_type'));
     }
 
     //post add product
@@ -258,12 +261,12 @@ class HomeController extends Controller
     {
 
         //Xoa file hinh trong public/images/products
-        $arr_img = DB::table('product_images')->where('product_id', $id)->get();
-        foreach ($arr_img as $k => $v) {
-            $file_path = public_path() . "/images/products/" . $v->name;
+        // $arr_img = DB::table('product_images')->where('product_id', $id)->get();
+        // foreach ($arr_img as $k => $v) {
+        //     $file_path = public_path() . "/images/products/" . $v->name;
 
-            File::delete($file_path);
-        }
+        //     File::delete($file_path);
+        // }
 
         $product = Product::find($id);
         $history = new StaffHistory;
@@ -277,7 +280,7 @@ class HomeController extends Controller
             "● Mô tả sản phẩm: \n$product->description";
         $history->save();
 
-        $delete = DB::table('product')->whereId($id)->delete();
+        $delete = Product::find($id)->delete();
 
         if ($delete) {
             return redirect('/admin/product')->with('notify_success', 'Xóa sản phẩm thành công');
@@ -286,6 +289,33 @@ class HomeController extends Controller
         }
     }
 
+    //post restore product
+    public function post_restore_product($id)
+    {
+
+        $restore  = Product::withTrashed()->find($id)->restore();
+
+        if ($restore) {
+            return redirect()->route('admin.product')->with('notify_success', 'Đã khôi phục sản phẩm thành công');
+        } else {
+            return redirect()->route('admin.product.deletelist')->with('notify_fail', 'Khôi phục sản phẩm thất bại');
+        }
+    }
+
+    //post restore products list
+    public function post_restore_product_list(Request $request)
+    {
+        $list_product_id = $request->product_id;
+        foreach ($list_product_id as $value) {
+            $restore  = Product::withTrashed()->find($value)->restore();
+
+            if (!$restore) {
+                return redirect()->route('admin.product.deletelist')->with('notify_fail', 'Khôi phục sản phẩm "'.Product::find($value)->name.'" thất bại');
+            }
+        }
+
+        return redirect()->route('admin.product')->with('notify_success', 'Đã khôi phục các sản phẩm thành công');
+    }
 
     // ===================================PRODUCT TYPE====================================================
     //product_type list
@@ -311,8 +341,8 @@ class HomeController extends Controller
             $history = new StaffHistory;
             $history->staff_id = Auth::id();
             $history->title = "Thêm loại sản phẩm";
-            $history->content = "Đã thêm loại sản phẩm mới: \"$request->product_type_name\"\n" .
-                $history->save();
+            $history->content = "Đã thêm loại sản phẩm mới: \"$request->product_type_name\"\n";
+            $history->save();
 
             return back()->with('notify_success', 'Thêm loại sản phẩm thành công');
         } else {
@@ -367,7 +397,34 @@ class HomeController extends Controller
     //promotion
     public function promotion()
     {
-        return view('admin.back.promotion');
+        $list = Promotion::all();
+        return view('admin.back.promotion', compact('list'));
+    }
+
+    //post add promotion
+    public function post_add_promotion(Request $request)
+    {
+
+        $check = Promotion::where('code', $request->code)->get();
+
+        if (count($check) > 0) {
+            return redirect()->route('admin.promotion')->with('notify_fail', 'Mã khuyễn mãi đã tồn tại!');
+        }
+
+        $add = Promotion::create($request->all());
+
+        if ($add->save()) {
+
+            $history = new StaffHistory;
+            $history->staff_id = Auth::id();
+            $history->title = "Thêm mã khuyến mãi";
+            $history->content = "Đã thêm mã khuyến mãi mới: \"$request->code\"\n";
+            $history->save();
+
+            return redirect()->route('admin.promotion')->with('notify_success', 'Đã thêm mã khuyến mãi mới');
+        } else {
+            return redirect()->route('admin.promotion')->with('notify_fail', 'Thêm mã khuyến mãi thất bại');
+        }
     }
 
     // ================================STATISTICAL (Thống kê)===========================================
@@ -444,7 +501,32 @@ class HomeController extends Controller
         $history = StaffHistory::where('staff_id', $id)->get();
         $order = Order::leftjoin('users', 'admin_id', 'users.id')
             ->select('*', 'users.fullname')
+            ->where('admin_id', $id)
             ->get();
         return view('admin.back.profile', compact('info', 'history', 'order'));
+    }
+    //Edit profile
+    public function post_edit_profile(Request $request)
+    {
+        $update = User::find($request->id);
+        $update->fullname = $request->fullname;
+        $update->gender = $request->gender;
+        $update->address = $request->address;
+        $update->birthday = $request->birthday;
+
+        if ($request->hasFile('avatar')) {
+            $img = $request->avatar;
+
+            $name_img = "avatar_" . date("Y_m_d", time()) . "_$request->id." . $img->getClientOriginalExtension();
+            $img->move('images/avatar/', $name_img);
+
+            $update->avatar = $name_img;
+        }
+
+        if ($update->save()) {
+            return redirect('/admin/profile/' . Auth::id())->with('notify_success', 'Cập nhật thông tin cá nhân thành công!');
+        } else {
+            return redirect('/admin/profile/' . Auth::id())->with('notify_fail', 'Cập nhật thông tin cá nhân thất bại!');
+        }
     }
 }

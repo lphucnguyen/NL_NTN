@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('description', 10000);
             $table->double('price');
             $table->integer('quantity');
+            $table->softDeletes();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });

@@ -60,9 +60,10 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <style>
-        table tbody tr td{
+        table tbody tr td {
             vertical-align: middle !important;
         }
+
     </style>
 </head>
 
@@ -73,7 +74,8 @@
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
                         <a href="/admin" class="site_title">
-                            <img src="{{ asset('images/system/logo.png') }}" class="bg-light rounded-circle" width="40" alt="logo" />
+                            <img src="{{ asset('images/system/logo.png') }}" class="bg-light rounded-circle"
+                                width="40" alt="logo" />
                             <span>𝓝𝓣𝓝 𝓢𝓽𝓸𝓻𝓮</span>
                         </a>
                     </div>
@@ -102,19 +104,14 @@
                             <h3>Quản lí cửa hàng</h3>
                             <ul class="nav side-menu">
                                 <li>
-                                    <a><i class="fa fa-cube"></i> Sản phẩm <span
+                                    <a><i class="fa fa-cubes"></i> Sản phẩm <span
                                             class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/product">Danh sách sản phẩm</a></li>
-                                        <li><a href="/admin/addproduct">Thêm sản phẩm</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a><i class="fa fa-cubes"></i> Loại sản phẩm <span
-                                            class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
                                         <li><a href="/admin/product_type">Dánh sách loại sản phẩm</a></li>
-                                        <li><a href="/admin/addproduct_type">Thêm loại sản phẩm</a></li>
+                                        @if (Auth::id() == 1)
+                                        <li><a href="{{ route('admin.product.deletelist') }}">Dánh sách sản phẩm đã xóa</a></li>
+                                        @endif
                                     </ul>
                                 </li>
                                 <li>
@@ -258,7 +255,7 @@
 
 
             <!-- page content -->
-            <div class="right_col" role="main">
+            <div class="right_col rounded" role="main">
                 <div class="">
                     <div class="page-title">
                         <div class="title_left">
@@ -268,15 +265,38 @@
 
                     <div class="clearfix"></div>
 
-                    <div class="row" style="display: block;">
+                    <div class="row rounded" style="display: block;">
                         <div class="col-12">
-                            <div class="x_panel">
+                            <div class="x_panel" style="border-radius: 20px">
                                 <div class="x_title">
                                     <h2><b> @yield('x_heading') </b></h2>
                                     <div class="clearfix"></div>
                                 </div>
-                                <div class="x_content">
+                                <div class="x_content" >
+                                    @if (session('notify_success'))
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                            {{ session('notify_success') }}
+                                            <button type="button" class="close" data-dismiss="alert"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    @endif
+
+                                    @if (session('notify_fail'))
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            {{ session('notify_fail') }}
+                                            <button type="button" class="close" data-dismiss="alert"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    @endif
+
+                                    {{-- CONTENT --}}
                                     @yield('content')
+                                    {{-- /CONTENT --}}
+
                                 </div>
                             </div>
                         </div>

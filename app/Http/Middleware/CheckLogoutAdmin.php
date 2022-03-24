@@ -20,7 +20,7 @@ class CheckLogoutAdmin
         if (Auth::guest()){
             return $next($request);
         }else{
-            return back();
+            return redirect()->route('admin.home');
         }
     }
 }

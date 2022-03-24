@@ -19,8 +19,9 @@ return new class extends Migration
             $table->string('code');
             $table->integer('percent');
             $table->string('content');
-            $table->date('start_at');
-            $table->date('end_at');
+            $table->datetime('start_date');
+            $table->datetime('end_date');
+            $table->softDeletes();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
