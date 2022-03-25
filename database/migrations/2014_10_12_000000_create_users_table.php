@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('avatar')->default('avatar-default.jpg');
             $table->string('address')->nullable();
             $table->string('gender');
+            $table->date('birthday')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

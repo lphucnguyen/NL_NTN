@@ -13,17 +13,17 @@
     <title>Login | Admin NTN Shop</title>
 
     <!-- Bootstrap -->
-    <link href="{{ asset('admin_template/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="https://colorlib.com/polygon/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="{{ asset('admin_template/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="https://colorlib.com/polygon/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="{{ asset('admin_template/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <link href="https://colorlib.com/polygon/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- Animate.css -->
-    <link href="{{ asset('admin_template/vendors/animate.css/animate.min.css') }}" rel="stylesheet">
+    <link href="https://colorlib.com/polygon/vendors/animate.css/animate.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Custom Theme Style -->
-    <link href="{{ asset('admin_template/build/css/custom.min.css') }}" rel="stylesheet">
+    <link href="https://colorlib.com/polygon/build/css/custom.min.css" rel="stylesheet">
 
 </head>
 

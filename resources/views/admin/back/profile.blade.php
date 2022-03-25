@@ -17,24 +17,6 @@
     </style>
     <div class="x_content">
 
-        @if (session('notify_success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('notify_success') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @endif
-
-        @if (session('notify_fail'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                {{ session('notify_fail') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @endif
-
         <div class="col-md-3 col-sm-3  profile_left">
             <div class="profile_img">
                 <div id="crop-avatar ">

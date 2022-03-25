@@ -290,14 +290,15 @@ class HomeController extends Controller
     }
 
     //delete list product
-    public function delete_product_list(Request $request){
+    public function delete_product_list(Request $request)
+    {
         $list_product_id = $request->product_records;
 
         foreach ($list_product_id as $value) {
             $del  = Product::withTrashed()->find($value)->delete();
 
             if (!$del) {
-                return redirect()->route('admin.product')->with('notify_fail', 'Xóa sản phẩm "'.Product::find($value)->name.'" thất bại');
+                return redirect()->route('admin.product')->with('notify_fail', 'Xóa sản phẩm "' . Product::find($value)->name . '" thất bại');
             }
         }
 
@@ -325,7 +326,7 @@ class HomeController extends Controller
             $restore  = Product::withTrashed()->find($value)->restore();
 
             if (!$restore) {
-                return redirect()->route('admin.product.deletelist')->with('notify_fail', 'Khôi phục sản phẩm "'.Product::find($value)->name.'" thất bại');
+                return redirect()->route('admin.product.deletelist')->with('notify_fail', 'Khôi phục sản phẩm "' . Product::find($value)->name . '" thất bại');
             }
         }
 
@@ -505,7 +506,10 @@ class HomeController extends Controller
     //order
     public function order()
     {
-        $order = Order::all();
+        $order = Order::leftjoin('users as b', 'user_id', 'b.id')
+            ->leftjoin('users as c', 'admin_id', 'c.id')
+            ->select('order.*', 'b.fullname as user_fullname', 'c.fullname as admin_fullname')
+            ->get();
         return view('admin.back.order', compact('order'));
     }
 
@@ -521,7 +525,7 @@ class HomeController extends Controller
             ->get();
         return view('admin.back.profile', compact('info', 'history', 'order'));
     }
-    
+
     //Edit profile
     public function post_edit_profile(Request $request)
     {
