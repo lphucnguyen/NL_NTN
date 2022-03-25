@@ -24,6 +24,7 @@ Route::get('/product_delete', [HomeController::class, 'product_delete_list'])->n
 Route::post('/addproduct', [HomeController::class, 'postaddproduct'])->name('admin.product.add');
 Route::post('/product/pd/{id}', [HomeController::class, 'product_detail']);
 Route::get('/product/delete/{id}', [HomeController::class, 'delete_product']);
+Route::post('/product/delete/list', [HomeController::class, 'delete_product_list'])->name('admin.product.deletes');
 Route::get('/product/edit/{id}', [HomeController::class, 'edit_product']);
 Route::post('/product/edit/{id}', [HomeController::class, 'post_edit_product']);
 Route::get('/product/restore/{id}', [HomeController::class, 'post_restore_product']);

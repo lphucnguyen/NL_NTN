@@ -289,6 +289,21 @@ class HomeController extends Controller
         }
     }
 
+    //delete list product
+    public function delete_product_list(Request $request){
+        $list_product_id = $request->product_records;
+
+        foreach ($list_product_id as $value) {
+            $del  = Product::withTrashed()->find($value)->delete();
+
+            if (!$del) {
+                return redirect()->route('admin.product')->with('notify_fail', 'Xóa sản phẩm "'.Product::find($value)->name.'" thất bại');
+            }
+        }
+
+        return redirect()->route('admin.product')->with('notify_success', 'Đã xóa các sản phẩm thành công');
+    }
+
     //post restore product
     public function post_restore_product($id)
     {
@@ -305,7 +320,7 @@ class HomeController extends Controller
     //post restore products list
     public function post_restore_product_list(Request $request)
     {
-        $list_product_id = $request->product_id;
+        $list_product_id = $request->product_records;
         foreach ($list_product_id as $value) {
             $restore  = Product::withTrashed()->find($value)->restore();
 
@@ -490,7 +505,8 @@ class HomeController extends Controller
     //order
     public function order()
     {
-        return view('admin.back.order');
+        $order = Order::all();
+        return view('admin.back.order', compact('order'));
     }
 
     // ====================================PROFILE==================================================
@@ -505,6 +521,7 @@ class HomeController extends Controller
             ->get();
         return view('admin.back.profile', compact('info', 'history', 'order'));
     }
+    
     //Edit profile
     public function post_edit_profile(Request $request)
     {

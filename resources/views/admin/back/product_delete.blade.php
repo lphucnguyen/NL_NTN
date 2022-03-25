@@ -9,56 +9,56 @@
 @section('x_heading', 'Danh sách sản phẩm bị xóa')
 
 @section('content')
-    <div class="text-right">
-        <button class="btn btn-success text-light" type="submit" form="frmRestoreList">Restore</button>
-    </div>
     <form action="{{ route('admin.product.restorelist') }}" id="frmRestoreList" method="post">
         @csrf
-        <table id="datatable" class="table table-striped table-bordered bulk_action  rounded" style="width:100%">
-            <div>
-            </div>
-            <thead>
-                <tr class="text-center">
-                    <th>
-                        {{-- <div class="form-check">
-                        <input class="form-check-input" type="checkbox" onchange="checkAll(this)" id="checkboxAll">
-                    </div> --}}
-                    </th>
-                    <th>Mã SP</th>
-                    <th>Loại</th>
-                    <th>Sản phẩm</th>
-                    <th>Số lượng</th>
-                    <th>Giá tiền</th>
-                    <th>Thao tác</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($product_list as $k => $v)
-                    <tr>
-                        <td class="text-center">
-                            <div class="form-check">
-                                <input class="form-check-input checkboxProduct" type="checkbox" name="product_id[]"
-                                    value="{{ $v->id }}">
-                            </div>
+        <div class="table-responsive">
+            <table class="table table-striped jambo_table bulk_action">
+                <thead>
+                    <tr class="headings">
+                        <th>
+                            <input type="checkbox" id="check-all" class="flat ">
+                        </th>
+                        <th class="column-title">Mã SP </th>
+                        <th class="column-title">Loại SP </th>
+                        <th class="column-title">Tên Sản Phẩm </th>
+                        <th class="column-title">Số lượng </th>
+                        <th class="column-title">Giá tiền </th>
+                        <th class="column-title no-link last"><span class="nobr">Thao tác</span>
+                        </th>
+                        <th class="bulk-actions" colspan="6">
+                            <button class="border-0 fw-bold btn-primary rounded" type="submit" form="frmRestoreList">Khôi phục các mục đã chọn</button>
+
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach ($product_list as $k => $v)
+                    <tr class="even pointer text-center">
+                        <td class="a-center ">
+                            <input type="checkbox" class="flat table_records" name="product_records[]" value="{{ $v->id }}">
                         </td>
-                        <td class="text-center">{{ $v->id }}</td>
-                        <td>{{ $v->name_type }}</td>
-                        <td>{{ $v->name }}</td>
-                        <td class="text-center">{{ $v->quantity }}</td>
-                        <td class="text-center">{{ number_format($v->price) }} VNĐ</td>
-                        <td class="text-center">
+                        <td class=" ">{{ $v->id }}</td>
+                        <td class=" ">{{ $v->name_type }}</td>
+                        <td class=" ">{{ $v->name }}</td>
+                        <td class=" ">{{ $v->quantity }}</td>
+                        <td class=" ">{{ number_format($v->price) }} VNĐ</td>
+                        <td class=" last">
                             <a class="btn btn-success btn-sm text-light" onclick="showPD({{ $v->id }})"
                                 data-bs-toggle="modal" data-bs-target="#viewProductDetail">
                                 <i class="far fa-eye"></i> Chi tiết
                             </a>
-                            <a class="btn btn-primary btn-sm text-light" href="/admin/product/restore/{{ $v->id }}">
+                            <a class="btn btn-primary btn-sm text-light"
+                                href="/admin/product/restore/{{ $v->id }}">
                                 <i class="far fa-trash-undo"></i> Khôi phục
                             </a>
                         </td>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                    @endforeach
+
+                </tbody>
+            </table>
+        </div>
     </form>
 
 

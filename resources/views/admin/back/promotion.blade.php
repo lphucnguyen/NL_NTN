@@ -9,23 +9,6 @@
 @section('x_heading', 'Khuyến mãi')
 
 @section('content')
-    @if (session('notify_success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('notify_success') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
-
-    @if (session('notify_fail'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('notify_fail') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
     <div class="text-right text-light mb-3">
         <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addPromotion">Thêm <i
                 class="fa fa-plus"></i></a>
@@ -47,7 +30,7 @@
                 <tr class="text-center">
                     <td>{{ $k + 1 }}</td>
                     <td>{{ $v->code }}</td>
-                    <td>{{ $v->percent }}</td>
+                    <td>{{ $v->percent }}%</td>
                     <td class="text-left">{{ $v->content }}</td>
                     <td>{{ date('d-m-Y', $v->start_at) }}</td>
                     <td>{{ date('d-m-Y', $v->end_at) }}</td>
