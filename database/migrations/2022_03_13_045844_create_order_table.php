@@ -17,8 +17,8 @@ return new class extends Migration
         Schema::create('order', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');//người đặt hàng
-            $table->unsignedBigInteger('admin_id');//Người duyệt đơn hàng
-            $table->unsignedBigInteger('promotion_id');//Khuyến mãi (Nếu có)
+            $table->unsignedBigInteger('admin_id')->nullable();//Người duyệt đơn hàng
+            $table->unsignedBigInteger('promotion_id')->nullable();//Khuyến mãi (Nếu có)
             $table->string('payment_method');//Phương thức thành toán
             $table->double('total');//Tổng giá trị đơn hàng
             $table->string('status');//Trạng thái đơn hàng
