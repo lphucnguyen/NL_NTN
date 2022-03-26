@@ -5000,7 +5000,6 @@ function init_echarts() {
 
 
 $(document).ready(function () {
-
     init_sparklines();
     init_flot_chart();
     init_sidebar();
@@ -5038,9 +5037,15 @@ $(document).ready(function () {
 
 });
 
-
 $('.status_order').each(function (i) {
-    if ($(this).html() != "Chưa xác nhận") {
-        $('.table_records').eq(i).attr("disabled", true)
+    var stt = $(this).html()
+    if (stt == "Thất bại" || stt == "Đã hoàn thành" ) {
+        $('.order_records').eq(i).attr("disabled", true)
     }
+    // if($('.order_records').eq(i).is(':checked')){
+    //     // $('#submit_confirm').addClass('d-none')
+    //     alert(123)
+    // }
 })
+
+

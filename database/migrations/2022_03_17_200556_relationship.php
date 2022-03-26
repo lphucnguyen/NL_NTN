@@ -37,7 +37,7 @@ return new class extends Migration
                 ->onUpdate('cascade');
         });
 
-        //Order - Users (Order - Client/Admin)
+        //Order - Users (Order - Client/Admin) - Promotion
         Schema::table('order', function (Blueprint $table) {
             $table->foreign('user_id')
                 ->references('id')->on('users')
@@ -45,6 +45,10 @@ return new class extends Migration
                 ->onUpdate('cascade');
             $table->foreign('admin_id')
                 ->references('id')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreign('promotion_id')
+                ->references('id')->on('promotion')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
@@ -84,9 +88,9 @@ return new class extends Migration
         //Staff History - Users
         Schema::table('staff_history', function (Blueprint $table) {
             $table->foreign('staff_id')
-            ->references('id')->on('users')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
+                ->references('id')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

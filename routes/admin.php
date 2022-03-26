@@ -40,7 +40,9 @@ Route::get('/addstaff', [HomeController::class, 'addstaff']);
 Route::post('/addstaff', [HomeController::class, 'postaddstaff']);
 
 //order
-Route::get('/order', [HomeController::class, 'order']);
+Route::get('/order', [HomeController::class, 'order'])->name('admin.order');
+Route::get('/order/detail/{id}', [HomeController::class, 'order_detail']);
+Route::post('/order/action/list', [HomeController::class, 'order_action'])->name('admin.order.actionlist');
 
 //profile
 Route::get('/profile/{id}', [HomeController::class, 'profile'])->name('admin.profile');

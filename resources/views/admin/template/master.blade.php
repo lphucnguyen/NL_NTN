@@ -85,8 +85,8 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img src="{{ asset('images/avatar') }}/{{ Auth::user()->avatar }}" alt="..."
-                                class="img-circle profile_img">
+                            <img src="{{ asset('images/avatar/'.Auth::user()->avatar) }}" alt="..."
+                                class="img-circle profile_img" width="90">
                         </div>
                         <div class="profile_info">
                             <span>Xin chào,</span>
@@ -161,8 +161,8 @@
                             <li class="nav-item dropdown open" style="padding-left: 15px;">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
                                     id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{ asset('images/avatar') }}/{{ Auth::user()->avatar }}" --}}
-                                        alt="">{{ Auth::user()->fullname }}
+                                    <img src="{{ asset('images/avatar/'.Auth::user()->avatar) }}" --}}
+                                        alt="" class="img-circle">{{ Auth::user()->fullname }}
                                 </a>
                                 <div class="dropdown-menu dropdown-usermenu pull-right"
                                     aria-labelledby="navbarDropdown">

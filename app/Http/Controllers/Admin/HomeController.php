@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -511,6 +512,93 @@ class HomeController extends Controller
             ->select('order.*', 'b.fullname as user_fullname', 'c.fullname as admin_fullname')
             ->get();
         return view('admin.back.order', compact('order'));
+    }
+
+    //order detail
+    public function order_detail($id)
+    {
+        $order = Order::leftjoin('promotion as a', 'promotion_id', 'a.id')
+            ->select('order.*', 'a.percent')
+            ->where('order.id', $id)->first();
+
+        $order_detail = OrderDetail::leftjoin('product as b', 'product_id', 'b.id')
+            ->select('order_detail.*', 'b.name', 'b.description', 'b.price')
+            ->where('order_id', $id)
+            ->get();
+
+        $user = User::whereId($order->user_id)->first();
+
+        $staff = User::whereId($order->admin_id)->first();
+
+        return view('admin.back.order_detail', compact('order', 'order_detail', 'user', 'staff'));
+    }
+
+    //order action
+    public function order_action(Request $request)
+    {
+        $list_id = $request->order_records;
+
+
+        //Xác nhận đơn hàng
+        if (isset($request->submit_confirm)) {
+            foreach ($list_id as $c){
+                if(Order::find($c)->status != "Chưa xác nhận"){
+                    return redirect()->route('admin.order')->with('notify_fail', 'Hành động không hợp lí, có đơn hàng đã xác nhận. Xin kiểm tra lại!!!');
+                }
+            }
+
+            foreach ($list_id as $v) {
+                $update = Order::find($v);
+                $update->status = "Đang giao hàng";
+                $update->admin_id = Auth::id();
+                $update->delivery_date = date('Y-m-d');
+                $update->save();
+            }
+        }
+
+        //Đơn hàng hoàn thành
+        if (isset($request->submit_done)) {
+
+            foreach ($list_id as $c){
+                if(Order::find($c)->status != "Đang giao hàng"){
+                    return redirect()->route('admin.order')->with('notify_fail', 'Hành động không hợp lí. Xin kiểm tra lại!!!');
+                }
+                if(Auth::id() != Order::find($c)->admin_id && Order::find($c)->admin_id != null){
+                    return redirect()->route('admin.order')->with('notify_fail', 'Bạn không phải người đã duyệt đơn hàng này.');
+                }
+            }
+
+
+            foreach ($list_id as $v) {
+                $update = Order::find($v);
+                $update->status = "Đã hoàn thành";
+                $update->receiving_date = date('Y-m-d');
+                $update->save();
+            }
+        }
+
+        //Đơn hàng thất bại
+        if (isset($request->submit_fail)) {
+
+            foreach ($list_id as $c){
+                if(Order::find($c)->status != "Đang giao hàng"){
+                    return redirect()->route('admin.order')->with('notify_fail', 'Hành động không hợp lí. Xin kiểm tra lại!!!');
+                }
+                if(Auth::id() != Order::find($c)->admin_id && Order::find($c)->admin_id != null){
+                    return redirect()->route('admin.order')->with('notify_fail', 'Bạn không phải người đã duyệt đơn hàng này.');
+                }
+            }
+
+
+            foreach ($list_id as $v) {
+                $update = Order::find($v);
+                $update->status = "Thất bại";
+                $update->save();
+            }
+        }
+
+
+        return redirect()->route('admin.order')->with('notify_success', 'Cập nhật trạng thái đơn hàng thành công');
     }
 
     // ====================================PROFILE==================================================
