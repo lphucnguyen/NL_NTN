@@ -2,53 +2,53 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Product;
 use Livewire\Component;
 
 class Products extends Component
 {
-    public $products = [
-        [
-            "id" => 1,
-            "image" => "client_template/images/product-03.jpg",
-            "title" => 'Only Check Trouser',
-            'price' => 25000
-        ],
-        [
-            "id" => 2,
-            "image" => "client_template/images/product-03.jpg",
-            "title" => 'Only Check Trouser',
-            'price' => 25000
-        ],
-        [
-            "id" => 3,
-            "image" => "client_template/images/product-03.jpg",
-            "title" => 'Only Check Trouser',
-            'price' => 25000
-        ],
-        [
-            "id" => 4,
-            "image" => "client_template/images/product-03.jpg",
-            "title" => 'Only Check Trouser',
-            'price' => 25000
-        ]
-    ];
+    public $products = [];
+    public $type = 'all';
 
-    public $productQuickView = [
-        "id" => '',
-        "image" => "",
-        "title" => '',
-        'price' => 0
-    ];
+    public $limit = 8;
+    public $isShowModalPreviewProduct = false;
+    public $isNoLoadMore = false;
 
-    public function viewProduct($id) {
-        $this->productQuickView = array_filter($this->products, function($product) use ($id){
-            $product['id'] = $id;
-        })[0];
-        var_dump($this->productQuickView);
+    public function loadMore() {
+        $this->isShowModalPreviewProduct = false;
+        if(count($this->products) < $this->limit){
+            $this->isNoLoadMore = true;
+        }else{
+            $this->limit += 8;
+        }
+        // dd(count($this->products));
+    }
+
+    public function load($type) {
+        $this->type = $type;
+        $this->limit = 8;
+        $this->isShowModalPreviewProduct = false;
+        $this->isNoLoadMore = false;
     }
 
     public function render()
     {
+        if($this->type == 'new'){
+            $this->products = Product::take($this->limit)
+                ->orderBy('created_at', 'desc')
+                ->get();
+        }else{
+            $this->products = Product::take($this->limit)
+                ->get();
+        }
+
+        $this->dispatchBrowserEvent('isRenderedCart');
+        if(count($this->products) < $this->limit){
+            $this->isNoLoadMore = true;
+        }else{
+            $this->isNoLoadMore = false;
+        }
+
         return view('livewire.products');
     }
 }

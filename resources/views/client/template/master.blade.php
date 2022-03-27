@@ -51,7 +51,7 @@
                 <nav class="limiter-menu-desktop container">
 
                     <!-- Logo desktop -->
-                    <a href="./" class="logo text-dark">
+                    <a href="/home" class="logo text-dark">
                         <img src="{{ asset('images/system/logo.png') }}" alt="IMG-LOGO">
                     </a>
 
@@ -67,7 +67,7 @@
                             </li>
 
                             <li class="list-menu">
-                                <a href="/home/payment">Thanh Toán</a>
+                                <a href="/home/payment">Giỏ Hàng</a>
                             </li>
 
                             <li class="list-menu">
@@ -86,9 +86,19 @@
                             <i class="zmdi zmdi-search"></i>
                         </div>
 
-                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+                        <div
+                            class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
+                            data-notify={{count(Cart::getContent())}}
+                        >
                             <i class="zmdi zmdi-shopping-cart"></i>
                         </div>
+                        <a href="/home/login" class="cl2 hov-cl1 trans-04 p-l-22 p-r-11h">
+                            Đăng nhập
+                        </a>
+                        <span class="m-r-5 m-l-5"> / </span>
+                        <a href="/home/register" class="cl2 hov-cl1 trans-04">
+                            Đăng kí
+                        </a>
                     </div>
                 </nav>
             </div>
@@ -153,23 +163,13 @@
 
         <!-- Modal Search -->
         <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-            <div class="container-search-header">
-                <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-                    <img src="client/images/icons/icon-close2.png" alt="CLOSE">
-                </button>
-
-                <form class="wrap-search-header flex-w p-l-15">
-                    <button class="flex-c-m trans-04">
-                        <i class="zmdi zmdi-search"></i>
-                    </button>
-                    <input class="plh3" type="text" name="search" placeholder="Search...">
-                </form>
-            </div>
+            @livewire('search-bar')
         </div>
     </header>
 
-    <!-- Cart -->
-    @livewire('cart')
+    @livewire('shopping-cart')
+
+    @livewire('modal-product-preview') 
 
     @yield('content')
 
@@ -184,8 +184,18 @@
 
                     <ul>
                         <li class="p-b-10">
-                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                Women
+                            <a href="/home" class="stext-107 cl7 hov-cl1 trans-04">
+                                Trang Chủ
+                            </a>
+                        </li>
+                        <li class="p-b-10">
+                            <a href="/home/shop" class="stext-107 cl7 hov-cl1 trans-04">
+                                Cửa Hàng
+                            </a>
+                        </li>
+                        <li class="p-b-10">
+                            <a href="/home/payment" class="stext-107 cl7 hov-cl1 trans-04">
+                                Giỏ Hàng
                             </a>
                         </li>
 
@@ -212,11 +222,26 @@
                         Liên hệ
                     </h4>
 
-                    <p class="stext-107 cl7 size-201">
-                        Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
-                    </p>
+                    <ul>
+                        <li class="p-b-10">
+                            <p href="/home" class="stext-107 cl7 hov-cl1 trans-04">
+                                Giám đốc: Nguyễn Thị Tú Như
+                            </p>
+                        </li>
+                        <li class="p-b-10">
+                            <p href="/home" class="stext-107 cl7 hov-cl1 trans-04">
+                                Phó Giám Đốc: Đỗ Ngọc Hoài Thương
+                            </p>
+                        </li>
+                        <li class="p-b-10">
+                            <p href="/home" class="stext-107 cl7 hov-cl1 trans-04">
+                                Nhân viên: Lê Phúc Nguyên
+                            </p>
+                        </li>
 
-                    <div class="p-t-27">
+                    </ul>
+
+                    {{-- <div class="p-t-27">
                         <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
                             <i class="fa fa-facebook"></i>
                         </a>
@@ -228,7 +253,7 @@
                         <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
                             <i class="fa fa-pinterest-p"></i>
                         </a>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="col-sm-6 col-lg-3 p-b-50">
@@ -251,7 +276,7 @@
                 </div>
             </div>
 
-            <div class="p-t-40">
+            {{-- <div class="p-t-40">
 
                 <p class="stext-107 cl6 txt-center">
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -261,7 +286,7 @@
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
                 </p>
-            </div>
+            </div> --}}
         </div>
     </footer>
 
@@ -271,9 +296,6 @@
             <i class="zmdi zmdi-chevron-up"></i>
         </span>
     </div>
-
-    <!-- Modal1 -->
-    {{-- @livewire('product-preview') --}}
 
     <!--===============================================================================================-->
     <script src="{{asset('client_template/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
@@ -297,7 +319,6 @@
     <script src="{{asset('client_template/vendor/daterangepicker/daterangepicker.js')}}"></script>
     <!--===============================================================================================-->
     <script src="{{asset('client_template/vendor/slick/slick.min.js')}}"></script>
-    <script src="{{asset('client_template/js/slick-custom.js')}}"></script>
     <!--===============================================================================================-->
     <script src="{{asset('client_template/vendor/parallax100/parallax100.js')}}"></script>
     <script>
@@ -349,11 +370,23 @@
 
         /*---------------------------------------------*/
 
-        $('.js-addcart-detail').each(function() {
-            var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-            $(this).on('click', function() {
-                swal(nameProduct, "is added to cart !", "success");
-            });
+        // $('.js-addcart-detail').each(function() {
+        //     var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+        //     $(this).on('click', function() {
+        //         swal(nameProduct, "is added to cart !", "success");
+        //     });
+        // });
+
+        window.addEventListener('swal', event => {
+            // alert('Name updated to: ' + event.detail.newName);
+            swal(event.detail.title, event.detail.text, event.detail.icon);
+        });
+
+        window.addEventListener('productAdded', event => {
+            const {total} = event.detail;
+            const iconNoti = document.querySelector('.icon-header-noti');
+
+            iconNoti.setAttribute("data-notify", total);
         });
     </script>
     <!--===============================================================================================-->
@@ -373,11 +406,14 @@
             })
         });
     </script>
+    @livewireScripts
     <!--===============================================================================================-->
     <script src="{{asset('client_template/js/main.js')}}"></script>
     <script src="{{asset('client_template/js/my-custom.js')}}"></script>
 
-    @livewireScripts
+    <script src="{{asset('client_template/js/slick-custom.js')}}"></script>
+
+    @stack('scripts')
 </body>
 
 </html>
