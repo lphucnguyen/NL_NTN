@@ -32,5 +32,8 @@ Route::group(['prefix' => '/home'], function () {
     Route::get('/payment', [HomeController::class, 'payment']);
     Route::get('/about', [HomeController::class, 'about']);
     Route::get('/contact', [HomeController::class, 'contact']);
-    Route::get('/product_detail', [HomeController::class, 'product_detail']);
+    Route::get('/product_detail/{id}', [HomeController::class, 'product_detail']);
+    Route::get('/checkout', [HomeController::class, 'checkout']);
+    Route::get('/login', [HomeController::class, 'login']);
+    Route::get('/register', [HomeController::class, 'register']);
 });

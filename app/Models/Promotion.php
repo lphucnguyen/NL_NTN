@@ -21,5 +21,4 @@ class Promotion extends Model
     ];
 
     protected $dates = ['deleted_at'];
-
 }
