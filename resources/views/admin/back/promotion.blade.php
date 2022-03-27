@@ -36,7 +36,9 @@
                     <td>{{ date('d-m-Y', $v->end_at) }}</td>
                     <td>
                         {{-- <button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Sửa</button> --}}
-                        <a class="btn btn-danger btn-sm text-light"><i class="fa fa-trash"></i> Xóa</a>
+                        <a class="btn btn-danger btn-sm text-light" href="/admin/promotion/del/{{ $v->id }}">
+                            <i class="fa fa-trash"></i> Xóa
+                        </a>
                     </td>
                 </tr>
             @endforeach
@@ -64,7 +66,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="code" class="form-label">Mã khuyến mãi:</label>
-                            <input required type="text" id="code" name="code" minlength="6" maxlength="20" class="form-control text-uppercase" placeholder="Mã khuyến mãi">
+                            <input required type="text" id="code" name="code" minlength="6" maxlength="20" style="text-transform:uppercase" class="form-control text-uppercase" placeholder="Mã khuyến mãi">
                         </div>
                         <div class="form-group">
                             <label for="start_date" class="form-label">Ngày bắt đầu:</label>

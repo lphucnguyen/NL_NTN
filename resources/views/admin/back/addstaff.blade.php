@@ -14,24 +14,6 @@
         <img src="{{ asset('images/system/logo.png') }}" width="280" alt="logo" />
     </div>
 
-    @if (session('notify_success'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('notify_success') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    @endif
-
-    @if (session('notify_fail'))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{ session('notify_fail') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    @endif
-
     <section class="login_content">
         <form action="" id="frmAddStaff" class="form-horizontal form-label-left" method="post" autocomplete="off">
             @csrf

@@ -61,7 +61,7 @@ class HomeController extends Controller
     }
 
     //post add product
-    public function postaddproduct(Request $request)
+    public function post_add_product(Request $request)
     {
 
         $addP = DB::table('product')->insert([
@@ -123,6 +123,70 @@ class HomeController extends Controller
         } else {
             return back()->with('notify_fail', 'Lỗi thêm sản phẩm thất bại!!!');
         }
+    }
+
+    //add product list
+    public function add_product_list()
+    {
+        $product_type = ProductType::all();
+
+        return view('admin.back.add_product_list', compact('product_type'));
+    }
+
+    //post add product list
+    public function post_add_product_list(Request $request)
+    {
+        $sl = count($request->name);
+        $content_history = "";
+        for ($i = 0; $i < $sl; $i++) {
+            $addP = DB::table('product')->insert([
+                'type' => $request->type[$i],
+                'name' => $request->name[$i],
+                'description' => $request->description[$i],
+                'price' => $request->price[$i],
+                'quantity' => $request->quantity[$i],
+            ]);
+
+            $lastid =  DB::getPdo('product')->lastInsertId();
+
+            //Kiểm tra file img1
+            // if ($request->hasFile('product_img1')) {
+                $img1 = $request->product_img1[$i];
+
+                $name_img1 = "img1_" . date("Y_m_d", time()) . "_" . $lastid . "." . $img1->getClientOriginalExtension();
+                $img1->move('images/products/', $name_img1);
+            // }
+            //Kiểm tra file img2
+            // if ($request->hasFile('product_img2')) {
+                $img2 = $request->product_img2[$i];
+
+                $name_img2 = "img2_" . date("Y_m_d", time()) . "_" . $lastid . "." . $img2->getClientOriginalExtension();
+                $img2->move('images/products/', $name_img2);
+            // }
+            //Kiểm tra file img3
+            // if ($request->hasFile('product_img3')) {
+                $img3 = $request->product_img3[$i];
+
+                $name_img3 = "img3_" . date("Y_m_d", time()) . "_" . $lastid . "." . $img3->getClientOriginalExtension();
+                $img3->move('images/products/', $name_img3);
+            // }
+
+            $addImg = ProductImage::insert([
+                ['name' => $name_img1, 'product_id' => $lastid],
+                ['name' => $name_img2, 'product_id' => $lastid],
+                ['name' => $name_img3, 'product_id' => $lastid]
+            ]);
+
+            $content_history .= "● ID sản phẩm: $lastid\n● Tên sản phẩm: ".$request->name[$i]."\n\n";
+        }
+
+        $history = new StaffHistory;
+        $history->staff_id = Auth::id();
+        $history->title = "Thêm danh sách sản phẩm mới";
+        $history->content = "Các sản phẩm vừa thêm:\n".$content_history ;
+        $history->save();
+
+        return redirect()->route('admin.product')->with('notify_success', 'Đã thêm danh sách sản phẩm mới thành công!');
     }
 
     //ajax product detail
@@ -429,6 +493,7 @@ class HomeController extends Controller
         }
 
         $add = Promotion::create($request->all());
+        $add->code = strtoupper($request->code);
 
         if ($add->save()) {
 
@@ -441,6 +506,29 @@ class HomeController extends Controller
             return redirect()->route('admin.promotion')->with('notify_success', 'Đã thêm mã khuyến mãi mới');
         } else {
             return redirect()->route('admin.promotion')->with('notify_fail', 'Thêm mã khuyến mãi thất bại');
+        }
+    }
+
+    //delete promotion
+    public function delete_promotion($id)
+    {
+
+        $promotion = Promotion::find($id);
+
+        $history = new StaffHistory;
+        $history->staff_id = Auth::id();
+        $history->title = "Xóa mã khuyến mãi";
+        $history->content = "Thông tin mã khuyến mãi đã xóa:\n" .
+            "● Mã khuyến mãi: $promotion->code\n" .
+            "● Giá trị: $promotion->percent%\n" .
+            "● Ngày bắt đầu: " . date('d/m/Y', strtotime($promotion->start_date)) . "\n" .
+            "● Ngày kết thúc: " . date('d/m/Y', strtotime($promotion->end_date)) . "";
+        $history->save();
+
+        if (Promotion::find($id)->delete()) {
+            return redirect()->route('admin.promotion')->with('notify_success', 'Xóa mã khuyến mãi thành công');
+        } else {
+            return redirect()->route('admin.promotion')->with('notify_fail', 'Xóa mã khuyến mãi thất bại!!!');
         }
     }
 
@@ -541,8 +629,8 @@ class HomeController extends Controller
 
         //Xác nhận đơn hàng
         if (isset($request->submit_confirm)) {
-            foreach ($list_id as $c){
-                if(Order::find($c)->status != "Chưa xác nhận"){
+            foreach ($list_id as $c) {
+                if (Order::find($c)->status != "Chưa xác nhận") {
                     return redirect()->route('admin.order')->with('notify_fail', 'Hành động không hợp lí, có đơn hàng đã xác nhận. Xin kiểm tra lại!!!');
                 }
             }
@@ -559,11 +647,11 @@ class HomeController extends Controller
         //Đơn hàng hoàn thành
         if (isset($request->submit_done)) {
 
-            foreach ($list_id as $c){
-                if(Order::find($c)->status != "Đang giao hàng"){
+            foreach ($list_id as $c) {
+                if (Order::find($c)->status != "Đang giao hàng") {
                     return redirect()->route('admin.order')->with('notify_fail', 'Hành động không hợp lí. Xin kiểm tra lại!!!');
                 }
-                if(Auth::id() != Order::find($c)->admin_id && Order::find($c)->admin_id != null){
+                if (Auth::id() != Order::find($c)->admin_id && Order::find($c)->admin_id != null) {
                     return redirect()->route('admin.order')->with('notify_fail', 'Bạn không phải người đã duyệt đơn hàng này.');
                 }
             }
@@ -580,11 +668,11 @@ class HomeController extends Controller
         //Đơn hàng thất bại
         if (isset($request->submit_fail)) {
 
-            foreach ($list_id as $c){
-                if(Order::find($c)->status != "Đang giao hàng"){
+            foreach ($list_id as $c) {
+                if (Order::find($c)->status != "Đang giao hàng") {
                     return redirect()->route('admin.order')->with('notify_fail', 'Hành động không hợp lí. Xin kiểm tra lại!!!');
                 }
-                if(Auth::id() != Order::find($c)->admin_id && Order::find($c)->admin_id != null){
+                if (Auth::id() != Order::find($c)->admin_id && Order::find($c)->admin_id != null) {
                     return redirect()->route('admin.order')->with('notify_fail', 'Bạn không phải người đã duyệt đơn hàng này.');
                 }
             }

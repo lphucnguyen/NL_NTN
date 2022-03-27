@@ -108,6 +108,7 @@
                                             class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/product">Danh sách sản phẩm</a></li>
+                                        <li><a href="/admin/addproduct/list">Thêm nhiều sản phẩm</a></li>
                                         <li><a href="/admin/product_type">Dánh sách loại sản phẩm</a></li>
                                         @if (Auth::id() == 1)
                                         <li><a href="{{ route('admin.product.deletelist') }}">Dánh sách sản phẩm đã xóa</a></li>

@@ -28,8 +28,18 @@
                     <th class="column-title">Số lượng</th>
                     <th class="column-title">Giá tiền</th>
                     <th class="column-title">Thao tác</th>
-                    <th class="bulk-actions text-left" colspan="6">
-                        <button class="border-0 fw-bold btn-danger rounded" type="submit" form="frmDeleteList">Xóa các mục đã chọn</button>
+                    <th class="bulk-actions text-left " colspan="6">
+                        <div class="dropdown text-dark">
+                            <button class="btn btn-transparent border-0 p-0 m-0 text-light dropdown-toggle text-dark" type="button"
+                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Thao tác
+                            </button>
+                            <div class="dropdown-menu rounded" aria-labelledby="dropdownMenuButton">
+                                <button class="dropdown-item btn_submit" type="submit" form="frmDeleteList">
+                                    Xóa các mục đã chọn
+                                </button>
+                            </div>
+                        </div>
                     </th>
                 </tr>
             </thead>
@@ -205,6 +215,7 @@
     <script src="{{ asset('js/admin_product.js') }}"></script>
     <script>
         function readImg1(input) {
+            console.log(input)
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
