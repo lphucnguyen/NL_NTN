@@ -129,7 +129,7 @@
                                         <td>{{ $k + 1 }}</td>
                                         <td>{{ $v->fullname }}</td>
                                         <td>{{ $v->payment_method }}</td>
-                                        <td>{{ $v->total }}</td>
+                                        <td>{{ number_format($v->total) }} VNĐ</td>
                                         <td class="vertical-align-mid">
                                             {{ $v->status }}
                                         </td>

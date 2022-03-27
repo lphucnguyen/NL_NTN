@@ -359,13 +359,28 @@ class HomeController extends Controller
     {
         $list_product_id = $request->product_records;
 
+        $content_history = "";
+
         foreach ($list_product_id as $value) {
+            $product = Product::find($value);
+
+            $content_history .= "● ID sản phẩm: $value\n" .
+            "● Tên sản phẩm: $product->name\n" .
+            "● Loại sản phẩm: " . ProductType::whereId($product->type)->first()->name_type . "\n\n";
+
             $del  = Product::withTrashed()->find($value)->delete();
 
             if (!$del) {
                 return redirect()->route('admin.product')->with('notify_fail', 'Xóa sản phẩm "' . Product::find($value)->name . '" thất bại');
             }
+
         }
+
+        $history = new StaffHistory;
+        $history->staff_id = Auth::id();
+        $history->title = "Xóa danh sách sản phẩm";
+        $history->content = "Sản phẩm và các hình ảnh liên quan đã bị xóa\nThông tin danh sách sản phẩm đã xóa:\n".$content_history;
+        $history->save();
 
         return redirect()->route('admin.product')->with('notify_success', 'Đã xóa các sản phẩm thành công');
     }
@@ -625,7 +640,7 @@ class HomeController extends Controller
     public function order_action(Request $request)
     {
         $list_id = $request->order_records;
-
+        $content_history = "";
 
         //Xác nhận đơn hàng
         if (isset($request->submit_confirm)) {
@@ -637,10 +652,15 @@ class HomeController extends Controller
 
             foreach ($list_id as $v) {
                 $update = Order::find($v);
+
+                $content_history = "● ID đơn hàng: $v\n".
+                "● Trạng thái đơn hàng: \"$update->status\" ➔ \"Đang giao hàng\" \n\n";
+
                 $update->status = "Đang giao hàng";
                 $update->admin_id = Auth::id();
                 $update->delivery_date = date('Y-m-d');
                 $update->save();
+
             }
         }
 
@@ -659,6 +679,10 @@ class HomeController extends Controller
 
             foreach ($list_id as $v) {
                 $update = Order::find($v);
+
+                $content_history = "● ID đơn hàng: $v\n".
+                "● Trạng thái đơn hàng: \"$update->status\" ➔ \"Đã hoàn thành\" \n\n";
+
                 $update->status = "Đã hoàn thành";
                 $update->receiving_date = date('Y-m-d');
                 $update->save();
@@ -680,11 +704,20 @@ class HomeController extends Controller
 
             foreach ($list_id as $v) {
                 $update = Order::find($v);
+
+                $content_history = "● ID đơn hàng: $v\n".
+                "● Trạng thái đơn hàng: \"$update->status\" ➔ \"Thất bại\" \n\n";
+
                 $update->status = "Thất bại";
                 $update->save();
             }
         }
 
+        $history = new StaffHistory;
+        $history->staff_id = Auth::id();
+        $history->title = "Cập nhật trạng thái đơn hàng";
+        $history->content = "Trang thái đơn hàng đã được cập nhật:\n".$content_history;
+        $history->save();
 
         return redirect()->route('admin.order')->with('notify_success', 'Cập nhật trạng thái đơn hàng thành công');
     }

@@ -28,15 +28,13 @@
     <!-- starrr -->
     <link href="https://colorlib.com/polygon/vendors/starrr/dist/starrr.css" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
-    <link href="https://colorlib.com/polygon/vendors/bootstrap-daterangepicker/daterangepicker.css"
-        rel="stylesheet">
+    <link href="https://colorlib.com/polygon/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <!-- Datatables -->
     <link href="https://colorlib.com/polygon/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css"
         rel="stylesheet">
     <link href="https://colorlib.com/polygon/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css"
         rel="stylesheet">
-    <link
-        href="https://colorlib.com/polygon/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css"
+    <link href="https://colorlib.com/polygon/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css"
         rel="stylesheet">
     <link href="https://colorlib.com/polygon/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css"
         rel="stylesheet">
@@ -74,8 +72,8 @@
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
                         <a href="/admin" class="site_title">
-                            <img src="{{ asset('images/system/logo.png') }}" class="bg-light rounded-circle"
-                                width="40" alt="logo" />
+                            <img src="{{ asset('images/system/logo.png') }}" class="bg-light rounded-circle" width="40"
+                                alt="logo" />
                             <span>𝓝𝓣𝓝 𝓢𝓽𝓸𝓻𝓮</span>
                         </a>
                     </div>
@@ -85,7 +83,7 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img src="{{ asset('images/avatar/'.Auth::user()->avatar) }}" alt="..."
+                            <img src="{{ asset('images/avatar/' . Auth::user()->avatar) }}" alt="..."
                                 class="img-circle profile_img" width="90">
                         </div>
                         <div class="profile_info">
@@ -111,7 +109,8 @@
                                         <li><a href="/admin/addproduct/list">Thêm nhiều sản phẩm</a></li>
                                         <li><a href="/admin/product_type">Dánh sách loại sản phẩm</a></li>
                                         @if (Auth::id() == 1)
-                                        <li><a href="{{ route('admin.product.deletelist') }}">Dánh sách sản phẩm đã xóa</a></li>
+                                            <li><a href="{{ route('admin.product.deletelist') }}">Dánh sách sản phẩm
+                                                    đã xóa</a></li>
                                         @endif
                                     </ul>
                                 </li>
@@ -120,7 +119,9 @@
                                             class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/staff">Danh sách nhân viên</a></li>
-                                        <li><a href="/admin/addstaff">Tạo tài khoản</a></li>
+                                        @if (Auth::id() == 1)
+                                            <li><a href="/admin/addstaff">Tạo tài khoản</a></li>
+                                        @endif
                                     </ul>
                                 </li>
                                 <li>
@@ -162,8 +163,8 @@
                             <li class="nav-item dropdown open" style="padding-left: 15px;">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
                                     id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{ asset('images/avatar/'.Auth::user()->avatar) }}" --}}
-                                        alt="" class="img-circle">{{ Auth::user()->fullname }}
+                                    <img src="{{ asset('images/avatar/' . Auth::user()->avatar) }}" --}} alt=""
+                                        class="img-circle">{{ Auth::user()->fullname }}
                                 </a>
                                 <div class="dropdown-menu dropdown-usermenu pull-right"
                                     aria-labelledby="navbarDropdown">
@@ -273,7 +274,7 @@
                                     <h2><b> @yield('x_heading') </b></h2>
                                     <div class="clearfix"></div>
                                 </div>
-                                <div class="x_content" >
+                                <div class="x_content">
                                     @if (session('notify_success'))
                                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                                             {{ session('notify_success') }}

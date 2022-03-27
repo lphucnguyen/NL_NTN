@@ -20,11 +20,11 @@ Route::get('/logout', [HomeController::class, 'logout']);
 
 //Product
 Route::get('/product', [HomeController::class, 'product'])->name('admin.product');
-Route::get('/product_delete', [HomeController::class, 'product_delete_list'])->name('admin.product.deletelist')->middleware('UserAdmin');
 Route::post('/addproduct', [HomeController::class, 'post_add_product'])->name('admin.product.add');
 Route::get('/addproduct/list', [HomeController::class, 'add_product_list'])->name('admin.product.addlist');
 Route::post('/addproduct/list', [HomeController::class, 'post_add_product_list']);
 Route::post('/product/pd/{id}', [HomeController::class, 'product_detail']);
+Route::get('/product_delete', [HomeController::class, 'product_delete_list'])->name('admin.product.deletelist')->middleware('UserAdmin');
 Route::get('/product/delete/{id}', [HomeController::class, 'delete_product']);
 Route::post('/product/delete/list', [HomeController::class, 'delete_product_list'])->name('admin.product.deletes');
 Route::get('/product/edit/{id}', [HomeController::class, 'edit_product']);
@@ -39,8 +39,8 @@ Route::get('/promotion/del/{id}', [HomeController::class, 'delete_promotion']);
 
 //staff
 Route::get('/staff', [HomeController::class, 'staff']);
-Route::get('/addstaff', [HomeController::class, 'addstaff']);
-Route::post('/addstaff', [HomeController::class, 'postaddstaff']);
+Route::get('/addstaff', [HomeController::class, 'addstaff'])->middleware('UserAdmin');
+Route::post('/addstaff', [HomeController::class, 'postaddstaff'])->middleware('UserAdmin');
 
 //order
 Route::get('/order', [HomeController::class, 'order'])->name('admin.order');
