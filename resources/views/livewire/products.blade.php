@@ -26,7 +26,7 @@
             <!-- Block2 -->
             <div class="block2">
                 <div class="block2-pic hov-img0">
-                    <img src="{{asset(count($product->images) > 0 ? $product->images[0]->name : 'client_template/images/product-1.png')}}" alt="IMG-PRODUCT">
+                    <img src="{{asset(count($product->images) > 0 ? '/images/products/' . $product->images[0]->name : 'client_template/images/product-1.png')}}" alt="IMG-PRODUCT">
                     {{-- {{print_r($product->images)}} --}}
                     {{-- <img src="{{asset('client_template/images/product-03.jpg')}}" alt="IMG-PRODUCT"> --}}
                     <button

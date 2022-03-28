@@ -16,17 +16,17 @@
                             <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
                             <div class="slick3 gallery-lb">
-                                {{-- @foreach($productQuickView['images'] as $image)
-                                <div class="item-slick3" data-thumb="/client_template/images/product-1.png">
+                                @foreach($productQuickView->images as $image)
+                                <div class="item-slick3" data-thumb={{asset('/images/products/' . $image->name)}}>
                                     <div class="wrap-pic-w pos-relative">
-                                        <img src={{asset(empty($image) ? "/client_template/images/product-1.png" : $image)}} alt="IMG-PRODUCT">
+                                        <img src={{asset('/images/products/' . $image->name)}} alt="IMG-PRODUCT">
 
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href={{asset(empty($image) ? "/client_template/images/product-1.png" : $image)}}>
+                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href={{asset('/images/products/' . $image->name)}}>
                                             <i class="fa fa-expand"></i>
                                         </a>
                                     </div>
                                 </div>
-                                @endforeach --}}
+                                @endforeach
                             </div>
                         </div>
                     </div>

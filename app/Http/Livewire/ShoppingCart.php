@@ -90,14 +90,5 @@ class ShoppingCart extends Component
         $this->total = Cart::getTotal();
          
         return view('livewire.shopping-cart');
-
-        // if(Route::current()->uri != 'home/payment'){
-        //     // $this->products = ShoppingCart::getContent();
-        //     // $this->total = ShoppingCart::getTotal();
-    
-        //     return view('livewire.cart');
-        // }else{
-        //     return;
-        // }
     }
 }

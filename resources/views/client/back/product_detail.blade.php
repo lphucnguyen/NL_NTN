@@ -36,11 +36,11 @@
 
                             <div class="slick3 gallery-lb">
                                 @foreach($images as $image)
-                                <div class="item-slick3" data-thumb={{$image->name}}>
+                                <div class="item-slick3" data-thumb={{asset('/images/products/' . $image->name)}}>
                                     <div class="wrap-pic-w pos-relative">
-                                        <img src={{$image->name}} alt="IMG-PRODUCT">
+                                        <img src={{asset('/images/products/' . $image->name)}} alt="IMG-PRODUCT">
 
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href={{$image->name}}>
+                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href={{asset('/images/products/' . $image->name)}}>
                                             <i class="fa fa-expand"></i>
                                         </a>
                                     </div>
@@ -286,7 +286,7 @@
                         <!-- Block2 -->
                         <div class="block2">
                             <div class="block2-pic hov-img0">
-                                <img src={{count($productRelated->images) > 0 ? $productRelated->images[0]->name : ''}} alt="IMG-PRODUCT">
+                                <img src={{count($productRelated->images) > 0 ? asset('/images/products/' . $productRelated->images[0]->name) : ''}} alt="IMG-PRODUCT">
 
                                 <button type="button" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                                     Xem Nhanh

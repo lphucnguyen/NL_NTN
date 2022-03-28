@@ -16,18 +16,37 @@
         </span>
     </div>
     <div class="d-flex justify-content-center align-items-center m-t-70 m-b-70">
-        <form>
+        <form method="POST" action={{ route('submitLogin') }}>
+            @csrf
             <div class="wrap-login">
                 <h4 class="mtext-109 cl2 p-b-30 txt-center">ĐĂNG NHẬP</h4>
+
+                @if ($errors->any())
+                    <div>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li class="text-danger">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                @if (\Session::has('success'))
+                    <div>
+                        <ul>
+                            <li class="text-success">{{ \Session::get('success') }}</li>
+                        </ul>
+                    </div>
+                @endif
 
                 <div class="m-t-20">
                     <div class="m-t-20">
                         <label class="stext-110 cl2">Email:</label>
-                        <input type="text" class="mtext-107 clblack p-l-20 p-r-20 p-t-15 p-b-15 w-full plh2 bglight" />
+                        <input type="text" name="email" class="mtext-107 clblack p-l-20 p-r-20 p-t-15 p-b-15 w-full plh2 bglight" />
                     </div>
                     <div class="m-t-20">
                         <label class="stext-110 cl2">Mật khẩu:</label>
-                        <input type="text" class="mtext-107 clblack p-l-20 p-r-20 p-t-15 p-b-15 w-full plh2 bglight" />
+                        <input type="password" name="password" class="mtext-107 clblack p-l-20 p-r-20 p-t-15 p-b-15 w-full plh2 bglight" />
                     </div>
                 </div>
             </div>      

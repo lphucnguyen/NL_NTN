@@ -25,10 +25,14 @@
                             <tr class="table_row">
                                 <td class="column-1">
                                     <div wire:click="$emit('deleteProductCart', {{$product->id}})" class="how-itemcart1">
-                                        <img src="{{asset($product->image)}}" alt="IMG">
+                                        <img src="{{asset('/images/products/' . $product->attributes->image)}}" alt="IMG">
                                     </div>
                                 </td>
-                                <td class="column-2">{{$product->name}}</td>
+                                <td class="column-2">
+                                    <a href="/home/product_detail/{{$product->id}}" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+                                        {{$product->name}}
+                                    </a>
+                                </td>
                                 <td class="column-3">{{number_format($product->price, 3, '.', ',')}} VND</td>
                                 <td class="column-4">
                                     <div class="wrap-num-product flex-w m-l-auto m-r-0">
