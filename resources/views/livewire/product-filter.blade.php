@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="flex-w flex-sb-m p-b-52">
 		<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-			<h3>SẢN PHẨM CỬA HÀNG</h3>
+			<h3 class="mtext-109 cl2 p-b-30 txt-center">SẢN PHẨM CỬA HÀNG</h3>
 		</div>
 
 		<div class="flex-w flex-c-m m-tb-10">
@@ -164,7 +164,7 @@
 			<!-- Block2 -->
 			<div class="block2">
 				<div class="block2-pic hov-img0">
-					<img src="{{asset(count($product->images) > 0 ? $product->images[0]->name : 'client_template/images/product-1.png')}}" alt="IMG-PRODUCT">
+					<img src="{{asset(count($product->images) > 0 ? '/images/products/' . $product->images[0]->name : 'client_template/images/product-1.png')}}" alt="IMG-PRODUCT">
 					<button
 						type="button"
 						wire:click="$emit('viewProduct', {{ $product->id }})"
@@ -192,7 +192,7 @@
 
 		@if(count($products) == 0)
 		<div class="col-12">
-			<h4 class="my-3 txt-center r">Không tìm thấy sản phẩm</h4>
+			<h4 class="smtext-109 cl2 p-b-30 txt-center">Không tìm thấy sản phẩm</h4>
 		</div>
 		@endif
 	</div>

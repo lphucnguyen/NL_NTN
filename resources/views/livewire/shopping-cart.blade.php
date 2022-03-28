@@ -22,11 +22,11 @@
                 @foreach($products as $product)
                 <li class="header-cart-item flex-w flex-t m-b-12">
                     <div class="header-cart-item-img" wire:click="deleteProductCart({{$product->id}})">
-                        <img src="{{asset($product->image)}}" alt="IMG">
+                        <img src="{{asset('/images/products/' . $product->attributes->image)}}" alt="IMG">
                     </div>
 
                     <div class="header-cart-item-txt p-t-8">
-                        <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+                        <a href="/home/product_detail/{{$product->id}}" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
                             {{$product->name}}
                         </a>
 
