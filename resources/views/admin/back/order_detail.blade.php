@@ -165,13 +165,13 @@
     </section>
     <!-- this row will not appear when printing -->
     @if ($staff != null)
-    <div class="row no-print">
+    {{-- <div class="row no-print">
         <div class=" ">
             <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
             <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i>
                 Generate PDF</button>
         </div>
-    </div>
+    </div> --}}
     @endif
 
 @stop

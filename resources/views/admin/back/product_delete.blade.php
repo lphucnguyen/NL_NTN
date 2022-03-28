@@ -26,34 +26,45 @@
                         <th class="column-title no-link last"><span class="nobr">Thao tác</span>
                         </th>
                         <th class="bulk-actions" colspan="6">
-                            <button class="border-0 fw-bold btn-primary rounded" type="submit" form="frmRestoreList">Khôi phục các mục đã chọn</button>
-
+                            <div class="dropdown text-light">
+                                <button class="btn btn-transparent border-0 p-0 m-0 text-light dropdown-toggle text-light"
+                                    type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    Thao tác
+                                </button>
+                                <div class="dropdown-menu rounded" aria-labelledby="dropdownMenuButton">
+                                    <button class="dropdown-item btn_submit" type="submit" form="frmRestoreList">
+                                        Khôi phục các mục đã chọn
+                                    </button>
+                                </div>
+                            </div>
                         </th>
                     </tr>
                 </thead>
 
                 <tbody>
                     @foreach ($product_list as $k => $v)
-                    <tr class="even pointer text-center">
-                        <td class="a-center ">
-                            <input type="checkbox" class="flat table_records" name="product_records[]" value="{{ $v->id }}">
-                        </td>
-                        <td class=" ">{{ $v->id }}</td>
-                        <td class=" ">{{ $v->name_type }}</td>
-                        <td class=" ">{{ $v->name }}</td>
-                        <td class=" ">{{ $v->quantity }}</td>
-                        <td class=" ">{{ number_format($v->price) }} VNĐ</td>
-                        <td class=" last">
-                            <a class="btn btn-success btn-sm text-light" onclick="showPD({{ $v->id }})"
-                                data-bs-toggle="modal" data-bs-target="#viewProductDetail">
-                                <i class="far fa-eye"></i> Chi tiết
-                            </a>
-                            <a class="btn btn-primary btn-sm text-light"
-                                href="/admin/product/restore/{{ $v->id }}">
-                                <i class="far fa-trash-undo"></i> Khôi phục
-                            </a>
-                        </td>
-                    </tr>
+                        <tr class="even pointer text-center">
+                            <td class="a-center ">
+                                <input type="checkbox" class="flat table_records" name="product_records[]"
+                                    value="{{ $v->id }}">
+                            </td>
+                            <td class=" ">{{ $v->id }}</td>
+                            <td class=" ">{{ $v->name_type }}</td>
+                            <td class=" ">{{ $v->name }}</td>
+                            <td class=" ">{{ $v->quantity }}</td>
+                            <td class=" ">{{ number_format($v->price) }} VNĐ</td>
+                            <td class=" last">
+                                <a class="btn btn-success btn-sm text-light" onclick="showPD({{ $v->id }})"
+                                    data-bs-toggle="modal" data-bs-target="#viewProductDetail">
+                                    <i class="far fa-eye"></i> Chi tiết
+                                </a>
+                                <a class="btn btn-primary btn-sm text-light"
+                                    href="/admin/product/restore/{{ $v->id }}">
+                                    <i class="far fa-trash-undo"></i> Khôi phục
+                                </a>
+                            </td>
+                        </tr>
                     @endforeach
 
                 </tbody>

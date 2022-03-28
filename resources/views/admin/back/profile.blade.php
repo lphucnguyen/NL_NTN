@@ -212,7 +212,7 @@
                         </div>
                         <div class="form-group">
                             <label for="birthday" class="form-label">Ngày sinh:</label>
-                            <input type="date" id="birthday" name="birthday" value="{{ Auth::user()->birthday }}"
+                            <input type="date" id="birthday" name="birthday" value="{{ date('Y-m-d', strtotime(Auth::user()->birthday)) }}"
                                 class="form-control" required>
                         </div>
                     </form>

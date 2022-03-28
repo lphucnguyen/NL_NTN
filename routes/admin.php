@@ -38,9 +38,11 @@ Route::post('/promotion/add', [HomeController::class, 'post_add_promotion'])->na
 Route::get('/promotion/del/{id}', [HomeController::class, 'delete_promotion']);
 
 //staff
-Route::get('/staff', [HomeController::class, 'staff']);
+Route::get('/staff', [HomeController::class, 'staff'])->name('admin.staff');
 Route::get('/addstaff', [HomeController::class, 'addstaff'])->middleware('UserAdmin');
 Route::post('/addstaff', [HomeController::class, 'postaddstaff'])->middleware('UserAdmin');
+Route::get('/staff/del/{id}', [HomeController::class, 'delete_staff'])->middleware('UserAdmin');
+Route::post('/staff/edit', [HomeController::class, 'edit_staff'])->name('admin.staff.edit')->middleware('UserAdmin');
 
 //order
 Route::get('/order', [HomeController::class, 'order'])->name('admin.order');

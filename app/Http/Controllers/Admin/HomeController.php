@@ -151,24 +151,24 @@ class HomeController extends Controller
 
             //Kiểm tra file img1
             // if ($request->hasFile('product_img1')) {
-                $img1 = $request->product_img1[$i];
+            $img1 = $request->product_img1[$i];
 
-                $name_img1 = "img1_" . date("Y_m_d", time()) . "_" . $lastid . "." . $img1->getClientOriginalExtension();
-                $img1->move('images/products/', $name_img1);
+            $name_img1 = "img1_" . date("Y_m_d", time()) . "_" . $lastid . "." . $img1->getClientOriginalExtension();
+            $img1->move('images/products/', $name_img1);
             // }
             //Kiểm tra file img2
             // if ($request->hasFile('product_img2')) {
-                $img2 = $request->product_img2[$i];
+            $img2 = $request->product_img2[$i];
 
-                $name_img2 = "img2_" . date("Y_m_d", time()) . "_" . $lastid . "." . $img2->getClientOriginalExtension();
-                $img2->move('images/products/', $name_img2);
+            $name_img2 = "img2_" . date("Y_m_d", time()) . "_" . $lastid . "." . $img2->getClientOriginalExtension();
+            $img2->move('images/products/', $name_img2);
             // }
             //Kiểm tra file img3
             // if ($request->hasFile('product_img3')) {
-                $img3 = $request->product_img3[$i];
+            $img3 = $request->product_img3[$i];
 
-                $name_img3 = "img3_" . date("Y_m_d", time()) . "_" . $lastid . "." . $img3->getClientOriginalExtension();
-                $img3->move('images/products/', $name_img3);
+            $name_img3 = "img3_" . date("Y_m_d", time()) . "_" . $lastid . "." . $img3->getClientOriginalExtension();
+            $img3->move('images/products/', $name_img3);
             // }
 
             $addImg = ProductImage::insert([
@@ -177,13 +177,13 @@ class HomeController extends Controller
                 ['name' => $name_img3, 'product_id' => $lastid]
             ]);
 
-            $content_history .= "● ID sản phẩm: $lastid\n● Tên sản phẩm: ".$request->name[$i]."\n\n";
+            $content_history .= "● ID sản phẩm: $lastid\n● Tên sản phẩm: " . $request->name[$i] . "\n\n";
         }
 
         $history = new StaffHistory;
         $history->staff_id = Auth::id();
         $history->title = "Thêm danh sách sản phẩm mới";
-        $history->content = "Các sản phẩm vừa thêm:\n".$content_history ;
+        $history->content = "Các sản phẩm vừa thêm:\n" . $content_history;
         $history->save();
 
         return redirect()->route('admin.product')->with('notify_success', 'Đã thêm danh sách sản phẩm mới thành công!');
@@ -365,21 +365,20 @@ class HomeController extends Controller
             $product = Product::find($value);
 
             $content_history .= "● ID sản phẩm: $value\n" .
-            "● Tên sản phẩm: $product->name\n" .
-            "● Loại sản phẩm: " . ProductType::whereId($product->type)->first()->name_type . "\n\n";
+                "● Tên sản phẩm: $product->name\n" .
+                "● Loại sản phẩm: " . ProductType::whereId($product->type)->first()->name_type . "\n\n";
 
             $del  = Product::withTrashed()->find($value)->delete();
 
             if (!$del) {
                 return redirect()->route('admin.product')->with('notify_fail', 'Xóa sản phẩm "' . Product::find($value)->name . '" thất bại');
             }
-
         }
 
         $history = new StaffHistory;
         $history->staff_id = Auth::id();
         $history->title = "Xóa danh sách sản phẩm";
-        $history->content = "Sản phẩm và các hình ảnh liên quan đã bị xóa\nThông tin danh sách sản phẩm đã xóa:\n".$content_history;
+        $history->content = "Sản phẩm và các hình ảnh liên quan đã bị xóa\nThông tin danh sách sản phẩm đã xóa:\n" . $content_history;
         $history->save();
 
         return redirect()->route('admin.product')->with('notify_success', 'Đã xóa các sản phẩm thành công');
@@ -558,19 +557,14 @@ class HomeController extends Controller
     //staff list
     public function staff()
     {
-        $staff = DB::table('users')
-            ->where([
-                ['role', '<', 3],
-                ['role', '<>', 1],
-            ])
-            ->get();
+        $staff = User::where('role','<', 3)->where('role','<>', 1)->get();
         return view('admin.back.staff', compact('staff'));
     }
 
     //Form thêm tài khoản nhân viên
     public function addstaff()
     {
-        return view('admin.back.addstaff');
+        return view('admin.back.add_staff');
     }
 
     //post add staff
@@ -603,6 +597,36 @@ class HomeController extends Controller
             return back()->with('notify_success', 'Tạo tài khoản thành công!!!');
         } else {
             return back()->with('notify_fail', 'Lỗi tạo tài khoản không thành công!!!');
+        }
+    }
+
+    //delete staff
+    public function delete_staff($id)
+    {
+        $del = User::withTrashed()->find($id);
+
+        if ($del->delete()) {
+            return back()->with('notify_success', 'Xóa nhân viên "' . $del->fullname . '" thành công!!!');
+        } else {
+            return back()->with('notify_fail', 'Xóa nhân viên "' . $del->fullname . '" thất bại!!!');
+        }
+    }
+
+    //edit staff
+    public function edit_staff(Request $request)
+    {
+        $update = User::find($request->id);
+        $update->email = $request->email;
+        $update->phone = $request->phone;
+
+        if(isset($request->new_pass) && $request->new_pass != null){
+            $update->new_pass = bcrypt($request->new_pass);
+        }
+
+        if ($update->save()) {
+            return back()->with('notify_success', 'Thay đổi thông tin nhân viên thành công');
+        } else {
+            return back()->with('notify_fail', 'Thay đổi thông tin nhân viên thất bại!!!');
         }
     }
 
@@ -653,14 +677,13 @@ class HomeController extends Controller
             foreach ($list_id as $v) {
                 $update = Order::find($v);
 
-                $content_history = "● ID đơn hàng: $v\n".
-                "● Trạng thái đơn hàng: \"$update->status\" ➔ \"Đang giao hàng\" \n\n";
+                $content_history = "● ID đơn hàng: $v\n" .
+                    "● Trạng thái đơn hàng: \"$update->status\" ➔ \"Đang giao hàng\" \n\n";
 
                 $update->status = "Đang giao hàng";
                 $update->admin_id = Auth::id();
                 $update->delivery_date = date('Y-m-d');
                 $update->save();
-
             }
         }
 
@@ -680,8 +703,8 @@ class HomeController extends Controller
             foreach ($list_id as $v) {
                 $update = Order::find($v);
 
-                $content_history = "● ID đơn hàng: $v\n".
-                "● Trạng thái đơn hàng: \"$update->status\" ➔ \"Đã hoàn thành\" \n\n";
+                $content_history = "● ID đơn hàng: $v\n" .
+                    "● Trạng thái đơn hàng: \"$update->status\" ➔ \"Đã hoàn thành\" \n\n";
 
                 $update->status = "Đã hoàn thành";
                 $update->receiving_date = date('Y-m-d');
@@ -705,8 +728,8 @@ class HomeController extends Controller
             foreach ($list_id as $v) {
                 $update = Order::find($v);
 
-                $content_history = "● ID đơn hàng: $v\n".
-                "● Trạng thái đơn hàng: \"$update->status\" ➔ \"Thất bại\" \n\n";
+                $content_history = "● ID đơn hàng: $v\n" .
+                    "● Trạng thái đơn hàng: \"$update->status\" ➔ \"Thất bại\" \n\n";
 
                 $update->status = "Thất bại";
                 $update->save();
@@ -716,7 +739,7 @@ class HomeController extends Controller
         $history = new StaffHistory;
         $history->staff_id = Auth::id();
         $history->title = "Cập nhật trạng thái đơn hàng";
-        $history->content = "Trang thái đơn hàng đã được cập nhật:\n".$content_history;
+        $history->content = "Trang thái đơn hàng đã được cập nhật:\n" . $content_history;
         $history->save();
 
         return redirect()->route('admin.order')->with('notify_success', 'Cập nhật trạng thái đơn hàng thành công');
