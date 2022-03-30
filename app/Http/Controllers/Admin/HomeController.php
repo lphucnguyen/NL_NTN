@@ -550,7 +550,9 @@ class HomeController extends Controller
     //statistical
     public function statistical()
     {
-        return view('admin.back.statistical');
+        $order = Order::all();
+        $order_detail = OrderDetail::all();
+        return view('admin.back.statistical', compact('order', 'order_detail'));
     }
 
     // ======================================STAFF======================================================
@@ -631,6 +633,12 @@ class HomeController extends Controller
     }
 
     // ====================================ORDER==================================================
+    //status:
+    //Chưa xác nhận
+    //Đang giao hàng
+    //Đã hoàn thành
+    //Thất bại
+
     //order
     public function order()
     {

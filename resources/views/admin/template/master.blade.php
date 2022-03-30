@@ -21,6 +21,11 @@
     <link href="https://colorlib.com/polygon/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- bootstrap-wysiwyg -->
     <link href="https://colorlib.com/polygon/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="https://colorlib.com/polygon/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css"
+        rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="https://colorlib.com/polygon/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
     <!-- Select2 -->
     <link href="https://colorlib.com/polygon/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
     <!-- Switchery -->
@@ -142,7 +147,7 @@
                                     <a><i class="fa fa-bar-chart-o"></i> Thống kê <span
                                             class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="/admin/statistical">Custom</a></li>
+                                        <li><a href="/admin/statistical">Thống kê đơn hàng</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -166,7 +171,7 @@
                                     <img src="{{ asset('images/avatar/' . Auth::user()->avatar) }}" --}} alt=""
                                         class="img-circle">{{ Auth::user()->fullname }}
                                 </a>
-                                <div class="dropdown-menu dropdown-usermenu pull-right"
+                                <div class="dropdown-menu dropdown-usermenu pull-right mt-3"
                                     aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/admin/profile/{{ Auth::id() }}">
                                         Profile</a>
@@ -182,15 +187,9 @@
 
 
             <!-- page content -->
-            <div class="right_col rounded" role="main">
+            <div class="right_col rounded" role="main" id="page_content">
+                @yield('statistical')
                 <div class="">
-                    <div class="page-title">
-                        <div class="title_left">
-                            <h1> @yield('heading') <small>@yield('des_heading')</small></h1>
-                        </div>
-                    </div>
-
-                    <div class="clearfix"></div>
 
                     <div class="row rounded" style="display: block;">
                         <div class="col-12">
@@ -293,6 +292,24 @@
     <script src="https://colorlib.com/polygon/vendors/jszip/dist/jszip.min.js"></script>
     <script src="https://colorlib.com/polygon/vendors/pdfmake/build/pdfmake.min.js"></script>
     <script src="https://colorlib.com/polygon/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <!-- JQVMap -->
+    <script src="https://colorlib.com/polygon/vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="https://colorlib.com/polygon/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="https://colorlib.com/polygon/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- Skycons -->
+    <script src="https://colorlib.com/polygon/vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="https://colorlib.com/polygon/vendors/Flot/jquery.flot.js"></script>
+    <script src="https://colorlib.com/polygon/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="https://colorlib.com/polygon/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="https://colorlib.com/polygon/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="https://colorlib.com/polygon/vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="https://colorlib.com/polygon/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="https://colorlib.com/polygon/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="https://colorlib.com/polygon/vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="https://colorlib.com/polygon/vendors/DateJS/build/date.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('admin_template/build/js/custom.js') }}"></script>
