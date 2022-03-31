@@ -86,14 +86,24 @@
                             </button>
                             <div class="dropdown-menu p-3 mt-2 pull-right w-100" aria-labelledby="dropdownMenuButton">
                                 <div class="row">
-                                    <div class="col form-group">
-                                        <label for="start_date" class="form-label">Từ ngày:</label>
-                                        <input type="date" class="form-control" name="start_date" id="start_date">
+                                    <div class="col d-flex flex-column">
+                                        <input class="btn btn-light border rounded" value="Tháng hiện tại" readonly>
+                                        <input class="btn btn-light border rounded" value="Tháng vừa qua" readonly>
+                                        <input class="btn btn-light border rounded" value="3 tháng vừa qua" readonly>
+                                        <input class="btn btn-light border rounded" value="6 tháng vừa qua" readonly>
+                                        <input class="btn btn-light border rounded" value="Năm hiện tại" readonly>
+                                        <input class="btn btn-light border rounded" value="Năm vừa qua" readonly>
                                     </div>
-                                    <div class="col form-group">
-                                        <label for="end_date" class="form-label">Đến ngày:</label>
-                                        <input type="date" class="form-control" name="end_date" id="end_date"
-                                            max="{{ date('Y-m-d') }}">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="start_date" class="form-label">Từ ngày:</label>
+                                            <input type="date" class="form-control" name="start_date" id="start_date">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="end_date" class="form-label">Đến ngày:</label>
+                                            <input type="date" class="form-control" name="end_date" id="end_date"
+                                                max="{{ date('Y-m-d') }}">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">

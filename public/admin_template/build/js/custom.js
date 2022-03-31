@@ -5042,9 +5042,5 @@ $('.status_order').each(function (i) {
     if (stt == "Thất bại" || stt == "Đã hoàn thành" ) {
         $('.order_records').eq(i).attr("disabled", true)
     }
-    // if($('.order_records').eq(i).is(':checked')){
-    //     // $('#submit_confirm').addClass('d-none')
-    //     alert(123)
-    // }
 })
 

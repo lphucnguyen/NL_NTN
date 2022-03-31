@@ -59,6 +59,7 @@
     <!-- Custom Theme Style -->
     <link href="https://colorlib.com/polygon/build/css/custom.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/myStyle.css') }}">
+
     <!-- Jquery 3.6 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -187,12 +188,11 @@
 
 
             <!-- page content -->
-            <div class="right_col rounded" role="main" id="page_content">
+            <div class="right_col" role="main" id="page_template_content">
                 @yield('statistical')
                 <div class="">
-
-                    <div class="row rounded" style="display: block;">
-                        <div class="col-12">
+                    <div class="row" style="display: block;">
+                        <div class="col-md-6 col-sm-6">
                             <div class="x_panel" style="border-radius: 20px">
                                 <div class="x_title">
                                     <h2><b> @yield('x_heading') </b></h2>

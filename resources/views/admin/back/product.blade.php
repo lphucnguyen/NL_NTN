@@ -2,10 +2,6 @@
 
 @section('title', 'Product | Admin - NTN Store')
 
-@section('heading', '')
-
-@section('des_heading', '')
-
 @section('x_heading', 'Danh sách hàng hóa')
 
 @section('content')
