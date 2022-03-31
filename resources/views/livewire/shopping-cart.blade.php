@@ -20,7 +20,7 @@
                 <div>Không có sản phẩm nào</div>
                 @endif
                 @foreach($products as $product)
-                <li class="header-cart-item flex-w flex-t m-b-12">
+                <li class="header-cart-item flex-w flex-t m-b-12 align-items-center">
                     <div class="header-cart-item-img" wire:click="deleteProductCart({{$product->id}})">
                         <img src="{{asset('/images/products/' . $product->attributes->image)}}" alt="IMG">
                     </div>

@@ -13,6 +13,12 @@ class Evaluate extends Model
     protected $table = 'evaluate';
     
     protected $dates = ['deleted_at'];
+    protected $fillable = [
+        'content',
+        'start',
+        'user_id',
+        'product_id',
+    ];
 
     public function product()
     {
