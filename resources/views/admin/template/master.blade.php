@@ -192,7 +192,7 @@
                 @yield('statistical')
                 <div class="">
                     <div class="row" style="display: block;">
-                        <div class="col-md-6 col-sm-6">
+                        <div class="col-md-12 col-sm-12 col">
                             <div class="x_panel" style="border-radius: 20px">
                                 <div class="x_title">
                                     <h2><b> @yield('x_heading') </b></h2>
