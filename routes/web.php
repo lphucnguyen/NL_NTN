@@ -43,4 +43,5 @@ Route::group(['prefix' => '/home'], function () {
     Route::get('/logout', [HomeController::class, 'logout'])->middleware('UserClient');
     Route::get('/checkout', [HomeController::class, 'checkout'])->middleware('UserClient');
     Route::get('/profile', [HomeController::class, 'profile'])->middleware('UserClient');
+    Route::get('/track_order/{id}', [HomeController::class, 'trackOrder'])->middleware('UserClient');
 });
