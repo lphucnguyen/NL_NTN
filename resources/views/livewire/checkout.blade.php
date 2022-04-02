@@ -8,15 +8,15 @@
                     <div class="wrap-table-shopping-cart m-t-20">
                         <div class="m-t-20">
                             <label class="stext-110 cl2">Họ tên:</label>
-                            <input type="text" class="mtext-107 clblack p-l-20 p-r-20 size-114 plh2 bglight" />
+                            <input type="text" disabled value={{Auth::user()->fullname}} class="mtext-107 clblack p-l-20 p-r-20 size-114 plh2 bglight" />
                         </div>
                         <div class="m-t-20">
                             <label class="stext-110 cl2">Số điện thoại:</label>
-                            <input type="text" class="mtext-107 clblack p-l-20 p-r-20 size-114 plh2 bglight" />
+                            <input type="text" disabled value={{Auth::user()->phone}} class="mtext-107 clblack p-l-20 p-r-20 size-114 plh2 bglight" />
                         </div>
                         <div class="m-t-20">
                             <label class="stext-110 cl2">Địa chỉ:</label>
-                            <input type="text" class="mtext-107 clblack p-l-20 p-r-20 size-114 plh2 bglight" />
+                            <input type="text" disabled value={{Auth::user()->address}} class="mtext-107 clblack p-l-20 p-r-20 size-114 plh2 bglight" />
                         </div>
                         <div class="m-t-20">
                             <label class="stext-110 cl2">Ghi chú:</label>

@@ -1,6 +1,6 @@
 @extends('client.template.master')
 
-@section('title', "Đăng nhập | NTN Shop")
+@section('title', "Đăng kí | NTN Shop")
 
 @section('content')
 <!-- breadcrumb -->

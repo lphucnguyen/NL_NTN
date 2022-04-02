@@ -1904,6 +1904,7 @@ input.num-product::-webkit-inner-spin-button {
   border-left: 1px solid #d3d3d3;
   border-right: 1px solid #d3d3d3;
   border-bottom: 1px solid #d3d3d3;
+  background: #fff;
 }
 
 .table-shopping-cart {
@@ -1987,7 +1988,7 @@ input.num-product::-webkit-inner-spin-button {
 
 .table-search-bar .column-1 {
   width: 133px;
-  padding-left: 50px !important;
+  padding-left: 10px !important;
 }
 
 .table-search-bar .column-2 {
@@ -2018,11 +2019,11 @@ input.num-product::-webkit-inner-spin-button {
 
 .table-search-bar .table_row td {
   padding-bottom: 20px;
-  padding: 20px;
+  padding: 10px;
 }
 
 .table-search-bar .table_row td.column-1 {
-  padding-bottom: 30px;
+  padding-bottom: 10px;
 }
 
 .table-search-bar .table_head th {
@@ -3407,4 +3408,8 @@ input[type="text"]:disabled {
 
 .wrap-login {
   width: 600px;
+}
+
+.nav-pills .nav-link.active, .show>.nav-pills .nav-link {
+  background-color: #000;
 }

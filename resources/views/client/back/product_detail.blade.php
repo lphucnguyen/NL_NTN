@@ -174,7 +174,7 @@
                         </li> --}}
 
                         <li class="nav-item p-b-10">
-                            <a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Đánh giá ({{$totalReviews}})</a>
+                            <a class="nav-link nav-link-total-review" data-toggle="tab" href="#reviews" role="tab">Đánh giá ({{$totalReviews}})</a>
                         </li>
                     </ul>
 
@@ -363,6 +363,7 @@
     const numProduct = document.querySelector('.num-product-detail');
     const addToCartBtn = document.querySelector('.js-addcart-product-detail');
     const idProduct = document.querySelector('.id-product');
+    const numberReviewsElement = document.querySelector('.nav-link-total-review')
 
     quickViewBtn.forEach((btn, index) => {
         btn.addEventListener('click', () => {
@@ -377,6 +378,12 @@
             idProductAdd: idProduct.value,
             qtyProductAdd: numProduct.value
         });
+    });
+
+    window.addEventListener('addReviewSuccess', (e) => {
+        const {numberReviews} = e.detail;
+
+        numberReviewsElement.innerText = "Đánh giá (" + numberReviews + ")";
     });
 </script>
 @endpush

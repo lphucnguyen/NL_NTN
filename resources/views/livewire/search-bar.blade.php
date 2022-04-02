@@ -7,7 +7,7 @@
         <button class="flex-c-m trans-04">
             <i class="zmdi zmdi-search"></i>
         </button>
-        <input wire:model="keyword" class="plh3" type="text" placeholder="Search...">
+        <input wire:model.debounce.500ms="keyword" class="plh3" type="text" placeholder="Search...">
     </div>
     @if(!$isFirstReder)
     <div class="wrap-table-search-bar">
@@ -24,8 +24,8 @@
 
             <tr class="table_row">
                 <td class="column-1">
-                    <div>
-                        <img src="{{asset(count($product->images) > 0 ? $product->images[0]->name : '')}}" alt="IMG">
+                    <div style="width: 50px; height: 50px;">
+                        <img style="width: 100%; height: 100%;object-fit: cover;" src="{{asset( '/images/products/' . (count($product->images) > 0 ? $product->images[0]->name : ''))}}" alt="IMG">
                     </div>
                 </td>
                 <td class="column-2">

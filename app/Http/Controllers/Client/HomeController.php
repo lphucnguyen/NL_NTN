@@ -141,12 +141,13 @@ class HomeController extends Controller
             'address.min' => 'Địa chỉ ít nất 8 kí tự',
             'address.max' => 'Địa chỉ nhiều nất 255 kí tự',
 
-            'password.required' => 'Bạn chưa nhập số điện thoại',
-            'password.min' => 'Điện thoại ít nhất 10 kí tự',
+            'phone.required' => 'Bạn chưa nhập số điện thoại',
+            'phone.min' => 'Điện thoại ít nhất 10 kí tự',
         ]);
 
         $registeredUser = User::query()
                                 ->where('email', $request->email)
+                                ->orWhere('phone' , $request->phone)
                                 ->get();
 
         if(count($registeredUser) == 0){
@@ -160,10 +161,10 @@ class HomeController extends Controller
                 'phone' => $request->phone,
                 'gender' => $request->gender
             ]);
-            return redirect()->back('/home/login')->with('success', 'Đăng kí thành công');;
+            return redirect('/home/login')->with('success', 'Đăng kí thành công');
         }else{
             return redirect()->back()->withErrors([
-                'Tài khoản đã tồn tại'
+                'Email hoặc số điện thoại đã tồn tại'
             ]);
         }
     }
@@ -174,5 +175,13 @@ class HomeController extends Controller
 
             return redirect('/home');
         }
+    }
+
+    public function profile() {
+        if(!Auth::check()){
+            return redirect('/home/login');
+        }
+
+        return view('client.back.profile');
     }
 }

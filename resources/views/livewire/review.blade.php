@@ -2,41 +2,42 @@
     <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
         <div class="p-b-30 m-lr-15-sm">
             <!-- Review -->
+
+            @if(count($reviews) == 0)
+            <div class="txt-center m-t-15 m-b-15">Không có đánh giá nào</div>
+            @endif
+            @foreach($reviews as $review)
+            <div class="flex-w flex-t p-b-68">
+                <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
+                    <img src={{asset('/images/users/' . $review->user->avatar)}} alt="AVATAR">
+                </div>
+
+                <div class="size-207">
+                    <div class="flex-w flex-sb-m p-b-17">
+                        <span class="mtext-107 cl2 p-r-20">
+                            {{$review->user->fullname}}
+                        </span>
+
+                        <span class="fs-18 cl11">
+                            @for($i=0; $i<(int)$review->start; $i++)
+                            <i class="zmdi zmdi-star"></i>
+                            @endfor
+                        </span>
+                    </div>
+
+                    <p class="stext-102 cl6">
+                        {{$review->content}}
+                    </p>
+                </div>
+            </div>
+            @endforeach    
+
             @if(!Auth::user())
                 <h6 class="smtext-101 txt-center">Bạn cần đăng nhập để đánh giá</h6>
                 <a href="/home/login" class="flex-c-m stext-101 cl0 size-116 bg1 hov-btn3 m-t-30 p-lr-15 trans-04 pointer ">
                     Đăng nhập
                 </a>  
             @else
-
-                @if(count($reviews) == 0)
-                <div class="txt-center m-t-15 m-b-15">Không có đánh giá nào</div>
-                @endif
-                @foreach($reviews as $review)
-                <div class="flex-w flex-t p-b-68">
-                    <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-                        <img src={{asset($review->user->avatar)}} alt="AVATAR">
-                    </div>
-
-                    <div class="size-207">
-                        <div class="flex-w flex-sb-m p-b-17">
-                            <span class="mtext-107 cl2 p-r-20">
-                                {{$review->user->fullname}}
-                            </span>
-
-                            <span class="fs-18 cl11">
-                                @for($i=0; $i<(int)$review->start; $i++)
-                                <i class="zmdi zmdi-star"></i>
-                                @endfor
-                            </span>
-                        </div>
-
-                        <p class="stext-102 cl6">
-                            {{$review->content}}
-                        </p>
-                    </div>
-                </div>
-                @endforeach    
 
                 <!-- Add review -->
                 <form wire:submit.prevent="submitReview" class="w-full">
@@ -59,7 +60,7 @@
                             <i class="item-rating pointer zmdi zmdi-star-outline"></i>
                             <i class="item-rating pointer zmdi zmdi-star-outline"></i>
                             <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                            <input class="dis-none" type="number" name="rating">
+                            <input wire:model="star" class="dis-none" type="number" name="rating">
                         </span>
                     </div>
 
