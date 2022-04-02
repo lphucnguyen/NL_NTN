@@ -389,7 +389,14 @@
 
         window.addEventListener('swal', event => {
             // alert('Name updated to: ' + event.detail.newName);
-            swal(event.detail.title, event.detail.text, event.detail.icon);
+            if(event.detail.code === 'checkout') {
+                swal(event.detail.title, event.detail.text, event.detail.icon)
+                .then(() => {
+                    window.location = "/home/profile";
+                });
+            }else{
+                swal(event.detail.title, event.detail.text, event.detail.icon);
+            }
         });
 
         window.addEventListener('productAdded', event => {

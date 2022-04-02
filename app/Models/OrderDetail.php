@@ -12,6 +12,13 @@ class OrderDetail extends Model
 
     protected $table = 'order_detail';
 
+    protected $fillable = [
+        'product_id',
+        'order_id',
+        'quantity',
+        'amount'
+    ];
+
     protected $dates = ['deleted_at'];
 
 }

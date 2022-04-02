@@ -57,6 +57,7 @@ class Profile extends Component
         $this->avatarUser = $user->avatar;
 
         $this->orders = $user->orders;
+        // dd($this->orders);
     }
 
     public function updated($propertyName){
