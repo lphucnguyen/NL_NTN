@@ -24,15 +24,15 @@
         $end = date('d/m/Y', strtotime($end));
     endif;
     $first_day_lastweek = $carbon
-        ->now()
+        ->now('Asia/Ho_Chi_Minh')
         ->subWeek()
         ->startOfWeek();
     $last_day_lastweek = $carbon
-        ->now()
+        ->now('Asia/Ho_Chi_Minh')
         ->subWeek()
         ->endOfWeek();
-    $first_day_thisweek = $carbon->now()->startOfWeek();
-    $last_day_thisweek = $carbon->now()->endOfWeek();
+    $first_day_thisweek = $carbon->now('Asia/Ho_Chi_Minh')->startOfWeek();
+    $last_day_thisweek = $carbon->now('Asia/Ho_Chi_Minh')->endOfWeek();
 
     //ALL
     $statis_lastweek = $order_all->whereBetween('created_at', [$first_day_lastweek, $last_day_lastweek])->sum('total');
@@ -233,22 +233,22 @@
                                 <div class="row">
                                     <div class="col d-flex flex-column">
                                         <input class="btn btn-light border rounded" value="Tháng hiện tại" readonly
-                                            onclick="statistical('{{ $carbon->parse('first day of this month')->toDateString() }}', '{{ $carbon->now()->toDateString() }}')">
+                                            onclick="statistical('{{ $carbon->parse('first day of this month')->toDateString() }}', '{{ $carbon->now('Asia/Ho_Chi_Minh')->toDateString() }}')">
 
                                         <input class="btn btn-light border rounded" value="Tháng vừa qua" readonly
                                             onclick="statistical('{{ $carbon->parse('first day of last month')->toDateString() }}', '{{ $carbon->parse('last day of last month')->toDateString() }}')">
 
                                         <input class="btn btn-light border rounded" value="3 tháng vừa qua" readonly
-                                            onclick="statistical('{{ $carbon->parse('first day of 2 months ago')->toDateString() }}', '{{ $carbon->now()->toDateString() }}')">
+                                            onclick="statistical('{{ $carbon->parse('first day of 2 months ago')->toDateString() }}', '{{ $carbon->now('Asia/Ho_Chi_Minh')->toDateString() }}')">
 
                                         <input class="btn btn-light border rounded" value="6 tháng vừa qua" readonly
-                                            onclick="statistical('{{ $carbon->parse('first day of 5 months ago')->toDateString() }}', '{{ $carbon->now()->toDateString() }}')">
+                                            onclick="statistical('{{ $carbon->parse('first day of 5 months ago')->toDateString() }}', '{{ $carbon->now('Asia/Ho_Chi_Minh')->toDateString() }}')">
 
                                         <input class="btn btn-light border rounded" value="Năm hiện tại" readonly
-                                            onclick="statistical('{{ $carbon->now()->year }}-01-01', '{{ $carbon->now()->toDateString() }}')">
+                                            onclick="statistical('{{ $carbon->now('Asia/Ho_Chi_Minh')->year }}-01-01', '{{ $carbon->now('Asia/Ho_Chi_Minh')->toDateString() }}')">
 
                                         <input class="btn btn-light border rounded" value="Năm trước" readonly
-                                            onclick="statistical('{{ $carbon->now()->subYear()->year }}-01-01', '{{ $carbon->now()->subYear()->year }}-12-31')">
+                                            onclick="statistical('{{ $carbon->now('Asia/Ho_Chi_Minh')->subYear()->year }}-01-01', '{{ $carbon->now('Asia/Ho_Chi_Minh')->subYear()->year }}-12-31')">
 
                                     </div>
                                     <div class="col">

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('promotion_id')->nullable();//Khuyến mãi (Nếu có)
             $table->string('payment_method');//Phương thức thành toán
             $table->double('total');//Tổng giá trị đơn hàng
-            $table->string('status');//Trạng thái đơn hàng
+            $table->string('status')->default('Chưa xác nhận');//Trạng thái đơn hàng
             $table->string('address');//Địa chỉ
             $table->string('note')->nullable();//Ghi chú
             $table->date('delivery_date')->nullable();//Ngày giao hàng

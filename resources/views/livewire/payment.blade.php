@@ -40,7 +40,7 @@
                                             <i class="fs-16 zmdi zmdi-minus"></i>
                                         </div>
 
-                                        <input 
+                                        <input
                                             class="mtext-104 cl3 txt-center num-product"
                                             type="number"
                                             name={{$product->id}}
@@ -51,7 +51,7 @@
                                             <i class="fs-16 zmdi zmdi-plus"></i>
                                         </div>
                                     </div>
-                                    <input 
+                                    <input
                                         class="mtext-104 cl3 txt-center num-product"
                                         type="hidden"
                                         value={{$product->id}}
@@ -66,7 +66,7 @@
 
                     <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
                         <div class="flex-w flex-m m-r-20 m-tb-5">
-                            <input wire:model="coupon.code" class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" placeholder="Coupon Code">
+                            <input wire:model="coupon.code" style="text-transform:uppercase" class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" placeholder="Coupon Code">
 
                             <div wire:click="addCoupon" class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
                                 Áp dụng Coupon

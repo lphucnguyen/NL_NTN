@@ -15,7 +15,7 @@
     </div>
     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
         <thead>
-            <tr>
+            <tr class="text-center">
                 <th>STT</th>
                 <th>MSKM</th>
                 <th>Giá trị khuyến mãi</th>
@@ -32,8 +32,8 @@
                     <td>{{ $v->code }}</td>
                     <td>{{ $v->percent }}%</td>
                     <td class="text-left">{{ $v->content }}</td>
-                    <td>{{ date('d-m-Y', $v->start_at) }}</td>
-                    <td>{{ date('d-m-Y', $v->end_at) }}</td>
+                    <td>{{ date('d/m/Y h:m:s', $v->start_at) }}</td>
+                    <td>{{ date('d/m/Y h:m:s', $v->end_at) }}</td>
                     <td>
                         {{-- <button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Sửa</button> --}}
                         <a class="btn btn-danger btn-sm text-light" href="/admin/promotion/del/{{ $v->id }}">
@@ -70,13 +70,13 @@
                         </div>
                         <div class="form-group">
                             <label for="start_date" class="form-label">Ngày bắt đầu:</label>
-                            <input required type="date" id="start_date" name="start_date" class="form-control"
-                                placeholder="Ngày bắt đầu" value="{{ date('Y-m-d') }}">
+                            <input required type="datetime-local" id="start_date" name="start_date" class="form-control"
+                                placeholder="Ngày bắt đầu" value="">
                         </div>
                         <div class="form-group">
                             <label for="end_date" class="form-label">Ngày kết thúc:</label>
-                            <input required type="date" id="end_date" name="end_date" class="form-control"
-                                placeholder="Ngày kết thúc" value="{{ date('Y-m-d') }}">
+                            <input required type="datetime-local" id="end_date" name="end_date" class="form-control"
+                                placeholder="Ngày kết thúc" value="">
                         </div>
                         <div class="form-group">
                             <label for="percent" class="form-label">Giá trị khuyến mãi (%):

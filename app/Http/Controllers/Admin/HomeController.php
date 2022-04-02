@@ -499,6 +499,9 @@ class HomeController extends Controller
     //post add promotion
     public function post_add_promotion(Request $request)
     {
+        if($request->start_date >= $request->end_date){
+            return redirect()->route('admin.promotion')->with('notify_fail', 'Thời gian khuyến mãi không hợp lệ, ngày bắt đầu phải nhỏ hơn ngày kết thúc!');
+        }
 
         $check = Promotion::where('code', $request->code)->get();
 
