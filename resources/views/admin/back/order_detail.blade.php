@@ -10,13 +10,13 @@
 
 @section('content')
 
-    <section class="content invoice">
+    <section class="content invoice w-100">
         <!-- title row -->
         <div class="row">
-            <div class="  invoice-header">
+            <div class="invoice-header">
                 <h1>
                     <i class="fa fa-globe"></i> Hóa đơn
-                    <small class="pull-right fs-5">Ngày lập: {{ date('d/m/Y') }}</small>
+                    <small class="pull-right fs-5 text-right">Ngày lập: {{ date('d/m/Y') }}</small>
                 </h1>
             </div>
             <!-- /.col -->
@@ -96,7 +96,12 @@
                         @foreach ($order_detail as $v)
                             <tr class="text-center">
                                 <td>{{ $v->product_id }}</td>
-                                <td>{{ $v->name }}</td>
+                                <td>
+                                    <a class="cursor-pointer" onclick="showPD({{ $v->product_id }})"
+                                        data-bs-toggle="modal" data-bs-target="#viewProductDetail">
+                                        {{ $v->name }}
+                                    </a>
+                                </td>
                                 <td>{{ $v->quantity }}</td>
                                 <td>{{ number_format($v->price) }} VNĐ</td>
                                 <td>1 tháng kể từ ngày lập hóa đơn</td>
@@ -165,36 +170,10 @@
     </section>
     <!-- this row will not appear when printing -->
     @if ($staff != null)
-    <div class="row no-print">
-        <div class=" ">
-            <button class="btn btn-default" onclick="PrintElem()"><i class="fa fa-print"></i> Print</button>
-            <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i>
-                Generate PDF</button>
+        <div class="row no-print">
+            <div class=" ">
+                <button class="btn btn-default" onclick="window.print()"><i class="fa fa-print"></i> Print</button>
+            </div>
         </div>
-    </div>
     @endif
-
-    <script>
-        function PrintElem()
-        {
-            var mywindow = window.open('', 'PRINT', 'height=400,width=600');
-
-            mywindow.document.write('<html><head>');
-            mywindow.document.write('<link href="https://colorlib.com/polygon/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">');
-            mywindow.document.write('<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">');
-            mywindow.document.write('<link href="https://colorlib.com/polygon/build/css/custom.css" rel="stylesheet">');
-            mywindow.document.write('</head><body>');
-            mywindow.document.write('<div>' + document.querySelector('.invoice').innerHTML  + '</div>');
-            mywindow.document.write('</body></html>');
-
-            mywindow.document.close(); // necessary for IE >= 10
-            mywindow.focus(); // necessary for IE >= 10*/
-
-            mywindow.print();
-            // mywindow.close();
-
-            return true;
-        }
-    </script>
-
 @stop

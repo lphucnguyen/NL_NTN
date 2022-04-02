@@ -8,9 +8,12 @@ function createChart(idChart, titleChart, type, label, data) {
 
     var arrBgColor = new Array()
     for (var i = 0; i < label.length; i++) {
-        var randomColor = Math.floor(Math.random() * 16777215).toString(16);
-        arrBgColor.push('#' + randomColor)
+        var randomColor = Math.floor(Math.random() * 255);
+        var randomColor1 = Math.floor(Math.random() * 255);
+        var randomColor2 = Math.floor(Math.random() * 255);
+        arrBgColor.push("rgba(" + randomColor + "," + randomColor1 + "," + randomColor2 + ",0.5)")
     }
+    console.log(arrBgColor)
 
     let massPopChart = new Chart(myChart, {
         type: type, // bar, horizontalBar, pie, line, doughnut, radar, polarArea

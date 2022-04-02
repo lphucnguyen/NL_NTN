@@ -552,25 +552,37 @@ class HomeController extends Controller
     {
         $order = Order::all();
         $order_detail = OrderDetail::all();
-        return view('admin.back.statistical', compact('order', 'order_detail'));
+        $order_detail_groupby = OrderDetail::groupby('product_id')
+            ->selectRaw('product_id, sum(quantity) as quantity')
+            ->orderBy('quantity', 'DESC')
+            ->take(5)
+            ->get();
+
+        return view('admin.back.statistical', compact('order', 'order_detail', 'order_detail_groupby'));
     }
 
     //subtmit statistical
-    public function submit_statistical(Request $request){
+    public function submit_statistical(Request $request)
+    {
         $start = $request->start_date;
         $end = $request->end_date;
 
         $order = Order::whereBetween('created_at', [$start, $end])->get();
         $order_detail = OrderDetail::whereBetween('created_at', [$start, $end])->get();
+        $order_detail_groupby = OrderDetail::groupby('product_id')
+            ->selectRaw('product_id, sum(quantity) as quantity')
+            ->orderBy('quantity', 'DESC')
+            ->take(5)
+            ->get();
 
-        return view('admin.back.statistical', compact('order', 'order_detail', 'start', 'end'));
+        return view('admin.back.statistical', compact('order', 'order_detail', 'start', 'end', 'order_detail_groupby'));
     }
 
     // ======================================STAFF======================================================
     //staff list
     public function staff()
     {
-        $staff = User::where('role','<', 3)->where('role','<>', 1)->get();
+        $staff = User::where('role', '<', 3)->where('role', '<>', 1)->get();
         return view('admin.back.staff', compact('staff'));
     }
 
@@ -632,7 +644,7 @@ class HomeController extends Controller
         $update->email = $request->email;
         $update->phone = $request->phone;
 
-        if(isset($request->new_pass) && $request->new_pass != null){
+        if (isset($request->new_pass) && $request->new_pass != null) {
             $update->new_pass = bcrypt($request->new_pass);
         }
 

@@ -66,6 +66,9 @@
     <script src="https://colorlib.com/polygon/vendors/Chart.js/dist/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 
+    <!-- Generate PDF -->
+    <script src="https://raw.githubusercontent.com/eKoopmans/html2pdf.js/master/dist/html2pdf.bundle.min.js"></script>
+
     <style>
         table tbody tr td {
             vertical-align: middle !important;
@@ -77,8 +80,8 @@
 <body class="nav-md">
     <div class="container body">
         <div class="main_container">
-            <div class="col-md-3 left_col">
-                <div class="left_col scroll-view">
+            <div class="col-md-3 left_col no-print">
+                <div class="left_col scroll-view no-print">
                     <div class="navbar nav_title" style="border: 0;">
                         <a href="/admin" class="site_title">
                             <img src="{{ asset('images/system/logo.png') }}" class="bg-light rounded-circle" width="40"
@@ -162,8 +165,8 @@
             </div>
 
             <!-- top navigation -->
-            <div class="top_nav">
-                <div class="nav_menu">
+            <div class="top_nav no-print">
+                <div class="nav_menu no-print">
                     <div class="nav toggle">
                         <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                     </div>
@@ -197,7 +200,7 @@
                     <div class="row" style="display: block;">
                         <div class="col-md-12 col-sm-12 col">
                             <div class="x_panel" style="border-radius: 20px">
-                                <div class="x_title">
+                                <div class="x_title no-print">
                                     <h2><b> @yield('x_heading') </b></h2>
                                     <div class="clearfix"></div>
                                 </div>
@@ -236,13 +239,31 @@
 
 
             <!-- footer content -->
-            <footer>
+            <footer class="no-print">
                 <div class="pull-right">
                     Copyright &copy; 2022 <a href="#NTN_SHOP">NTN STORE</a>
                 </div>
                 <div class="clearfix"></div>
             </footer>
             <!-- /footer content -->
+        </div>
+    </div>
+
+    <!-- Modal Product Detail-->
+    <div class="modal fade " id="viewProductDetail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 100vh">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><b> Chi tiết sản phẩm </b></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body" id="modal_product_detail">
+                    {{-- content modal --}}
+                </div>
+
+            </div>
         </div>
     </div>
 
@@ -318,6 +339,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 
     <!-- Custom Theme Scripts -->
+    <script src="{{ asset('js/admin_product.js') }}"></script>
     <script src="{{ asset('admin_template/build/js/custom.js') }}"></script>
 
 </body>

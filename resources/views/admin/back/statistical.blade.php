@@ -13,6 +13,8 @@
 
 @section('statistical')
     @php
+    $product = \App\Models\Product::all();
+
     $order_all = \App\Models\Order::all();
 
     $carbon = new \Carbon\Carbon();
@@ -35,32 +37,66 @@
     //ALL
     $statis_lastweek = $order_all->whereBetween('created_at', [$first_day_lastweek, $last_day_lastweek])->sum('total');
     $statis_thisweek = $order_all->whereBetween('created_at', [$first_day_thisweek, $last_day_thisweek])->sum('total');
-    if($statis_lastweek == 0 ) $statis_lastweek = 1;
-    $percent_statis = round(($statis_thisweek / $statis_lastweek) * 100, 2);
+    if ($statis_lastweek == 0) {
+        $statis_lastweek = 1;
+    }
+    $percent_statis = round((($statis_thisweek - $statis_lastweek) / $statis_lastweek) * 100, 2);
 
     //Chua xac nhan
-    $statis_lastweek1 = $order_all->where('status', 'Chưa xác nhận')->whereBetween('created_at', [$first_day_lastweek, $last_day_lastweek])->sum('total');
-    $statis_thisweek1 = $order_all->where('status', 'Chưa xác nhận')->whereBetween('created_at', [$first_day_thisweek, $last_day_thisweek])->sum('total');
-    if($statis_lastweek1 == 0 ) $statis_lastweek1 = 1;
-    $percent_statis1 = round(($statis_thisweek1 / $statis_lastweek1) * 100, 2);
+    $statis_lastweek1 = $order_all
+        ->where('status', 'Chưa xác nhận')
+        ->whereBetween('created_at', [$first_day_lastweek, $last_day_lastweek])
+        ->sum('total');
+    $statis_thisweek1 = $order_all
+        ->where('status', 'Chưa xác nhận')
+        ->whereBetween('created_at', [$first_day_thisweek, $last_day_thisweek])
+        ->sum('total');
+    if ($statis_lastweek1 == 0) {
+        $statis_lastweek1 = 1;
+    }
+    $percent_statis1 = round((($statis_thisweek1 - $statis_lastweek1) / $statis_lastweek1) * 100, 2);
 
     //Dang giao hang
-    $statis_lastweek2 = $order_all->where('status', 'Đang giao hàng')->whereBetween('created_at', [$first_day_lastweek, $last_day_lastweek])->sum('total');
-    $statis_thisweek2 = $order_all->where('status', 'Đang giao hàng')->whereBetween('created_at', [$first_day_thisweek, $last_day_thisweek])->sum('total');
-    if($statis_lastweek2 == 0 ) $statis_lastweek2 = 1;
-    $percent_statis2 = round(($statis_thisweek2 / $statis_lastweek2) * 100, 2);
+    $statis_lastweek2 = $order_all
+        ->where('status', 'Đang giao hàng')
+        ->whereBetween('created_at', [$first_day_lastweek, $last_day_lastweek])
+        ->sum('total');
+    $statis_thisweek2 = $order_all
+        ->where('status', 'Đang giao hàng')
+        ->whereBetween('created_at', [$first_day_thisweek, $last_day_thisweek])
+        ->sum('total');
+    if ($statis_lastweek2 == 0) {
+        $statis_lastweek2 = 1;
+    }
+    $percent_statis2 = round((($statis_thisweek2 - $statis_lastweek2) / $statis_lastweek2) * 100, 2);
 
     //Hoan thanh
-    $statis_lastweek3 = $order_all->where('status', 'Đã hoàn thành')->whereBetween('created_at', [$first_day_lastweek, $last_day_lastweek])->sum('total');
-    $statis_thisweek3 = $order_all->where('status', 'Đã hoàn thành')->whereBetween('created_at', [$first_day_thisweek, $last_day_thisweek])->sum('total');
-    if($statis_lastweek3 == 0 ) $statis_lastweek3 = 1;
-    $percent_statis3 = round(($statis_thisweek3 / $statis_lastweek3) * 100, 2);
+    $statis_lastweek3 = $order_all
+        ->where('status', 'Đã hoàn thành')
+        ->whereBetween('created_at', [$first_day_lastweek, $last_day_lastweek])
+        ->sum('total');
+    $statis_thisweek3 = $order_all
+        ->where('status', 'Đã hoàn thành')
+        ->whereBetween('created_at', [$first_day_thisweek, $last_day_thisweek])
+        ->sum('total');
+    if ($statis_lastweek3 == 0) {
+        $statis_lastweek3 = 1;
+    }
+    $percent_statis3 = round((($statis_thisweek3 - $statis_lastweek3) / $statis_lastweek3) * 100, 2);
 
     //That bai
-    $statis_lastweek4 = $order_all->where('status', 'Thất bại')->whereBetween('created_at', [$first_day_lastweek, $last_day_lastweek])->sum('total');
-    $statis_thisweek4 = $order_all->where('status', 'Thất bại')->whereBetween('created_at', [$first_day_thisweek, $last_day_thisweek])->sum('total');
-    if($statis_lastweek4 == 0 ) $statis_lastweek4 = 1;
-    $percent_statis4 = round(($statis_thisweek4 / $statis_lastweek4) * 100, 2);
+    $statis_lastweek4 = $order_all
+        ->where('status', 'Thất bại')
+        ->whereBetween('created_at', [$first_day_lastweek, $last_day_lastweek])
+        ->sum('total');
+    $statis_thisweek4 = $order_all
+        ->where('status', 'Thất bại')
+        ->whereBetween('created_at', [$first_day_thisweek, $last_day_thisweek])
+        ->sum('total');
+    if ($statis_lastweek4 == 0) {
+        $statis_lastweek4 = 1;
+    }
+    $percent_statis4 = round((($statis_thisweek4 - $statis_lastweek4) / $statis_lastweek4) * 100, 2);
     @endphp
 
     <div class="row d-flex justify-content-center" style="display: inline-block;">
@@ -70,13 +106,13 @@
                 <div class="count">{{ count($order_all) }}</div>
                 {{-- ALL --}}
                 <span class="count_bottom">
-                    @if ($statis_thisweek >= $statis_lastweek)
+                    @if ($percent_statis >= 0)
                         <i class="green">
-                            <i class="fa fa-sort-asc green"></i>{{ $percent_statis }}%
+                            <i class="fa fa-sort-asc"></i>{{ $percent_statis }}%
                         </i>
                     @else
-                        <i class="green">
-                            <i class="fa fa-sort-desc green"></i>{{ 100-$percent_statis }}%
+                        <i class="red">
+                            <i class="fa fa-sort-desc"></i>{{ abs($percent_statis) }}%
                         </i>
                     @endif
                     From last Week
@@ -87,13 +123,13 @@
                 <div class="count">{{ $order_all->where('status', 'Chưa xác nhận')->count() }}</div>
                 {{-- Chua xac nhan --}}
                 <span class="count_bottom">
-                    @if ($statis_thisweek1 >= $statis_lastweek1)
+                    @if ($percent_statis1 >= 0)
                         <i class="green">
-                            <i class="fa fa-sort-asc green"></i>{{ $percent_statis1 }}%
+                            <i class="fa fa-sort-asc"></i>{{ $percent_statis1 }}%
                         </i>
                     @else
-                        <i class="green">
-                            <i class="fa fa-sort-desc green"></i>{{ 100-$percent_statis1 }}%
+                        <i class="red">
+                            <i class="fa fa-sort-desc"></i>{{ abs($percent_statis1) }}%
                         </i>
                     @endif
                     From last Week
@@ -104,13 +140,13 @@
                 <div class="count">{{ $order_all->where('status', 'Đang giao hàng')->count() }}</div>
                 {{-- Dang giao hang --}}
                 <span class="count_bottom">
-                    @if ($statis_thisweek2 >= $statis_lastweek2)
+                    @if ($percent_statis2 >= 0)
                         <i class="green">
-                            <i class="fa fa-sort-asc green"></i>{{ $percent_statis2 }}%
+                            <i class="fa fa-sort-asc"></i>{{ $percent_statis2 }}%
                         </i>
                     @else
-                        <i class="green">
-                            <i class="fa fa-sort-desc green"></i>{{ 100-$percent_statis2 }}%
+                        <i class="red">
+                            <i class="fa fa-sort-desc"></i>{{ abs($percent_statis2) }}%
                         </i>
                     @endif
                     From last Week
@@ -121,13 +157,13 @@
                 <div class="count">{{ $order_all->where('status', 'Đã hoàn thành')->count() }}</div>
                 {{-- Da hoan thanh --}}
                 <span class="count_bottom">
-                    @if ($statis_thisweek3 >= $statis_lastweek3)
+                    @if ($percent_statis3 >= 0)
                         <i class="green">
-                            <i class="fa fa-sort-asc green"></i>{{ $percent_statis3 }}%
+                            <i class="fa fa-sort-asc"></i>{{ $percent_statis3 }}%
                         </i>
                     @else
-                        <i class="green">
-                            <i class="fa fa-sort-desc green"></i>{{ 100-$percent_statis3 }}%
+                        <i class="red">
+                            <i class="fa fa-sort-desc"></i>{{ abs($percent_statis3) }}%
                         </i>
                     @endif
                     From last Week
@@ -138,13 +174,13 @@
                 <div class="count">{{ $order_all->where('status', 'Thất bại')->count() }}</div>
                 {{-- That bai --}}
                 <span class="count_bottom">
-                    @if ($statis_thisweek4 >= $statis_lastweek4)
+                    @if ($percent_statis4 >= 0)
                         <i class="green">
-                            <i class="fa fa-sort-asc green"></i>{{ $percent_statis4 }}%
+                            <i class="fa fa-sort-asc"></i>{{ $percent_statis4 }}%
                         </i>
                     @else
-                        <i class="green">
-                            <i class="fa fa-sort-desc green"></i>{{ 100-$percent_statis4 }}%
+                        <i class="red">
+                            <i class="fa fa-sort-desc"></i>{{ abs($percent_statis4) }}%
                         </i>
                     @endif
                     From last Week
@@ -160,11 +196,6 @@
             <div class="dashboard_graph">
                 <div class="row x_title">
                     <div class="col-md-6">
-                        @php
-                            $sum_product = DB::table('order_detail')
-                                ->distinct()
-                                ->count('product_id');
-                        @endphp
                         <h3>
                             <small class="fs-6">
                                 <b>Doanh thu đơn hàng chưa duyệt: </b>
@@ -263,47 +294,35 @@
                         <div class="col-1"></div>
                         <div class="col ml-3 bg-white">
                             <div class="x_title">
-                                <h2>Sản phẩm bán chạy</h2>
+                                <h2 class="fs-5"><b> Sản phẩm đang bán chạy </b><br><small class="ml-0" style="font-size: 14px">Tổng: đã bán
+                                        {{ $order_detail->sum('quantity') }} sản phẩm</small></h2>
                                 <div class="clearfix"></div>
                             </div>
 
+                            <style>
+                                .hover-percent{
+                                    transition: all 1s;
+                                }
+                                .hover-percent:hover{
+                                    box-shadow: 0 0 15px 0px rgb(0, 195, 255);
+                                    cursor: pointer;
+                                }
+                            </style>
                             <div class="col-md-12 col-sm-12 ">
-                                <div>
-                                    <p>Facebook Campaign</p>
-                                    <div class="">
-                                        <div class="progress progress_sm" style="width: 76%;">
-                                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80">
+                                @foreach ($order_detail_groupby as $v)
+                                    <div class="mt-2" onclick="showPD({{ $v->product_id }})"
+                                        data-bs-toggle="modal" data-bs-target="#viewProductDetail">
+                                        <p>{{ $product->find($v->product_id)->name }}: {{ $v->quantity }}</p>
+                                        <div class="" >
+                                            <div class="progress progress_sm hover-percent" style="width: 80%;"
+                                                data-bs-toggle="tooltip" data-bs-placement="top" title="{{ round($v->quantity/$order_detail->sum('quantity')*100,2) }}%">
+                                                <div class="progress-bar bg-green" role="progressbar"
+                                                    data-transitiongoal="{{ $v->quantity/$order_detail->sum('quantity')*100 }}">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div>
-                                    <p>Twitter Campaign</p>
-                                    <div class="">
-                                        <div class="progress progress_sm" style="width: 76%;">
-                                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p>Twitter Campaign</p>
-                                    <div class="">
-                                        <div class="progress progress_sm" style="width: 76%;">
-                                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p>Twitter Campaign</p>
-                                    <div class="">
-                                        <div class="progress progress_sm" style="width: 76%;">
-                                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -327,7 +346,6 @@
             $thatBai += $order_detail->where('order_id', $v->id)->sum('quantity');
         }
     }
-
     @endphp
 
     <script>
