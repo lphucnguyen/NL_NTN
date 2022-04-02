@@ -179,9 +179,11 @@
         {
             var mywindow = window.open('', 'PRINT', 'height=400,width=600');
 
-            mywindow.document.write(
-                '<html><head><link href="https://colorlib.com/polygon/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"><link href="https://colorlib.com/polygon/build/css/custom.css" rel="stylesheet"></head><body>'
-            );
+            mywindow.document.write('<html><head>');
+            mywindow.document.write('<link href="https://colorlib.com/polygon/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">');
+            mywindow.document.write('<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">');
+            mywindow.document.write('<link href="https://colorlib.com/polygon/build/css/custom.css" rel="stylesheet">');
+            mywindow.document.write('</head><body>');
             mywindow.document.write('<div>' + document.querySelector('.invoice').innerHTML  + '</div>');
             mywindow.document.write('</body></html>');
 
