@@ -294,30 +294,40 @@
                         <div class="col-1"></div>
                         <div class="col ml-3 bg-white">
                             <div class="x_title">
-                                <h2 class="fs-5"><b> Sản phẩm đang bán chạy </b><br><small class="ml-0" style="font-size: 14px">Tổng: đã bán
+                                <h2 class="fs-5"><b> Sản phẩm đang bán chạy </b><br><small class="ml-0"
+                                        style="font-size: 14px">Tổng: đã bán
                                         {{ $order_detail->sum('quantity') }} sản phẩm</small></h2>
                                 <div class="clearfix"></div>
                             </div>
 
                             <style>
-                                .hover-percent{
+                                .hover-percent {
                                     transition: all 1s;
                                 }
-                                .hover-percent:hover{
+
+                                .hover-percent:hover {
                                     box-shadow: 0 0 15px 0px rgb(0, 195, 255);
                                     cursor: pointer;
                                 }
+
                             </style>
                             <div class="col-md-12 col-sm-12 ">
                                 @foreach ($order_detail_groupby as $v)
                                     <div class="mt-2" onclick="showPD({{ $v->product_id }})"
                                         data-bs-toggle="modal" data-bs-target="#viewProductDetail">
                                         <p>{{ $product->find($v->product_id)->name }}: {{ $v->quantity }}</p>
-                                        <div class="" >
+                                        @php
+                                            $quantity_sum = $order_detail->sum('quantity');
+                                            if ($quantity_sum < 1) {
+                                                $quantity_sum = 1;
+                                            }
+                                        @endphp
+                                        <div class="">
                                             <div class="progress progress_sm hover-percent" style="width: 80%;"
-                                                data-bs-toggle="tooltip" data-bs-placement="top" title="{{ round($v->quantity/$order_detail->sum('quantity')*100,2) }}%">
+                                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                                title="{{ round(($v->quantity / $quantity_sum) * 100, 2) }}%">
                                                 <div class="progress-bar bg-green" role="progressbar"
-                                                    data-transitiongoal="{{ $v->quantity/$order_detail->sum('quantity')*100 }}">
+                                                    data-transitiongoal="{{ ($v->quantity / $quantity_sum) * 100 }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -329,6 +339,51 @@
                 </div>
                 <!-- / charts -->
                 <div class="clearfix"></div>
+
+                {{-- Product --}}
+                <hr>
+                <div class="mt-4">
+                    <h3><b>
+                            @if (isset($start))
+                                Các sản phẩm đã được đặt từ {{ $start }} đến {{ $end }}
+                            @else
+                                Tất cả các sản phẩm đã được đặt
+                            @endif
+                        </b></h3>
+                    <table id="datatable" class="table table-striped jambo_table w-100">
+                        <thead style="border-radius: 20px">
+                            <tr class="headings text-center">
+                                <th class="column-title" style="vertical-align: middle !important;">ID Đơn hàng</th>
+                                <th class="column-title">Sản phẩm </th>
+                                <th class="column-title">Số lượng mua </th>
+                                <th class="column-title">Giá </th>
+                                <th class="column-title">Ngày mua </th>
+                                <th class="column-title">Trạng thái </th>
+                                <th class="column-title">
+                                    <span class="nobr">Thao tác</span>
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach ($order_detail as $v)
+                                <tr class="even pointer text-center">
+                                    <td class=" ">{{ $v->order_id }}</td>
+                                    <td class="text-left ">{{ $v->product->name }}</td>
+                                    <td class=" status_order">{{ $v->quantity }}</td>
+                                    <td class=" ">{{ number_format($v->amount) }} VNĐ</td>
+                                    <td class=" ">{{ date('d-m-Y h:m A', strtotime($v->created_at)) }}</td>
+                                    <td class=" ">{{ $order_all->find($v->order_id)->status }}</td>
+                                    <td class=" last">
+                                        <a href="javascript:;" onclick="showPD({{ $v->product_id }})"
+                                            data-bs-toggle="modal" data-bs-target="#viewProductDetail">Xem sản phẩm</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                {{-- /Product --}}
             </div>
         </div>
     </div>
