@@ -555,6 +555,17 @@ class HomeController extends Controller
         return view('admin.back.statistical', compact('order', 'order_detail'));
     }
 
+    //subtmit statistical
+    public function submit_statistical(Request $request){
+        $start = $request->start_date;
+        $end = $request->end_date;
+
+        $order = Order::whereBetween('created_at', [$start, $end])->get();
+        $order_detail = OrderDetail::whereBetween('created_at', [$start, $end])->get();
+
+        return view('admin.back.statistical', compact('order', 'order_detail', 'start', 'end'));
+    }
+
     // ======================================STAFF======================================================
     //staff list
     public function staff()

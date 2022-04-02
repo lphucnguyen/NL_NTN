@@ -54,7 +54,8 @@ Route::get('/profile/{id}', [HomeController::class, 'profile'])->name('admin.pro
 Route::post('/profile/edit', [HomeController::class, 'post_edit_profile'])->name('admin.profile.edit');
 
 //statistical
-Route::get('/statistical', [HomeController::class, 'statistical']);
+Route::get('/statistical', [HomeController::class, 'statistical'])->name('admin.statistical');
+Route::post('/statistical', [HomeController::class, 'submit_statistical']);
 
 //product_type
 Route::get('/product_type', [HomeController::class, 'product_type']);

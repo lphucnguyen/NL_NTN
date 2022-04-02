@@ -62,6 +62,9 @@
 
     <!-- Jquery 3.6 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://colorlib.com/polygon/vendors/Chart.js/dist/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 
     <style>
         table tbody tr td {
@@ -310,6 +313,9 @@
     <script src="https://colorlib.com/polygon/vendors/flot.curvedlines/curvedLines.js"></script>
     <!-- DateJS -->
     <script src="https://colorlib.com/polygon/vendors/DateJS/build/date.js"></script>
+    <!-- Chart.js -->
+    <script src="https://colorlib.com/polygon/vendors/Chart.js/dist/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('admin_template/build/js/custom.js') }}"></script>
