@@ -41,7 +41,7 @@ class Checkout extends Component
         $total = Cart::getTotal();
         $address = $this->address;
         $note = $this->note;
-        $status = 'Đang xử lý';
+        $status = 'Chưa xác nhận';
 
         $order = Order::create([
             'user_id' => $idUser,

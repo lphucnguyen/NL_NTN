@@ -125,7 +125,7 @@
                                     <td class="column-2">
                                         {{$order->created_at}}
                                     </td>
-                                    <td class="column-3">{{number_format($order->total, 3, '.', ',')}} VND</td>
+                                    <td class="column-3">{{number_format($order->total, 0, '.', ',')}} VND</td>
                                     <td class="column-4">
                                         {{$order->status}}
                                     </td>

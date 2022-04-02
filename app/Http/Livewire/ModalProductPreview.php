@@ -40,6 +40,10 @@ class ModalProductPreview extends Component
         $this->qtyProductAdd--;
     }
 
+    public function closeModal() {
+        $this->isShowModalPreviewProduct = false;
+    }
+
     public function render()
     {
         $this->dispatchBrowserEvent('isRenderedCart');

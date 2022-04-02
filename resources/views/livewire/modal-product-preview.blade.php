@@ -4,7 +4,7 @@
     @if(!is_null($productQuickView))
     <div class="container">
         <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
-            <button class="how-pos3 hov3 trans-04 js-hide-modal1">
+            <button wire:click="closeModal" class="how-pos3 hov3 trans-04 js-hide-modal1">
                 <img src="/client_template/images/icons/icon-close.png" alt="CLOSE">
             </button>
 
@@ -39,7 +39,7 @@
                         </h4>
 
                         <span class="mtext-106 cl2">
-                            {{number_format($productQuickView->price, 3, '.', ',') }} VND
+                            {{number_format($productQuickView->price, 0, '.', ',') }} VND
                         </span>
 
                         <p class="stext-102 cl3 p-t-23">

@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Models\Product;
 use App\Models\User;
+use Carbon\Carbon;
 use Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,6 +52,10 @@ class HomeController extends Controller
     public function checkout(){
         $products = Cart::getContent();
         $total = Cart::getTotal();
+
+        if(count($products) == 0) {
+            return redirect('/home');
+        }
 
         return view('client.back.checkout', compact('products', 'total'));
     }
@@ -188,7 +194,9 @@ class HomeController extends Controller
 
     public function trackOrder($id) {
         $order = Order::findOrFail($id);
+        $order_details = OrderDetail::query()->where('order_id', $order->id)->get();
+        $created_order = Carbon::parse($order->created_at)->format('d/m/Y');;
 
-        return view('client.back.track_order', compact('order'));
+        return view('client.back.track_order', compact('order', 'order_details', 'created_order'));
     }
 }

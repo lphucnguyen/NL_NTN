@@ -16,7 +16,7 @@
                 </a>
 
                 <span class="stext-105 cl3">
-                    {{number_format($product->price, 3, ',', '.')}}
+                    {{number_format($product->price, 0, ',', '.')}}
                 </span>
             </div>
 

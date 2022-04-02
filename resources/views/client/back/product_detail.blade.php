@@ -67,7 +67,7 @@
                         </h4>
 
                         <span class="mtext-106 cl2">
-                            {{number_format($product->price, 3, ',', '.')}} VND
+                            {{number_format($product->price, 0, ',', '.')}} VND
                         </span>
 
                         <p class="stext-102 cl3 p-t-23">
@@ -113,8 +113,12 @@
                                     </div>
                                 </div>
                             </div> --}}
-
+                            <p class="stext-102 cl3 p-t-23">
+                                Số lượng: {{ $product->quantity}}
+                            </p>
+                            
                             <div class="flex-w flex-l-m p-b-10">
+
                                 <div class="size-204 flex-w flex-m respon6-next">
                                     <div class="wrap-num-product flex-w m-r-20 m-tb-10">
                                         <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">

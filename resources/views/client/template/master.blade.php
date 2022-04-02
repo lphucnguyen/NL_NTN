@@ -84,12 +84,12 @@
                             </li>
 
                             <li class="list-menu">
-                                <a href="/home/about">Về Chúng Tôi</a>
+                                <a href="/home/about">Giới thiệu</a>
                             </li>
 
-                            <li class="list-menu">
+                            {{-- <li class="list-menu">
                                 <a href="/home/contact">Liên Hệ</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
 
@@ -226,13 +226,20 @@
 
                 <div class="col-sm-6 col-lg-3 p-b-50">
                     <h4 class="stext-301 cl0 p-b-30">
-                        Trợ giúp
+                        Hệ thống
                     </h4>
 
                     <ul>
+
                         <li class="p-b-10">
-                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                Track Order
+                            <a href="/home/register" class="stext-107 cl7 hov-cl1 trans-04">
+                                Đăng kí
+                            </a>
+                        </li>
+
+                        <li class="p-b-10">
+                            <a href="/home/login" class="stext-107 cl7 hov-cl1 trans-04">
+                                Đăng nhập
                             </a>
                         </li>
 
@@ -278,7 +285,7 @@
                     </div> --}}
                 </div>
 
-                <div class="col-sm-6 col-lg-3 p-b-50">
+                {{-- <div class="col-sm-6 col-lg-3 p-b-50">
                     <h4 class="stext-301 cl0 p-b-30">
                         Newsletter
                     </h4>
@@ -296,7 +303,7 @@
                             </button>
                         </div>
                     </form>
-                </div>
+                </div> --}}
             </div>
 
             {{-- <div class="p-t-40">

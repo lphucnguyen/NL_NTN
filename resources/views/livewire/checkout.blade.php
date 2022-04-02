@@ -58,7 +58,7 @@
 
                         <div class="size-209 text-right">
                             <span class="mtext-110 cl2">
-                                {{number_format($product->price * $product->quantity, 3, ',', '.')}} VND
+                                {{number_format($product->price * $product->quantity, 0, ',', '.')}} VND
                             </span>
                         </div>
                     </div>
@@ -134,7 +134,7 @@
 
                         <div class="size-209 p-t-1 text-right">
                             <span class="mtext-110 cl2">
-                                {{number_format($total, 3, ',', '.')}} VND
+                                {{number_format($total, 0, ',', '.')}} VND
                             </span>
                         </div>
                     </div>
