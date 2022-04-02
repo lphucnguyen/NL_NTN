@@ -16,24 +16,24 @@
                         </div>
                         <div class="m-t-20">
                             <label class="stext-110 cl2">Địa chỉ:</label>
-                            <input type="text" disabled value={{Auth::user()->address}} class="mtext-107 clblack p-l-20 p-r-20 size-114 plh2 bglight" />
+                            <input type="text" wire:model="address" value={{Auth::user()->address}} class="mtext-107 clblack p-l-20 p-r-20 size-114 plh2 bglight" />
                         </div>
                         <div class="m-t-20">
                             <label class="stext-110 cl2">Ghi chú:</label>
-                            <textarea class="mtext-107 clblack p-l-20 p-r-20 p-t-20 p-b-20 size-w-114 plh2 bglight"></textarea>
+                            <textarea wire:model="note" class="mtext-107 clblack p-l-20 p-r-20 p-t-20 p-b-20 size-w-114 plh2 bglight"></textarea>
                         </div>
                         <div class="m-t-20">
                             <label class="stext-110 cl2">Hình thức thanh toán:</label>
                             <div>
-                                <input type="radio" id='checkout-1' name="payment" value="Thanh toán khi nhận hàng" class="d-inline mtext-107 clblack p-l-20 p-r-20 plh2 bglight" />
+                                <input type="radio" id='checkout-1' wire:model="payment" name="payment" value="Thanh toán khi nhận hàng" class="d-inline mtext-107 clblack p-l-20 p-r-20 plh2 bglight" />
                                 <label class="d-inline" for="checkout-1">Thanh toán khi nhận hàng</label>
                             </div>
                             <div>
-                                <input type="radio" id='checkout-2' name="payment" value="Thanh toán khi nhận hàng" class="d-inline mtext-107 clblack p-l-20 p-r-20 plh2 bglight" />
+                                <input type="radio" id='checkout-2' wire:model="payment" name="payment" value="MoMo" class="d-inline mtext-107 clblack p-l-20 p-r-20 plh2 bglight" />
                                 <label class="d-inline" for="checkout-2">MoMo</label>
                             </div>
                             <div>
-                                <input type="radio" id='checkout-3' name="payment" value="Thanh toán khi nhận hàng" class="d-inline mtext-107 clblack p-l-20 p-r-20 plh2 bglight" />
+                                <input type="radio" id='checkout-3' wire:model="payment" name="payment" value="VNPay" class="d-inline mtext-107 clblack p-l-20 p-r-20 plh2 bglight" />
                                 <label class="d-inline" for="checkout-3">VNPay</label>
                             </div>
                         </div>
@@ -65,19 +65,21 @@
 
                     @endforeach
 
-                    {{-- <div class="flex-w flex-t bor12 p-b-13">
+                    @if($coupon['percent'] > 0)
+                    <div class="flex-w flex-t bor12 p-b-13 p-t-13">
                         <div class="size-208 text-left">
                             <span class="stext-110 cl2">
-                                Subtotal:
+                                Khuyến mãi:
                             </span>
                         </div>
 
                         <div class="size-209 text-right">
                             <span class="mtext-110 cl2">
-                                {{number_format($subTotal, 3, ',', '.')}} VND
+                                -{{$coupon['percent']}}% ({{$coupon['code']}})
                             </span>
                         </div>
-                    </div> --}}
+                    </div>
+                    @endif
 
                     {{-- <div class="flex-w flex-t bor12 p-t-15 p-b-30">
                         <div class="size-208 w-full-ssm">
@@ -137,7 +139,7 @@
                         </div>
                     </div>
 
-                    <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                    <button wire:click="checkout" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
                         Thanh Toán
                     </button>
                 </div>

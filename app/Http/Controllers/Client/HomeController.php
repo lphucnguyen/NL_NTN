@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Cart;
@@ -183,5 +184,11 @@ class HomeController extends Controller
         }
 
         return view('client.back.profile');
+    }
+
+    public function trackOrder($id) {
+        $order = Order::findOrFail($id);
+
+        return view('client.back.track_order', compact('order'));
     }
 }

@@ -12,6 +12,23 @@ class OrderDetail extends Model
 
     protected $table = 'order_detail';
 
+    protected $fillable = [
+        'product_id',
+        'order_id',
+        'quantity',
+        'amount'
+    ];
+
     protected $dates = ['deleted_at'];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class, 'order_id');
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
 
 }

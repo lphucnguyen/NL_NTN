@@ -18,6 +18,7 @@ class Evaluate extends Model
         'start',
         'user_id',
         'product_id',
+        'star'
     ];
 
     public function product()

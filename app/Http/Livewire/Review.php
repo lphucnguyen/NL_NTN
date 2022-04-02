@@ -25,7 +25,7 @@ class Review extends Component
             'content' => $this->content,
             'user_id' => $this->idUser,
             'product_id' => $this->idProduct,
-            'start' => $this->star,
+            'star' => $this->star,
         ]);
 
         if($createdReview){
@@ -51,6 +51,10 @@ class Review extends Component
                 'timer' => 2000,
             ]);
         }
+    }
+
+    public function addStar($number) {
+        $this->star = $number;
     }
 
     public function render()

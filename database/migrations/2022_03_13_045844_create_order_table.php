@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('payment_method');//Phương thức thành toán
             $table->double('total');//Tổng giá trị đơn hàng
             $table->string('status');//Trạng thái đơn hàng
+            $table->string('address');//Địa chỉ
+            $table->string('note')->nullable();//Ghi chú
             $table->date('delivery_date')->nullable();//Ngày giao hàng
             $table->date('receiving_date')->nullable();//Ngày nhận hàng
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

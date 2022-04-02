@@ -33,7 +33,7 @@
                                         {{$product->name}}
                                     </a>
                                 </td>
-                                <td class="column-3">{{number_format($product->price, 3, '.', ',')}} VND</td>
+                                <td class="column-3">{{number_format($product->price, 0, '.', ',')}} VND</td>
                                 <td class="column-4">
                                     <div class="wrap-num-product flex-w m-l-auto m-r-0">
                                         <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
@@ -57,7 +57,7 @@
                                         value={{$product->id}}
                                     >
                                 </td>
-                                <td class="column-5">{{number_format($product->price * $product->quantity, 3, '.', ',')}} VND</td>
+                                <td class="column-5">{{number_format($product->price * $product->quantity, 0, '.', ',')}} VND</td>
                             </tr>
 
                             @endforeach
@@ -66,7 +66,7 @@
 
                     <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
                         <div class="flex-w flex-m m-r-20 m-tb-5">
-                            <input wire:model="coupon" class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" placeholder="Coupon Code">
+                            <input wire:model="coupon.code" class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" placeholder="Coupon Code">
 
                             <div wire:click="addCoupon" class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
                                 Áp dụng Coupon
@@ -97,26 +97,28 @@
 
                         <div class="size-209 text-right">
                             <span class="mtext-110 cl2">
-                                {{number_format($product->price * $product->quantity, 3, ',', '.')}} VND
+                                {{number_format($product->price * $product->quantity, 0, ',', '.')}} VND
                             </span>
                         </div>
                     </div>
 
                     @endforeach
 
-                    {{-- <div class="flex-w flex-t bor12 p-b-13">
+                    @if($coupon['percent'] > 0)
+                    <div class="flex-w flex-t bor12 p-b-13 p-t-13">
                         <div class="size-208 text-left">
                             <span class="stext-110 cl2">
-                                Subtotal:
+                                Khuyến mãi:
                             </span>
                         </div>
 
                         <div class="size-209 text-right">
                             <span class="mtext-110 cl2">
-                                {{number_format($subTotal, 3, ',', '.')}} VND
+                                -{{$coupon['percent']}}% ({{$coupon['code']}})
                             </span>
                         </div>
-                    </div> --}}
+                    </div>
+                    @endif
 
                     {{-- <div class="flex-w flex-t bor12 p-t-15 p-b-30">
                         <div class="size-208 w-full-ssm">
@@ -171,7 +173,7 @@
 
                         <div class="size-209 p-t-1 text-right">
                             <span class="mtext-110 cl2">
-                                {{number_format($total, 3, ',', '.')}} VND
+                                {{number_format($total, 0, ',', '.')}} VND
                             </span>
                         </div>
                     </div>

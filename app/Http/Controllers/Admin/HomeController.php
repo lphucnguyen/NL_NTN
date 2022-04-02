@@ -667,10 +667,11 @@ class HomeController extends Controller
             ->select('order.*', 'a.percent')
             ->where('order.id', $id)->first();
 
-        $order_detail = OrderDetail::leftjoin('product as b', 'product_id', 'b.id')
+        $order_detail = OrderDetail::leftjoin('product as b', 'order_detail.product_id', 'b.id')
             ->select('order_detail.*', 'b.name', 'b.description', 'b.price')
-            ->where('order_id', $id)
+            ->where('order_detail.order_id', $id)
             ->get();
+        // return $order_detail;
 
         $user = User::whereId($order->user_id)->first();
 

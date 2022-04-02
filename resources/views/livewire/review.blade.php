@@ -19,8 +19,11 @@
                         </span>
 
                         <span class="fs-18 cl11">
-                            @for($i=0; $i<(int)$review->start; $i++)
+                            @for($i=0; $i<(int)$review->star; $i++)
                             <i class="zmdi zmdi-star"></i>
+                            @endfor
+                            @for($i=(int)$review->star; $i<5; $i++)
+                            <i class="zmdi zmdi-star-outline"></i>
                             @endfor
                         </span>
                     </div>
@@ -55,12 +58,11 @@
                         </span>
 
                         <span class="wrap-rating fs-18 cl11 pointer">
-                            <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                            <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                            <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                            <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                            <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                            <input wire:model="star" class="dis-none" type="number" name="rating">
+                            <i class="item-rating pointer zmdi zmdi-star{{$star >= 1 ? '' : '-outline'}}" wire:click="addStar(1)"></i>
+                            <i class="item-rating pointer zmdi zmdi-star{{$star >= 2 ? '' : '-outline'}}" wire:click="addStar(2)"></i>
+                            <i class="item-rating pointer zmdi zmdi-star{{$star >= 3 ? '' : '-outline'}}" wire:click="addStar(3)"></i>
+                            <i class="item-rating pointer zmdi zmdi-star{{$star >= 4 ? '' : '-outline'}}" wire:click="addStar(4)"></i>
+                            <i class="item-rating pointer zmdi zmdi-star{{$star >= 5 ? '' : '-outline'}}" wire:click="addStar(5)"></i>
                         </span>
                     </div>
 

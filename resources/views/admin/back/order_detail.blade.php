@@ -165,13 +165,34 @@
     </section>
     <!-- this row will not appear when printing -->
     @if ($staff != null)
-    {{-- <div class="row no-print">
+    <div class="row no-print">
         <div class=" ">
-            <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+            <button class="btn btn-default" onclick="PrintElem()"><i class="fa fa-print"></i> Print</button>
             <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i>
                 Generate PDF</button>
         </div>
-    </div> --}}
+    </div>
     @endif
+
+    <script>
+        function PrintElem()
+        {
+            var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+            mywindow.document.write(
+                '<html><head><link href="https://colorlib.com/polygon/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"><link href="https://colorlib.com/polygon/build/css/custom.css" rel="stylesheet"></head><body>'
+            );
+            mywindow.document.write('<div>' + document.querySelector('.invoice').innerHTML  + '</div>');
+            mywindow.document.write('</body></html>');
+
+            mywindow.document.close(); // necessary for IE >= 10
+            mywindow.focus(); // necessary for IE >= 10*/
+
+            mywindow.print();
+            // mywindow.close();
+
+            return true;
+        }
+    </script>
 
 @stop
