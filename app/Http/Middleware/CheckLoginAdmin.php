@@ -17,9 +17,12 @@ class CheckLoginAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->role <3){
-            return $next($request);
-        }else{
+        if (Auth::check()) {
+            if (Auth::user()->role < 3)
+                return $next($request);
+            else
+                return redirect('/home');//client
+        } else {
             return redirect()->route('admin.login');
         }
     }
