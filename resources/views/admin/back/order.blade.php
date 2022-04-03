@@ -19,7 +19,7 @@
                 </th>
                 <th class="column-title" style="vertical-align: middle !important;">ID </th>
                 <th class="column-title" style="vertical-align: middle !important;">Người mua </th>
-                <th class="column-title">Người duyệt </th>
+                <th class="column-title" style="vertical-align: middle !important;">Địa chỉ </th>
                 <th class="column-title">Trạng thái đơn hàng </th>
                 <th class="column-title">Ngày giao hàng </th>
                 <th class="column-title">Ngày nhận hàng </th>
@@ -51,9 +51,7 @@
                     </td>
                     <td class=" ">{{ $v->id }}</td>
                     <td class="text-left ">{{ $v->user_fullname }}</td>
-                    <td class="text-left ">
-                        <a href="/admin/profile/{{ $v->admin_id }}">{{ $v->admin_fullname }}</a>
-                    </td>
+                    <td class="text-left ">{{ $v->address }}</td>
                     <td class=" status_order">{{ $v->status }}</td>
                     <td class=" ">{{ $v->delivery_date }}</td>
                     <td class=" ">{{ $v->receiving_date }}</td>

@@ -25,8 +25,8 @@ class DatabaseSeeder extends Seeder
     {
         //////////////////////////////////////////////////////
         //Điền thông tin ở đâyyyyy
-        $user_quantity = 5;//Số người dùng random
-        $product_quantity = 10;//Số sản phẩm random
+        $user_quantity = 0;//Số người dùng random
+        $product_quantity = 0;//Số sản phẩm random
         //////////////////////////////////////////////////////
 
         UserType::insert([
@@ -75,7 +75,7 @@ class DatabaseSeeder extends Seeder
             ['name_type' => 'Charm'],
         ]);
 
-        User::factory($user_quantity)->create();
+        User::factory($user_quantity)->create();//create user random(staff, client)
 
         $u = User::all();
 
@@ -92,9 +92,9 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        Product::factory($product_quantity)->create();
+        Product::factory($product_quantity)->create();//Create product
 
-        for ($i = 1; $i <= $product_quantity; $i++) {
+        for ($i = 1; $i <= $product_quantity; $i++) {//create product images
             for ($j = 1; $j <= 3; $j++) {
                 ProductImage::factory()->create([
                     'product_id' => $i,

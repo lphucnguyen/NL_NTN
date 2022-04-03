@@ -50,7 +50,7 @@
                     <hr class="w-50 my-2">
                     <address>
                         <strong class="fs-6">{{ $user->fullname }}</strong><br>
-                        <strong>Địa chỉ:</strong> <i>{{ $user->address }}</i>
+                        <strong>Địa chỉ:</strong> <i>{{ $order->address }}</i>
                         <br><strong>Số điện thoại:</strong> {{ $user->phone }}
                         <br><strong>Email:</strong> {{ $user->email }}
                     </address>
