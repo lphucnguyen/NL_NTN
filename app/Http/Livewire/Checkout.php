@@ -62,6 +62,15 @@ class Checkout extends Component
             ]);
         }
 
+        Cart::clear();
+        session()->forget('id');
+        session()->forget('percent');
+        session()->forget('code');
+
+        if($this->payment == 'VNPay'){
+            return redirect('/home/process/vnpay/' . $order->id);
+        }
+
         $this->dispatchBrowserEvent('swal', [
             'title' => 'Thành công',
             'text' => 'Đặt hàng thành công',
@@ -69,12 +78,6 @@ class Checkout extends Component
             'timer' => 2000,
             'code' => 'checkout'
         ]);
-
-
-        Cart::clear();
-        session()->forget('id');
-        session()->forget('percent');
-        session()->forget('code');
 
     }
 

@@ -28,10 +28,10 @@
                                 <input type="radio" id='checkout-1' wire:model="payment" name="payment" value="Thanh toán khi nhận hàng" class="d-inline mtext-107 clblack p-l-20 p-r-20 plh2 bglight" />
                                 <label class="d-inline" for="checkout-1">Thanh toán khi nhận hàng</label>
                             </div>
-                            <div>
+                            {{-- <div>
                                 <input type="radio" id='checkout-2' wire:model="payment" name="payment" value="MoMo" class="d-inline mtext-107 clblack p-l-20 p-r-20 plh2 bglight" />
                                 <label class="d-inline" for="checkout-2">MoMo</label>
-                            </div>
+                            </div> --}}
                             <div>
                                 <input type="radio" id='checkout-3' wire:model="payment" name="payment" value="VNPay" class="d-inline mtext-107 clblack p-l-20 p-r-20 plh2 bglight" />
                                 <label class="d-inline" for="checkout-3">VNPay</label>

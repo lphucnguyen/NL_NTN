@@ -23,8 +23,8 @@
             <p class='stext-103 text-center cl5'>Ngày lập: {{ $created_order }}</p>
         </div>
 
-        <div class="col-sm-12 col-lg-4 m-t-20 invoice-col bor10 p-lr-40 p-t-30 p-b-40 m-r-20 m-lr-0-xl p-lr-15-sm">
-            <div class="col-10">
+        <div class="col-sm-12 col-lg-4 m-t-20">
+            <div class="invoice-col bor10 p-lr-40 p-t-30 p-b-40 m-r-20 m-lr-0-xl p-lr-15-sm">
                 <p class="mtext-103 cl5 m-b-10">Khách hàng: </p>
                 <address>
                     <strong class="stext-103 cl5">Tên: </strong> {{ $order->user->fullname }}<br>
@@ -36,22 +36,20 @@
         </div>
 
 
-        <div class="col-sm-12 col-lg-4 m-t-20 invoice-col bor10 p-lr-40 p-t-30 p-b-40 m-r-40 m-lr-0-xl p-lr-15-sm">
-            <p class="mtext-103 cl5 m-b-10">Hóa đơn: </p>
-            <b class="stext-103 cl5">Đơn hàng: #{{ $order->id }}</b>
-            <br/>
-            <b class="stext-103 cl5">Ngày thanh toán:</b>
-            @if ($order->payment_method == 'momo')
-                {{ date('d/m/Y', strtotime($order->created_at)) }}
-            @else
-                @if ($order->delivery_date == null)
-                    Chưa thanh toán
-                @else
-                    {{ date('d/m/Y', strtotime($order->delivery_date)) }}
-                @endif
-            @endif
-            <br/>
-            <b class="stext-103 cl5">Tình trạng:</b> {{ $order->status }}
+        <div class="col-sm-12 col-lg-4 m-t-20 bor10">
+            <div class="invoice-col p-lr-40 p-t-30 p-b-40 m-r-40 m-lr-0-xl p-lr-15-sm">
+                <p class="mtext-103 cl5 m-b-10">Hóa đơn: </p>
+                <b class="stext-103 cl5">Đơn hàng: #{{ $order->id }}</b>
+                <br/>
+                <b class="stext-103 cl5">Ngày thanh toán:</b>
+                    @if ($order->status_payment == 0)
+                        Chưa thanh toán @if($order->payment_method == 'VNPay') (<a href="/home/process/vnpay/{{$order->id}}">Thanh toán ngay</a>) @endif
+                    @else
+                        Đã thanh toán
+                    @endif
+                <br/>
+                <b class="stext-103 cl5">Tình trạng:</b> {{ $order->status }}
+            </div>
         </div>
 
         <!-- info row -->
@@ -105,12 +103,14 @@
                 <div class="table-responsive">
                     <table class="table">
                         <tbody>
+                            @if(!is_null($order->promotion))
                             <tr>
                                 <th>Khuyến mãi ({{ $order->promotion->percent }}%)</th>
                                 <td>
                                     {{ number_format($order->promotion->percent * $order->total / 100, 0, ',', '.') }} VNĐ
                                 </td>
                             </tr>
+                            @endif
                             <tr>
                                 <th>VAT:</th>
                                 <td>Sản phẩm đã bao gồm VAT</td>
