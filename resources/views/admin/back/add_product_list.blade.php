@@ -14,7 +14,7 @@
         <form action="" id="frmQtyNewProduct" onsubmit="return frmQtyNewProduct(this)">
             <div class="form-group">
                 <label for="qtyNewProduct" class="form-label">Bạn muốn tạo bao nhiêu sản phẩm mới?</label>
-                <input type="number" id="qtyNewProduct" name="qtyNewProduct" min="1" max="20" value="1"
+                <input type="number" id="qtyNewProduct" name="qtyNewProduct" min="1" value="1"
                     class="form-control" placeholder="Nhập số lượng sản phẩm mới muốn tạo">
             </div>
             <div class="form-group text-center">
