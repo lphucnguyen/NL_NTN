@@ -56,12 +56,12 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'role'  => 3,
-                'fullname' => 'Phạm Lê',
-                'email' => 'phamle21@gmail.com',
+                'fullname' => 'Đồ Ngốc Hoài Thương',
+                'email' => 'hoaithuong@gmail.com',
                 'phone' => '0941649826',
                 'address' => 'Cần Thơ',
-                'gender' => 'Nam',
-                'password' => bcrypt('phamle21'),
+                'gender' => 'Nữ',
+                'password' => bcrypt('123456'),
             ],
         ]);
 
