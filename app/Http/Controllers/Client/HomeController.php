@@ -195,8 +195,9 @@ class HomeController extends Controller
     public function trackOrder($id) {
         $order = Order::findOrFail($id);
         $order_details = OrderDetail::query()->where('order_id', $order->id)->get();
-        $created_order = Carbon::parse($order->created_at)->format('d/m/Y');;
+        $created_order = Carbon::parse($order->created_at)->format('d/m/Y');
+        $warranty_order = Carbon::parse($order->created_at)->addMonths(1)->format('d/m/Y');
 
-        return view('client.back.track_order', compact('order', 'order_details', 'created_order'));
+        return view('client.back.track_order', compact('order', 'order_details', 'created_order', 'warranty_order'));
     }
 }

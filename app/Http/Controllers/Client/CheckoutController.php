@@ -29,6 +29,10 @@ class CheckoutController extends Controller
     public function processMoMo($idOrder) {
 
         $order = Order::findOrFail($idOrder);
+        if($order->status == 'Hủy đơn hàng'){
+            return redirect('/home');
+        }
+
         $amount = $order->total;
 
         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
@@ -75,6 +79,10 @@ class CheckoutController extends Controller
     {
 
         $order = Order::findOrFail($idOrder);
+        if($order->status == 'Hủy đơn hàng'){
+            return redirect('/home');
+        }
+
         $amount = $order->total;
 
         $vnp_TmnCode = "9U6ZKSYR"; //Mã website tại VNPAY 
@@ -130,7 +138,11 @@ class CheckoutController extends Controller
         return redirect($vnp_Url);
     }
 
-    public function processVNPaySuccess($idOrder) {
+    public function processVNPaySuccess($idOrder, Request $request) {
+        // dd($request->vnp_ResponseCode);
+        if($request->vnp_ResponseCode != '00'){
+            return redirect('/home/profile');
+        }
         $order = Order::findOrFail($idOrder);
 
         $order->status_payment = 1;
@@ -139,7 +151,10 @@ class CheckoutController extends Controller
         return redirect('/home/profile');
     }
 
-    public function processMoMoSuccess($idOrder) {
+    public function processMoMoSuccess($idOrder, Request $request) {
+        if($request->resultCode != '0'){
+            return redirect('/home/profile');
+        }
         $order = Order::findOrFail($idOrder);
 
         $order->status_payment = 1;
