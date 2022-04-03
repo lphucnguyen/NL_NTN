@@ -409,14 +409,18 @@
 
         window.addEventListener('swal', event => {
             // alert('Name updated to: ' + event.detail.newName);
-            if (event.detail.code === 'checkout') {
+            if (event.detail.returnURL) {
+                const {returnURL} = event.detail;
+
                 swal(event.detail.title, event.detail.text, event.detail.icon)
                     .then(() => {
-                        window.location = "/home/profile";
+                        window.location = returnURL;
                     });
-            } else {
-                swal(event.detail.title, event.detail.text, event.detail.icon);
+
+                return;
             }
+
+            swal(event.detail.title, event.detail.text, event.detail.icon);
         });
 
         window.addEventListener('productAdded', event => {

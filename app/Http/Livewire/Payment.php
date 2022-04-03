@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Product;
 use App\Models\Promotion;
 use Carbon\Carbon;
 use Livewire\Component;
@@ -96,20 +97,21 @@ class Payment extends Component
             if($quantity <= 0){
                 Cart::remove($key);
             }else{
-                $product = Cart::update($key, ['quantity' => 
+                Cart::update($key, ['quantity' => 
                     [
                         'relative' => false,
                         'value' => $quantity
                     ]
                 ]);
             }
-            $this->dispatchBrowserEvent('swal', [
-                'title' => 'Thành công',
-                'text' => 'Cập nhật giỏ hàng thành công',
-                'icon' => 'success',
-                'timer' => 2000,
-            ]);
         }
+
+        $this->dispatchBrowserEvent('swal', [
+            'title' => 'Thành công',
+            'text' => 'Cập nhật giỏ hàng thành công',
+            'icon' => 'success',
+            'timer' => 2000,
+        ]);
     }
 
     public function onChangeCart() {
@@ -124,8 +126,30 @@ class Payment extends Component
         $this->coupon['code'] = session('code');
     }
 
+    public function productsWithMaxQuantity() {
+        $products = Cart::getContent();
+
+        foreach($products as $product){
+            $productInDB = Product::findOrFail($product->id);
+
+            if($productInDB->quantity == 0){
+                Cart::remove($product->id);
+            }
+            else if($productInDB->quantity < $product->quantity){
+                Cart::update($product->id, ['quantity' => 
+                    [
+                        'relative' => false,
+                        'value' => $productInDB->quantity
+                    ]
+                ]);
+            }
+        }
+    }
+
     public function render()
     {
+        $this->productsWithMaxQuantity();
+        
         $this->products = Cart::getContent();
         $this->total = Cart::getTotal();
         $this->subTotal = Cart::getSubTotal();

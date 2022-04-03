@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\OrderDetail;
 use Cart;
 use Illuminate\Support\Facades\Auth;
@@ -33,6 +34,20 @@ class Checkout extends Component
         $this->coupon['code'] = session('code');
     }
 
+    public function quantityIsAvalable() {
+        $products = Cart::getContent();
+
+        foreach($products as $product){
+            $productInDB = Product::findOrFail($product->id);
+
+            if($productInDB->quantity < $product->quantity){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public function checkout() {
 
         $idUser = Auth::id();
@@ -54,6 +69,18 @@ class Checkout extends Component
             return ;
         }
 
+        if(!$this->quantityIsAvalable()){
+            $this->dispatchBrowserEvent('swal', [
+                'title' => 'Thất bại',
+                'text' => 'Hiện tại trong giỏ hàng có sản phẩm đã hết số lượng',
+                'icon' => 'error',
+                'timer' => 2000,
+                'returnURL' => '/home/payment'
+            ]);
+
+            return;
+        }
+
         $order = Order::create([
             'user_id' => $idUser,
             'promotion_id' => $idPromo,
@@ -71,6 +98,9 @@ class Checkout extends Component
                 'quantity' => $product->quantity,
                 'amount' => $product->price
             ]);
+            $productInDB = Product::findOrFail($product->id);
+            $productInDB->quantity = $productInDB->quantity - $product->quantity;
+            $productInDB->save();
         }
 
         Cart::clear();
@@ -90,7 +120,7 @@ class Checkout extends Component
             'text' => 'Đặt hàng thành công',
             'icon' => 'success',
             'timer' => 2000,
-            'code' => 'checkout'
+            'returnURL' => '/home'
         ]);
 
     }

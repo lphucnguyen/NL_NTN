@@ -130,7 +130,10 @@
                                         {{$order->status}}
                                     </td>
                                     <td class="column-5">
-                                        <a href="/home/track_order/{{$order->id}}">Xem chi tiết</a>
+                                        <a class="d-block" href="/home/track_order/{{$order->id}}">Xem chi tiết</a>
+                                        @if($order->status == 'Chưa xác nhận')
+                                        <a class="d-block" href="#" wire:click="cancelOrder({{$order->id}})">Hủy đơn hàng</a>
+                                        @endif
                                     </td>
                                 </tr>
     
