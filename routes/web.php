@@ -46,8 +46,9 @@ Route::group(['prefix' => '/home'], function () {
     Route::get('/profile', [HomeController::class, 'profile'])->middleware('UserClient');
     Route::get('/track_order/{id}', [HomeController::class, 'trackOrder'])->middleware('UserClient');
 
-    // Route::get('/process/momo/{price}', [CheckoutController::class, 'processMoMo'])->middleware('UserClient');
-    Route::get('/process/vnpay/{amount}', [CheckoutController::class, 'processVNPay'])->middleware('UserClient');
+    Route::get('/process/momo/{idOrder}', [CheckoutController::class, 'processMoMo'])->middleware('UserClient');
+    Route::get('/process/vnpay/{idOrder}', [CheckoutController::class, 'processVNPay'])->middleware('UserClient');
 
     Route::get('/process/return-vnpay/{idOrder}', [CheckoutController::class, 'processVNPaySuccess'])->middleware('UserClient');
+    Route::get('/process/return-momo/{idOrder}', [CheckoutController::class, 'processMoMoSuccess'])->middleware('UserClient');
 });

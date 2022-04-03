@@ -69,6 +69,20 @@ class Checkout extends Component
 
         if($this->payment == 'VNPay'){
             return redirect('/home/process/vnpay/' . $order->id);
+        }else if($this->payment == 'MoMo'){
+            if($total > 50000000){
+                $this->dispatchBrowserEvent('swal', [
+                    'title' => 'Thất bại',
+                    'text' => 'Hạn mức thanh toán của MoMo 50.000.000 VND',
+                    'icon' => 'error',
+                    'timer' => 2000,
+                    'code' => 'checkout'
+                ]);
+
+                return ;
+            }
+
+            return redirect('/home/process/momo/' . $order->id);
         }
 
         $this->dispatchBrowserEvent('swal', [

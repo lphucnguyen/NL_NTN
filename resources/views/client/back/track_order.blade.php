@@ -43,7 +43,10 @@
                 <br/>
                 <b class="stext-103 cl5">Ngày thanh toán:</b>
                     @if ($order->status_payment == 0)
-                        Chưa thanh toán @if($order->payment_method == 'VNPay') (<a href="/home/process/vnpay/{{$order->id}}">Thanh toán ngay</a>) @endif
+                        Chưa thanh toán 
+                        @if($order->payment_method == 'VNPay') (<a href="/home/process/vnpay/{{$order->id}}">Thanh toán ngay</a>)
+                        @elseif($order->payment_method == 'MoMo') (<a href="/home/process/momo/{{$order->id}}">Thanh toán ngay</a>)
+                        @endif   
                     @else
                         Đã thanh toán
                     @endif

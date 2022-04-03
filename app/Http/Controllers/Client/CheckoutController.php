@@ -26,21 +26,22 @@ class CheckoutController extends Controller
         return $result;
     }
 
-    public function processMoMo($price) {
+    public function processMoMo($idOrder) {
+
+        $order = Order::findOrFail($idOrder);
+        $amount = $order->total;
 
         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
-        // dd($price);
 
-        $partnerCode = 'MOMOTEMT20200904';
-        $accessKey = 'u3mbpUv5owNspV9U';
-        $secretKey = 't6ro012YhGcF2Ssi93r7sa5ne9DuvN8a';
+        $partnerCode = 'MOMOBKUN20180529';
+        $accessKey = 'klm05TvNBzhg7h7j';
+        $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
         $orderInfo = "Thanh toán qua MoMo";
-        $amount = (int) $price;
+        $amount = (int) $amount;
         $orderId = time() ."";
-        $redirectUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b";
-        $ipnUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b";
+        $redirectUrl = "http://localhost:8000/home/process/return-momo/$idOrder";
+        $ipnUrl = "http://localhost:8000/home/process/return-momo/$idOrder";
         $extraData = "";
-
 
         $requestId = time() . "";
         $requestType = "payWithATM";
@@ -64,11 +65,10 @@ class CheckoutController extends Controller
         $result = $this->execPostRequest($endpoint, json_encode($data));
         $jsonResult = json_decode($result, true);  // decode json
 
+        // dd($jsonResult);
         //Just a example, please check more in there
 
-        dd($jsonResult);
-
-        header('Location: ' . $jsonResult['payUrl']);
+        return redirect()->to($jsonResult['payUrl']);
     }
 
     public function processVNPay($idOrder)
@@ -131,6 +131,15 @@ class CheckoutController extends Controller
     }
 
     public function processVNPaySuccess($idOrder) {
+        $order = Order::findOrFail($idOrder);
+
+        $order->status_payment = 1;
+        $order->save();
+
+        return redirect('/home/profile');
+    }
+
+    public function processMoMoSuccess($idOrder) {
         $order = Order::findOrFail($idOrder);
 
         $order->status_payment = 1;
