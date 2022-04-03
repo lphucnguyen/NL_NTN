@@ -31,7 +31,7 @@
                 <td class="column-2">
                     <a class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6" href="/home/product_detail/{{$product->id}}">{{$product->name}}</a>
                 </td>
-                <td class="column-3">{{number_format($product->price, 3, '.', ',')}} VND</td>
+                <td class="column-3">{{number_format($product->price, 0, '.', ',')}} VND</td>
             </tr>
 
             @endforeach

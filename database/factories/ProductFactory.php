@@ -25,7 +25,7 @@ class ProductFactory extends Factory
             'name' => $this->faker->name(),
             'type' => ProductType::all()->random()->id,
             'description' => $this->faker->sentence(500),
-            'price' => $this->faker->numberBetween(1000000,99999999),
+            'price' => $this->faker->numberBetween(1000000,50000000),
             'quantity' => $this->faker->numberBetween(1,500),
         ];
     }

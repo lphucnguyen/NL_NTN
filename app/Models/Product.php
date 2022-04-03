@@ -71,4 +71,8 @@ class Product extends Model
     {
         return $this->hasMany(Evaluate::class, 'product_id', 'id');
     }
+
+    public function order() {
+        return $this->belongsToMany(Order::class, 'order_detail', 'order_id', 'product_id');
+    }
 }

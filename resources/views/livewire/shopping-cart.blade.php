@@ -31,7 +31,7 @@
                         </a>
 
                         <span class="header-cart-item-info">
-                            {{$product->quantity}} x {{number_format($product->price, 3, '.', ',')}} VND
+                            {{$product->quantity}} x {{number_format($product->price, 0, '.', ',')}} VND
                         </span>
                     </div>
                 </li>
@@ -41,7 +41,7 @@
 
             <div class="w-full">
                 <div class="header-cart-total w-full p-tb-40">
-                    Tổng cộng: {{number_format($total, 3, '.', ',')}} VND
+                    Tổng cộng: {{number_format($total, 0, '.', ',')}} VND
                 </div>
 
                 <div class="header-cart-buttons flex-w w-full">

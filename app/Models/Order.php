@@ -26,4 +26,14 @@ class Order extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'order_detail');
+    }
+
+    public function promotion()
+    {
+        return $this->hasOne(Promotion::class, 'id', 'promotion_id');
+    }
 }

@@ -25,8 +25,8 @@ class DatabaseSeeder extends Seeder
     {
         //////////////////////////////////////////////////////
         //Điền thông tin ở đâyyyyy
-        $user_quantity = 0;//Số người dùng random
-        $product_quantity = 0;//Số sản phẩm random
+        $user_quantity = 5;//Số người dùng random
+        $product_quantity = 60;//Số sản phẩm random
         //////////////////////////////////////////////////////
 
         UserType::insert([

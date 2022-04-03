@@ -41,7 +41,7 @@ class Checkout extends Component
         $total = Cart::getTotal();
         $address = $this->address;
         $note = $this->note;
-        $status = 'Đang xử lý';
+        $status = 'Chưa xác nhận';
 
         $order = Order::create([
             'user_id' => $idUser,
@@ -62,6 +62,29 @@ class Checkout extends Component
             ]);
         }
 
+        Cart::clear();
+        session()->forget('id');
+        session()->forget('percent');
+        session()->forget('code');
+
+        if($this->payment == 'VNPay'){
+            return redirect('/home/process/vnpay/' . $order->id);
+        }else if($this->payment == 'MoMo'){
+            if($total > 50000000){
+                $this->dispatchBrowserEvent('swal', [
+                    'title' => 'Thất bại',
+                    'text' => 'Hạn mức thanh toán của MoMo 50.000.000 VND',
+                    'icon' => 'error',
+                    'timer' => 2000,
+                    'code' => 'checkout'
+                ]);
+
+                return ;
+            }
+
+            return redirect('/home/process/momo/' . $order->id);
+        }
+
         $this->dispatchBrowserEvent('swal', [
             'title' => 'Thành công',
             'text' => 'Đặt hàng thành công',
@@ -69,12 +92,6 @@ class Checkout extends Component
             'timer' => 2000,
             'code' => 'checkout'
         ]);
-
-
-        Cart::clear();
-        session()->forget('id');
-        session()->forget('percent');
-        session()->forget('code');
 
     }
 
