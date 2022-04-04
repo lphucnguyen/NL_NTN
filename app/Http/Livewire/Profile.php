@@ -17,6 +17,9 @@ class Profile extends Component
 
     public $idUser;
     public $panelShow = 'profile';
+    public $limit = 4;
+    public $page = 0;
+    
 
     public $avatar;
     public $fullName = '';
@@ -158,10 +161,26 @@ class Profile extends Component
         ]);        
     }
 
+    public function next() {
+        $orders = Order::query()
+                            ->skip(($this->page + 1) * $this->limit)
+                            ->take($this->limit)
+                            ->get();
+        if(count($orders) == 0) return;
+        $this->page++;
+    }
+
+    public function prev() {
+        if($this->page == 0) return;
+        $this->page--;
+    }
+
     public function render()
     {
         $user = User::findOrFail($this->idUser);
-        $this->orders = $user->orders;
+        $this->orders = $user->orders
+                            ->skip($this->page * $this->limit)
+                            ->take($this->limit);
 
         return view('livewire.profile');
     }
