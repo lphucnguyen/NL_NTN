@@ -33,7 +33,11 @@
                     </p>
                 </div>
             </div>
-            @endforeach    
+            @endforeach
+           <div class="d-flex justify-content-between m-b-10">
+               <button wire:click="prev()" class="flex-c-m stext-101 cl0 p-t-10 p-b-10 bg3 hov-btn3 m-t-30 p-lr-15 trans-04 pointer">Trước</button>
+               <button wire:click="next()" class="flex-c-m stext-101 cl0 p-t-10 p-b-10 bg3 hov-btn3 m-t-30 p-lr-15 trans-04 pointer">Sau</button>
+           </div>
 
             @if(!Auth::user())
                 <h6 class="smtext-101 txt-center">Bạn cần đăng nhập để đánh giá</h6>
