@@ -65,7 +65,7 @@ class Review extends Component
                             ->skip(($this->page + 1) * $this->limit)
                             ->take($this->limit)
                             ->get();
-        if(count($reviews) < $this->limit) return;
+        if(count($reviews) == 0) return;
         $this->page++;
     }
 
@@ -79,6 +79,7 @@ class Review extends Component
     {
         $this->reviews = Evaluate::query()
                                     ->where('product_id', $this->idProduct)
+                                    ->orderBy('created_at', 'desc')
                                     ->skip($this->page * $this->limit)
                                     ->take($this->limit)
                                     ->get();
