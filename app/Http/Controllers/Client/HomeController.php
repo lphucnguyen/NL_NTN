@@ -126,7 +126,7 @@ class HomeController extends Controller
     public function submitRegister(Request $request) {
         $request->validate([
             'email' => 'required|min:2',
-            'fullname' => 'required|min:2:max:255',
+            'fullname' => 'required|min:2|max:255',
             'password' => 'required|confirmed|min:8|max:255',
             'address' => 'required|min:8|max:255',
             'phone' => 'required|min:10'
@@ -145,7 +145,7 @@ class HomeController extends Controller
             'fullname.max' => 'Họ tên nhiều nất 255 kí tự',
 
             'address.required' => 'Bạn chưa nhập địa chỉ',
-            'address.min' => 'Địa chỉ ít nất 8 kí tự',
+            'address.min' => 'Địa chỉ ít nhất 8 kí tự',
             'address.max' => 'Địa chỉ nhiều nất 255 kí tự',
 
             'phone.required' => 'Bạn chưa nhập số điện thoại',
