@@ -104,19 +104,19 @@
                             <i class="zmdi zmdi-shopping-cart"></i>
                         </div>
                         @if (!Auth::check())
-                            <a href="/home/login" class="cl2 hov-cl1 trans-04 p-l-22 p-r-11h">
+                            <a href="/home/login" class="cl2 stext-106 hov-cl1 trans-04 p-l-22 p-r-11h">
                                 Đăng nhập
                             </a>
                             <span class="m-r-5 m-l-5"> / </span>
-                            <a href="/home/register" class="cl2 hov-cl1 trans-04">
+                            <a href="/home/register" class="cl2 stext-106 hov-cl1 trans-04">
                                 Đăng kí
                             </a>
                         @else
-                            <a href="/home/profile" class="cl2 hov-cl1 trans-04 p-l-22 p-r-11h">
+                            <a href="/home/profile" class="cl2 stext-106 hov-cl1 trans-04 p-l-22 p-r-11h">
                                 Hồ sơ
                             </a>
                             <span class="m-r-5 m-l-5"> / </span>
-                            <a href="/home/logout" class="cl2 hov-cl1 trans-04">
+                            <a href="/home/logout" class="cl2 stext-106 hov-cl1 trans-04">
                                 Đăng xuất
                             </a>
                         @endif
