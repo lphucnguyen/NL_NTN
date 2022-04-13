@@ -121,8 +121,8 @@
                 <p class="lead">Phương thức thanh toán: <b>{{ $order->payment_method }}</b></p>
 
                 <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                    @if ($order->payment_method == 'momo')
-                        Đơn hàng đã được thanh toán qua momo.
+                    @if ($order->payment_method != 'Chưa xác nhận')
+                        Đơn hàng đã được thanh toán qua {{ $order->payment_method }}.
                     @else
                         Đơn hàng được thanh toán bằng tiền mặt khi nhận hàng.
                     @endif

@@ -47,6 +47,7 @@ class HomeController extends Controller
             ->select('product.*', 'b.name_type')
             ->get();
         $product_type = ProductType::all();
+
         return view('admin.back.product', compact('product_list', 'product_type'));
     }
     //product delete list
