@@ -560,6 +560,7 @@ class ComposerStaticInitd97b7853101265ba91c3e768f397630e
         'App\\Http\\Middleware\\UserAdmin' => __DIR__ . '/../..' . '/app/Http/Middleware/UserAdmin.php',
         'App\\Http\\Middleware\\UserClient' => __DIR__ . '/../..' . '/app/Http/Middleware/UserClient.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Mail\\OrderEmail' => __DIR__ . '/../..' . '/app/Mail/OrderEmail.php',
         'App\\Models\\Evaluate' => __DIR__ . '/../..' . '/app/Models/Evaluate.php',
         'App\\Models\\Guarantee' => __DIR__ . '/../..' . '/app/Models/Guarantee.php',
         'App\\Models\\Order' => __DIR__ . '/../..' . '/app/Models/Order.php',

@@ -21,9 +21,9 @@
                                     <div class="wrap-pic-w pos-relative">
                                         <img src={{asset('/images/products/' . $image->name)}} alt="IMG-PRODUCT">
 
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href={{asset('/images/products/' . $image->name)}}>
+                                        {{-- <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href={{asset('/images/products/' . $image->name)}}>
                                             <i class="fa fa-expand"></i>
-                                        </a>
+                                        </a> --}}
                                     </div>
                                 </div>
                                 @endforeach

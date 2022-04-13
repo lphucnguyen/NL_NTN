@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OrderEmail;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class CheckoutController extends Controller
 {
@@ -48,7 +51,7 @@ class CheckoutController extends Controller
         $extraData = "";
 
         $requestId = time() . "";
-        $requestType = "payWithATM";
+        $requestType = "onDelivery";
         // $extraData = ($_POST["extraData"] ? $_POST["extraData"] : "");
         //before sign HMAC SHA256 signature
         $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
@@ -148,6 +151,9 @@ class CheckoutController extends Controller
         $order->status_payment = 1;
         $order->save();
 
+        $emailTo = Auth::user()->email;
+        Mail::to($emailTo)->send(new OrderEmail($order));
+
         return redirect('/home/profile');
     }
 
@@ -159,6 +165,9 @@ class CheckoutController extends Controller
 
         $order->status_payment = 1;
         $order->save();
+
+        $emailTo = Auth::user()->email;
+        Mail::to($emailTo)->send(new OrderEmail($order));
 
         return redirect('/home/profile');
     }
