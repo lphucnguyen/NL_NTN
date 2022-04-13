@@ -10,6 +10,8 @@ class Review extends Component
 {
     public $idProduct;
     public $reviews;
+    public $limit = 4;
+    public $page = 0;
     
     public $content = '';
     public $idUser = 0;
@@ -57,9 +59,30 @@ class Review extends Component
         $this->star = $number;
     }
 
+    public function next() {
+        $reviews = Evaluate::query()
+                            ->where('product_id', $this->idProduct)
+                            ->skip(($this->page + 1) * $this->limit)
+                            ->take($this->limit)
+                            ->get();
+        if(count($reviews) == 0) return;
+        $this->page++;
+    }
+
+    public function prev() {
+        if($this->page == 0) return;
+        $this->page--;
+    }
+
+
     public function render()
     {
-        $this->reviews = Evaluate::query()->where('product_id', $this->idProduct)->take(8)->get();
+        $this->reviews = Evaluate::query()
+                                    ->where('product_id', $this->idProduct)
+                                    ->orderBy('created_at', 'desc')
+                                    ->skip($this->page * $this->limit)
+                                    ->take($this->limit)
+                                    ->get();
 
         return view('livewire.review');
     }

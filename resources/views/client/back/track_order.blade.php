@@ -24,7 +24,7 @@
         </div>
 
         <div class="col-sm-12 col-lg-4 m-t-20">
-            <div class="invoice-col bor10 p-lr-40 p-t-30 p-b-40 m-r-20 m-lr-0-xl p-lr-15-sm">
+            <div class="invoice-col w-100 bor10 p-lr-40 p-t-30 p-b-40 m-r-20 m-lr-0-xl p-lr-15-sm">
                 <p class="mtext-103 cl5 m-b-10">Khách hàng: </p>
                 <address>
                     <strong class="stext-103 cl5">Tên: </strong> {{ $order->user->fullname }}<br>
@@ -36,11 +36,12 @@
         </div>
 
 
-        <div class="col-sm-12 col-lg-4 m-t-20 bor10">
-            <div class="invoice-col p-lr-40 p-t-30 p-b-40 m-r-40 m-lr-0-xl p-lr-15-sm">
+        <div class="col-sm-12 col-lg-4 m-t-20">
+            <div class="invoice-col w-100 bor10 p-lr-40 p-t-30 p-b-40 m-r-40 m-lr-0-xl p-lr-15-sm">
                 <p class="mtext-103 cl5 m-b-10">Hóa đơn: </p>
                 <b class="stext-103 cl5">Đơn hàng: #{{ $order->id }}</b>
                 <br/>
+                @if($order->status != 'Hủy đơn hàng')
                 <b class="stext-103 cl5">Ngày thanh toán:</b>
                     @if ($order->status_payment == 0)
                         Chưa thanh toán 
@@ -51,6 +52,7 @@
                         Đã thanh toán
                     @endif
                 <br/>
+                @endif
                 <b class="stext-103 cl5">Tình trạng:</b> {{ $order->status }}
             </div>
         </div>
@@ -74,7 +76,7 @@
                                 <td class="column-2">{{ $order_detail->product->name }}</td>
                                 <td class="column-3">{{ $order_detail->quantity }}</td>
                                 <td class="column-4">{{ number_format($order_detail->product->price) }} VNĐ</td>
-                                <td class="column-4">1 tháng kể từ ngày lập hóa đơn</td>
+                                <td class="column-4">{{ $warranty_order }}</td>
                                 <td class="column-5">{{ number_format($order_detail->amount * $order_detail->quantity, 0, ',', '.') }} VNĐ</td>
                             </tr>
                         @endforeach
@@ -84,10 +86,12 @@
                 <!-- /.col -->
             </div>
             <div class="col-md-6">
-                <p class="lead">Phương thức thanh toán: <b>{{ $order->payment_method }}</b></p>
+                <p class="lead mtext-103 cl5 m-b-10 m-t-20">Phương thức thanh toán: <b>{{ $order->payment_method }}</b></p>
 
-                <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                    @if ($order->payment_method == 'momo')
+                <p class="text-muted well well-sm no-shadow stext-103 cl5" style="margin-top: 10px;">
+                    @if ($order->payment_method == 'MoMo')
+                        Đơn hàng đã được thanh toán qua momo.
+                    @elseif ($order->payment_method == 'VNPay')
                         Đơn hàng đã được thanh toán qua momo.
                     @else
                         Đơn hàng được thanh toán bằng tiền mặt khi nhận hàng.
@@ -101,9 +105,9 @@
                 </p>
             </div>
             <div class="col-md-6">
-                <p class="lead">Tổng thành tiền</p>
+                <p class="lead mtext-103 cl5 m-b-10 m-t-20">Tổng thành tiền</p>
                 <br>
-                <div class="table-responsive">
+                <div class="table-responsive stext-103 cl5">
                     <table class="table">
                         <tbody>
                             @if(!is_null($order->promotion))
@@ -156,7 +160,7 @@
             mywindow.document.write(
                 '<html><head><link href="https://colorlib.com/client_template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"><link href="http://localhost:8000/client_template/css/util.css" rel="stylesheet"><link href="http://localhost:8000/client_template/css/main.css" rel="stylesheet"></head><body>'
             );
-            mywindow.document.write('<div>' + document.querySelector('.invoice').innerHTML  + '</div>');
+            mywindow.document.write('<div class="container">' + document.querySelector('.invoice').outerHTML  + '</div>');
             mywindow.document.write('</body></html>');
 
             mywindow.document.close(); // necessary for IE >= 10

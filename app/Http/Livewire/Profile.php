@@ -2,6 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Order;
+use App\Models\OrderDetail;
+use App\Models\Product;
 use Livewire\Component;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -14,6 +17,9 @@ class Profile extends Component
 
     public $idUser;
     public $panelShow = 'profile';
+    public $limit = 4;
+    public $page = 0;
+    
 
     public $avatar;
     public $fullName = '';
@@ -56,7 +62,6 @@ class Profile extends Component
         $this->gender = $user->gender;
         $this->avatarUser = $user->avatar;
 
-        $this->orders = $user->orders;
         // dd($this->orders);
     }
 
@@ -134,8 +139,49 @@ class Profile extends Component
         $this->avatar = null;
     }
 
+    public function cancelOrder($idOrder) {
+        $orderDetails = OrderDetail::query()
+                                    ->where('order_id', $idOrder)
+                                    ->get();
+        $order = Order::findOrFail($idOrder);
+        $order->status = 'Hủy đơn hàng';
+        $order->save();
+
+        foreach($orderDetails as $orderDetail) {
+            $product = Product::findOrFail($orderDetail->product_id);
+            $product->quantity = $product->quantity + $orderDetail->quantity;
+            $product->save();
+        }
+
+        $this->dispatchBrowserEvent('swal', [
+            'title' => 'Thành công',
+            'text' => 'Hủy đơn hàng thành công',
+            'icon' => 'success',
+            'timer' => 2000,
+        ]);        
+    }
+
+    public function next() {
+        $orders = Order::query()
+                            ->skip(($this->page + 1) * $this->limit)
+                            ->take($this->limit)
+                            ->get();
+        if(count($orders) == 0) return;
+        $this->page++;
+    }
+
+    public function prev() {
+        if($this->page == 0) return;
+        $this->page--;
+    }
+
     public function render()
     {
+        $user = User::findOrFail($this->idUser);
+        $this->orders = $user->orders
+                            ->skip($this->page * $this->limit)
+                            ->take($this->limit);
+
         return view('livewire.profile');
     }
 }

@@ -130,13 +130,22 @@
                                         {{$order->status}}
                                     </td>
                                     <td class="column-5">
-                                        <a href="/home/track_order/{{$order->id}}">Xem chi tiết</a>
+                                        <a class="d-block" href="/home/track_order/{{$order->id}}">Xem chi tiết</a>
+                                        @if($order->status == 'Chưa xác nhận')
+                                        <a class="d-block" href="#" wire:click="cancelOrder({{$order->id}})">Hủy đơn hàng</a>
+                                        @endif
                                     </td>
                                 </tr>
     
                                 @endforeach
                             </table>
                         </div>
+                        @if(count($orders) > 0)
+                        <div class="d-flex justify-content-between m-b-10">
+                            <button wire:click="prev()" class="flex-c-m stext-101 cl0 p-t-10 p-b-10 bg3 hov-btn3 m-t-30 p-lr-15 trans-04 pointer">Trước</button>
+                            <button wire:click="next()" class="flex-c-m stext-101 cl0 p-t-10 p-b-10 bg3 hov-btn3 m-t-30 p-lr-15 trans-04 pointer">Sau</button>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>

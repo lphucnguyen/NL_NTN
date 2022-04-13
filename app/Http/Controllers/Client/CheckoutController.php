@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OrderEmail;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class CheckoutController extends Controller
 {
@@ -29,6 +32,10 @@ class CheckoutController extends Controller
     public function processMoMo($idOrder) {
 
         $order = Order::findOrFail($idOrder);
+        if($order->status == 'Hủy đơn hàng'){
+            return redirect('/home');
+        }
+
         $amount = $order->total;
 
         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
@@ -44,7 +51,7 @@ class CheckoutController extends Controller
         $extraData = "";
 
         $requestId = time() . "";
-        $requestType = "payWithATM";
+        $requestType = "onDelivery";
         // $extraData = ($_POST["extraData"] ? $_POST["extraData"] : "");
         //before sign HMAC SHA256 signature
         $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
@@ -75,6 +82,10 @@ class CheckoutController extends Controller
     {
 
         $order = Order::findOrFail($idOrder);
+        if($order->status == 'Hủy đơn hàng'){
+            return redirect('/home');
+        }
+
         $amount = $order->total;
 
         $vnp_TmnCode = "9U6ZKSYR"; //Mã website tại VNPAY 
@@ -130,20 +141,33 @@ class CheckoutController extends Controller
         return redirect($vnp_Url);
     }
 
-    public function processVNPaySuccess($idOrder) {
+    public function processVNPaySuccess($idOrder, Request $request) {
+        // dd($request->vnp_ResponseCode);
+        if($request->vnp_ResponseCode != '00'){
+            return redirect('/home/profile');
+        }
         $order = Order::findOrFail($idOrder);
 
         $order->status_payment = 1;
         $order->save();
+
+        $emailTo = Auth::user()->email;
+        Mail::to($emailTo)->send(new OrderEmail($order));
 
         return redirect('/home/profile');
     }
 
-    public function processMoMoSuccess($idOrder) {
+    public function processMoMoSuccess($idOrder, Request $request) {
+        if($request->resultCode != '0'){
+            return redirect('/home/profile');
+        }
         $order = Order::findOrFail($idOrder);
 
         $order->status_payment = 1;
         $order->save();
+
+        $emailTo = Auth::user()->email;
+        Mail::to($emailTo)->send(new OrderEmail($order));
 
         return redirect('/home/profile');
     }
