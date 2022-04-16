@@ -27,6 +27,10 @@ Route::get('/', function () {
 
 Route::group(['prefix' => '/home'], function () {
 
+    Route::get('/clear-cache', function(){
+        \Illuminate\Support\Facades\Artisan::call('optimize:clear');
+    });
+
     //Menu Client
     Route::get('/', [HomeController::class, 'home']);
     Route::get('/shop', [HomeController::class, 'shop']);
