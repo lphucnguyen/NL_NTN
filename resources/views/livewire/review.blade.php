@@ -9,7 +9,7 @@
             @foreach($reviews as $review)
             <div class="flex-w flex-t p-b-68">
                 <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-                    <img src={{asset('/images/users/' . $review->user->avatar)}} alt="AVATAR">
+                    <img src={{asset('/images/avatar/' . $review->user->avatar)}} alt="AVATAR">
                 </div>
 
                 <div class="size-207">
