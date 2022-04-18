@@ -31,6 +31,10 @@ Route::group(['prefix' => '/home'], function () {
         \Illuminate\Support\Facades\Artisan::call('optimize:clear');
     });
 
+    Route::get('/symlink', function () {
+        \Illuminate\Support\Facades\Artisan::call('storage:link');
+    });
+
     //Menu Client
     Route::get('/', [HomeController::class, 'home']);
     Route::get('/shop', [HomeController::class, 'shop']);
