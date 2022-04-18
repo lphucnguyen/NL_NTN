@@ -90,9 +90,9 @@
 
                 <p class="text-muted well well-sm no-shadow stext-103 cl5" style="margin-top: 10px;">
                     @if ($order->payment_method == 'MoMo')
-                        Đơn hàng đã được thanh toán qua momo.
+                        Đơn hàng đã được thanh toán qua {{ $order->payment_method }}.
                     @elseif ($order->payment_method == 'VNPay')
-                        Đơn hàng đã được thanh toán qua momo.
+                        Đơn hàng đã được thanh toán qua {{ $order->payment_method }}.
                     @else
                         Đơn hàng được thanh toán bằng tiền mặt khi nhận hàng.
                     @endif
@@ -156,9 +156,11 @@
         function PrintElem()
         {
             var mywindow = window.open('', 'PRINT', 'height=1000,width=700');
+            const url = location.hostname;
+            const port = location.port;
 
             mywindow.document.write(
-                '<html><head><link href="https://colorlib.com/client_template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"><link href="http://localhost:8000/client_template/css/util.css" rel="stylesheet"><link href="http://localhost:8000/client_template/css/main.css" rel="stylesheet"></head><body>'
+                '<html><head><link href="https://colorlib.com/client_template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"><link href="http://'+url+':'+port+'/client_template/css/util.css" rel="stylesheet"><link href="http://'+url+':'+port+'/client_template/css/main.css" rel="stylesheet"></head><body>'
             );
             mywindow.document.write('<div class="container">' + document.querySelector('.invoice').outerHTML  + '</div>');
             mywindow.document.write('</body></html>');

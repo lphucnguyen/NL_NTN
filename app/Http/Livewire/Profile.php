@@ -7,7 +7,9 @@ use App\Models\OrderDetail;
 use App\Models\Product;
 use Livewire\Component;
 use App\Models\User;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
 
 class Profile extends Component
@@ -21,7 +23,7 @@ class Profile extends Component
     public $page = 0;
     
 
-    public $avatar;
+    public $avatar = null;
     public $fullName = '';
     public $phone = '';
     public $email = '';
@@ -92,6 +94,22 @@ class Profile extends Component
             ]);
 
             return ;
+        }
+
+        if($this->avatar){
+            $id = $user->id;
+
+            $name = "user1_" . date("Y_m_d", time()) . "_" . $id . "." . $this->avatar->getClientOriginalExtension();
+            $this->avatar->storeAs('/images/avatar/',  $name, $disk = 'public');
+
+            // //Xoa file hinh trong public/images/products
+            $user->avatar = $name;
+            if($this->avatarUser != 'avatar-default.jpg'){
+                $path = public_path() . "/storage/images/avatar/" . $this->avatarUser;
+                File::delete($path);
+            }
+            $this->avatarUser = $name;
+            $this->avatar = null;
         }
 
         $user->fullName = $this->fullName;
