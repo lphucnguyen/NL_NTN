@@ -29,7 +29,7 @@
                             <div class="wrap-login w-100">
                                 <h4 class="mtext-109 cl2 p-b-30 txt-left">Thông tin cá nhân</h4>
                                 
-                                {{-- <div class="image-avatar-preview" style="text-align: center;">
+                                <div class="image-avatar-preview" style="text-align: center;">
                                     <input id="input-change-avatar" type="file" wire:model="avatar" class="image-avatar d-none" />
 
                                     <div style="width: 150px; height: 150px; margin: auto; position: relative;">
@@ -37,12 +37,12 @@
                                         <button wire:click.prevent="deleteImagePreview" class="cl0 bg3 hov-btn3 bor7 p-lr-15 trans-04 pointer" style="position: absolute; left: -10px; top: -10px; padding: 10px 15px;">X</button>
                                         <img class="bor0 w-full h-full" style="object-fit: cover;" src="{{$avatar->temporaryUrl()}}">
                                         @else
-                                        <img class="bor0 w-full h-full" style="object-fit: cover;" src={{asset('/images/users/' . $avatarUser)}}>
+                                        <img class="bor0 w-full h-full" style="object-fit: cover;" src={{asset('storage/images/avatar/' . $avatarUser)}}>
                                         @endif
                                     </div>
 
                                     <label class="flex-c-m stext-101 cl0 size-116 bg3 m-t-30 hov-btn3 p-lr-15 trans-04 pointer" for="input-change-avatar">Thay đổi avatar</label>
-                                </div> --}}
+                                </div>
 
                                 <div class="m-t-20">
                                     <div class="m-t-20">
