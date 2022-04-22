@@ -70,7 +70,7 @@
                             {{number_format($product->price, 0, ',', '.')}} VND
                         </span>
 
-                        <pre class="stext-102 cl3 p-t-23" >{{substr($product->description, 0, 200)}}</pre>
+                        <pre class="stext-102 cl3 p-t-23" >{{$product->description}}</pre>
 
                         <!--  -->
                         <div class="p-t-33">

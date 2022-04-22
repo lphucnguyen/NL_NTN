@@ -34,7 +34,7 @@
 
                 <div class="col-md-6 col-lg-5 p-b-30">
                     <div class="p-r-50 p-t-5 p-lr-0-lg">
-                        <a class="mtext-105 cl2 js-name-detail p-b-14"
+                        <a class="mtext-105 cl2 js-name-detail p-b-14 d-block"
                             href="/home/product_detail/{{ $productQuickView->id }}" >
                             {{ $productQuickView->name}}
                         </a>
@@ -43,7 +43,7 @@
                             {{number_format($productQuickView->price, 0, '.', ',') }} VND
                         </span>
 
-                        <pre class="stext-102 cl3 p-t-23">{{substr($productQuickView->description, 0, 200)}}</pre>
+                        <pre class="stext-102 cl3 p-t-23">{{$productQuickView->description}}</pre>
 
                         <!--  -->
                         <div class="p-t-33">
