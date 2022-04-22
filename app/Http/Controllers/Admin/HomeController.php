@@ -554,8 +554,8 @@ class HomeController extends Controller
     //statistical
     public function statistical()
     {
-        $order = Order::withTrashed()->all();
-        $order_detail = OrderDetail::withTrashed()->all();
+        $order = Order::all();
+        $order_detail = OrderDetail::withTrashed()->get();
         $order_detail_groupby = OrderDetail::withTrashed()->groupby('product_id')
             ->selectRaw('product_id, sum(quantity) as quantity')
             ->orderBy('quantity', 'DESC')
@@ -571,9 +571,9 @@ class HomeController extends Controller
         $start = $request->start_date;
         $end = $request->end_date;
 
-        $order = Order::withTrashed()->whereBetween('created_at', [$start, $end])->get();
+        $order = Order::whereBetween('created_at', [$start, $end])->get();
         $order_detail = OrderDetail::withTrashed()->whereBetween('created_at', [$start, $end])->get();
-        $order_detail_groupby = OrderDetail::withTrashed()->groupby('product_id')
+        $order_detail_groupby = OrderDetail::groupby('product_id')
             ->selectRaw('product_id, sum(quantity) as quantity')
             ->orderBy('quantity', 'DESC')
             ->take(5)
