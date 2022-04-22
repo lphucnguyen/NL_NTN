@@ -10,45 +10,34 @@
     <link rel="shortcut icon" href="{{ asset('images/system/logo.png') }}" type="image/x-icon">
 
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-        href="https://preview.colorlib.com/theme/cozastore/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/cozastore/vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('client_template/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('client_template/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-        href="https://preview.colorlib.com/theme/cozastore/fonts/linearicons-v1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/cozastore/fonts/linearicons-v1.0.0/icon-font.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-        href="https://preview.colorlib.com/theme/cozastore/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/cozastore/vendor/animate/animate.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-        href="https://preview.colorlib.com/theme/cozastore/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/cozastore/vendor/css-hamburgers/hamburgers.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-        href="https://preview.colorlib.com/theme/cozastore/vendor/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/cozastore/vendor/animsition/css/animsition.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-        href="https://preview.colorlib.com/theme/cozastore/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/cozastore/vendor/select2/select2.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-        href="https://preview.colorlib.com/theme/cozastore/vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/cozastore/vendor/daterangepicker/daterangepicker.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/cozastore/vendor/slick/slick.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-        href="https://preview.colorlib.com/theme/cozastore/vendor/MagnificPopup/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/cozastore/vendor/MagnificPopup/magnific-popup.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-        href="https://preview.colorlib.com/theme/cozastore/vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/cozastore/vendor/perfect-scrollbar/perfect-scrollbar.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{ asset('client_template/css/util.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('client_template/css/main.css') }}">
     <!--===============================================================================================-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
 
     @livewireStyles
 </head>
@@ -99,26 +88,25 @@
                             <i class="zmdi zmdi-search"></i>
                         </div>
 
-                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-                            data-notify={{ count(Cart::getContent()) }}>
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify={{ count(Cart::getContent()) }}>
                             <i class="zmdi zmdi-shopping-cart"></i>
                         </div>
                         @if (!Auth::check())
-                            <a href="/home/login" class="cl2 stext-106 hov-cl1 trans-04 p-l-22 p-r-11h">
-                                Đăng nhập
-                            </a>
-                            <span class="m-r-5 m-l-5"> / </span>
-                            <a href="/home/register" class="cl2 stext-106 hov-cl1 trans-04">
-                                Đăng kí
-                            </a>
+                        <a href="/home/login" class="cl2 stext-106 hov-cl1 trans-04 p-l-22 p-r-11h">
+                            Đăng nhập
+                        </a>
+                        <span class="m-r-5 m-l-5"> / </span>
+                        <a href="/home/register" class="cl2 stext-106 hov-cl1 trans-04">
+                            Đăng kí
+                        </a>
                         @else
-                            <a href="/home/profile" class="cl2 stext-106 hov-cl1 trans-04 p-l-22 p-r-11h">
-                                Hồ sơ
-                            </a>
-                            <span class="m-r-5 m-l-5"> / </span>
-                            <a href="/home/logout" class="cl2 stext-106 hov-cl1 trans-04">
-                                Đăng xuất
-                            </a>
+                        <a href="/home/profile" class="cl2 stext-106 hov-cl1 trans-04 p-l-22 p-r-11h">
+                            Hồ sơ
+                        </a>
+                        <span class="m-r-5 m-l-5"> / </span>
+                        <a href="/home/logout" class="cl2 stext-106 hov-cl1 trans-04">
+                            Đăng xuất
+                        </a>
                         @endif
                     </div>
                 </nav>
@@ -129,7 +117,7 @@
         <div class="wrap-header-mobile">
             <!-- Logo moblie -->
             <div class="logo-mobile">
-                <a href="index.html"><img src="{{ asset('client/images/icons/logo-01.png') }}" alt="IMG-LOGO"></a>
+                <a href="index.html"><img src="{{ asset('client_template/images/icons/logo-01.png') }}" alt="IMG-LOGO"></a>
             </div>
 
             <!-- Icon header -->
@@ -138,8 +126,7 @@
                     <i class="zmdi zmdi-search"></i>
                 </div>
 
-                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
-                    data-notify="2">
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify={{ count(Cart::getContent()) }}>
                     <i class="zmdi zmdi-shopping-cart"></i>
                 </div>
             </div>
@@ -158,27 +145,19 @@
 
             <ul class="main-menu-m">
                 <li class="list-menu">
-                    <a href="/home">Home</a>
+                    <a href="/home">Trang Chủ</a>
                 </li>
 
                 <li class="list-menu">
-                    <a href="/home/shop">Shop</a>
+                    <a href="/home/shop">Cửa Hàng</a>
                 </li>
 
                 <li class="list-menu">
-                    <a href="/home/payment">Features</a>
+                    <a href="/home/payment">Giỏ Hàng</a>
                 </li>
 
                 <li class="list-menu">
-                    <a href="/home/blog">Blog</a>
-                </li>
-
-                <li class="list-menu">
-                    <a href="/home/about">About</a>
-                </li>
-
-                <li class="list-menu">
-                    <a href="/home/contact">Contact</a>
+                    <a href="/home/about">Giới thiệu</a>
                 </li>
             </ul>
         </div>
@@ -410,7 +389,9 @@
         window.addEventListener('swal', event => {
             // alert('Name updated to: ' + event.detail.newName);
             if (event.detail.returnURL) {
-                const {returnURL} = event.detail;
+                const {
+                    returnURL
+                } = event.detail;
 
                 swal(event.detail.title, event.detail.text, event.detail.icon)
                     .then(() => {
