@@ -554,9 +554,9 @@ class HomeController extends Controller
     //statistical
     public function statistical()
     {
-        $order = Order::all();
-        $order_detail = OrderDetail::all();
-        $order_detail_groupby = OrderDetail::groupby('product_id')
+        $order = Order::withTrashed()->all();
+        $order_detail = OrderDetail::withTrashed()->all();
+        $order_detail_groupby = OrderDetail::withTrashed()->groupby('product_id')
             ->selectRaw('product_id, sum(quantity) as quantity')
             ->orderBy('quantity', 'DESC')
             ->take(5)
@@ -571,15 +571,15 @@ class HomeController extends Controller
         $start = $request->start_date;
         $end = $request->end_date;
 
-        $order = Order::whereBetween('created_at', [$start, $end])->get();
-        $order_detail = OrderDetail::whereBetween('created_at', [$start, $end])->get();
-        $order_detail_groupby = OrderDetail::groupby('product_id')
+        $order = Order::withTrashed()->whereBetween('created_at', [$start, $end])->get();
+        $order_detail = OrderDetail::withTrashed()->whereBetween('created_at', [$start, $end])->get();
+        $order_detail_groupby = OrderDetail::withTrashed()->groupby('product_id')
             ->selectRaw('product_id, sum(quantity) as quantity')
             ->orderBy('quantity', 'DESC')
             ->take(5)
             ->get();
 
-        $product_buy = OrderDetail::groupby('product_id')
+        $product_buy = OrderDetail::withTrashed()->groupby('product_id')
             ->whereBetween('created_at', [$start, $end])
             ->selectRaw('product_id, sum(quantity) as quantity')
             ->get();
