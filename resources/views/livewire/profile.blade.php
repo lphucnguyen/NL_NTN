@@ -37,7 +37,11 @@
                                         <button wire:click.prevent="deleteImagePreview" class="cl0 bg3 hov-btn3 bor7 p-lr-15 trans-04 pointer" style="position: absolute; left: -10px; top: -10px; padding: 10px 15px;">X</button>
                                         <img class="bor0 w-full h-full" style="object-fit: cover;" src="{{$avatar->temporaryUrl()}}">
                                         @else
-                                        <img class="bor0 w-full h-full" style="object-fit: cover;" src={{asset('storage/images/avatar/' . $avatarUser)}}>
+                                            @if($avatarUser == 'avatar-default.jpg')
+                                            <img class="bor0 w-full h-full" style="object-fit: cover;" src={{asset('images/avatar/' . $avatarUser)}}>
+                                            @else
+                                            <img class="bor0 w-full h-full" style="object-fit: cover;" src={{asset('storage/images/avatar/' . $avatarUser)}}>
+                                            @endif
                                         @endif
                                     </div>
 
