@@ -13,7 +13,7 @@
 
 @section('statistical')
     @php
-    $product = \App\Models\Product::all();
+    $product = \App\Models\Product::withTrashed()->get();
 
     $order_all = \App\Models\Order::all();
 

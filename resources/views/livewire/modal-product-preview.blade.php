@@ -22,7 +22,7 @@
                                         <img src={{asset('/images/products/' . $image->name)}} alt="IMG-PRODUCT">
 
                                         {{-- <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href={{asset('/images/products/' . $image->name)}}>
-                                            <i class="fa fa-expand"></i>
+                                        <i class="fa fa-expand"></i>
                                         </a> --}}
                                     </div>
                                 </div>
@@ -31,21 +31,20 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-6 col-lg-5 p-b-30">
                     <div class="p-r-50 p-t-5 p-lr-0-lg">
-                        <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                        <a class="mtext-105 cl2 js-name-detail p-b-14"
+                            href="/home/product_detail/{{ $productQuickView->id }}" >
                             {{ $productQuickView->name}}
-                        </h4>
+                        </a>
 
                         <span class="mtext-106 cl2">
                             {{number_format($productQuickView->price, 0, '.', ',') }} VND
                         </span>
 
-                        <p class="stext-102 cl3 p-t-23">
-                            {{substr($productQuickView->description, 0, 200)}}
-                        </p>
-                        
+                        <pre class="stext-102 cl3 p-t-23">{{substr($productQuickView->description, 0, 200)}}</pre>
+
                         <!--  -->
                         <div class="p-t-33">
                             <p class="stext-102 cl3 p-t-23">
@@ -58,30 +57,19 @@
                                             <i class="fs-16 zmdi zmdi-minus"></i>
                                         </div>
 
-                                        <input
-                                            class="mtext-104 cl3 txt-center num-product"
-                                            type="number"
-                                            wire:model="qtyProductAdd"
-                                        >
-                                        <input
-                                            class="mtext-104 cl3 txt-center num-product"
-                                            type="hidden"
-                                            wire:model="idProductAdd"
-                                        >
+                                        <input class="mtext-104 cl3 txt-center num-product" type="number" wire:model="qtyProductAdd">
+                                        <input class="mtext-104 cl3 txt-center num-product" type="hidden" wire:model="idProductAdd">
 
                                         <div wire:click="addQty" class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
                                             <i class="fs-16 zmdi zmdi-plus"></i>
                                         </div>
                                     </div>
 
-                                    <button
-                                        type="submit"
-                                        class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail"
-                                    >
+                                    <button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                         Thêm vào giỏ hàng
                                     </button>
-                                </div>                                        
-                            </form>	
+                                </div>
+                            </form>
                         </div>
 
                     </div>

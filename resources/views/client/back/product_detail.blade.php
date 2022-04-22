@@ -70,9 +70,7 @@
                             {{number_format($product->price, 0, ',', '.')}} VND
                         </span>
 
-                        <p class="stext-102 cl3 p-t-23">
-                            {{substr($product->description, 0, 200)}}
-                        </p>
+                        <pre class="stext-102 cl3 p-t-23" >{{substr($product->description, 0, 200)}}</pre>
 
                         <!--  -->
                         <div class="p-t-33">
@@ -187,9 +185,8 @@
                         <!-- - -->
                         <div class="tab-pane fade show active" id="description" role="tabpanel">
                             <div class="how-pos2 p-lr-15-md">
-                                <p class="stext-102 cl6">
-                                    {{$product->description}}
-                                </p>
+                                
+                                <pre class="stext-102 cl6">{{$product->description}}</pre>
                             </div>
                         </div>
 

@@ -107,9 +107,7 @@
                         <td>{{ number_format($v->price * $v->quantity) }} VNĐ</td>
                     </tr>
 
-                    @php
-                    $subtotal += $v->price * $v->quantity
-                    @endphp
+                    @php($subtotal += $v->price * $v->quantity)
 
                     @endforeach
                 </tbody>
