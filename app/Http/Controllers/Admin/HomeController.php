@@ -570,10 +570,12 @@ class HomeController extends Controller
     {
         $start = $request->start_date;
         $end = $request->end_date;
-
+        
         $order = Order::whereBetween('created_at', [$start, $end])->get();
+
         $order_detail = OrderDetail::withTrashed()->whereBetween('created_at', [$start, $end])->get();
-        $order_detail_groupby = OrderDetail::groupby('product_id')
+
+        $order_detail_groupby = OrderDetail::withTrashed()->groupby('product_id')
             ->selectRaw('product_id, sum(quantity) as quantity')
             ->orderBy('quantity', 'DESC')
             ->take(5)
@@ -583,7 +585,7 @@ class HomeController extends Controller
             ->whereBetween('created_at', [$start, $end])
             ->selectRaw('product_id, sum(quantity) as quantity')
             ->get();
-
+            
         return view(
             'admin.back.statistical',
             compact('order', 'order_detail', 'start', 'end', 'order_detail_groupby')
