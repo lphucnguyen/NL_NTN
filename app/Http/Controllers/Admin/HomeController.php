@@ -47,6 +47,7 @@ class HomeController extends Controller
             ->select('product.*', 'b.name_type')
             ->get();
         $product_type = ProductType::all();
+
         return view('admin.back.product', compact('product_list', 'product_type'));
     }
     //product delete list
@@ -554,8 +555,8 @@ class HomeController extends Controller
     public function statistical()
     {
         $order = Order::all();
-        $order_detail = OrderDetail::all();
-        $order_detail_groupby = OrderDetail::groupby('product_id')
+        $order_detail = OrderDetail::withTrashed()->get();
+        $order_detail_groupby = OrderDetail::withTrashed()->groupby('product_id')
             ->selectRaw('product_id, sum(quantity) as quantity')
             ->orderBy('quantity', 'DESC')
             ->take(5)
@@ -571,14 +572,14 @@ class HomeController extends Controller
         $end = $request->end_date;
 
         $order = Order::whereBetween('created_at', [$start, $end])->get();
-        $order_detail = OrderDetail::whereBetween('created_at', [$start, $end])->get();
+        $order_detail = OrderDetail::withTrashed()->whereBetween('created_at', [$start, $end])->get();
         $order_detail_groupby = OrderDetail::groupby('product_id')
             ->selectRaw('product_id, sum(quantity) as quantity')
             ->orderBy('quantity', 'DESC')
             ->take(5)
             ->get();
 
-        $product_buy = OrderDetail::groupby('product_id')
+        $product_buy = OrderDetail::withTrashed()->groupby('product_id')
             ->whereBetween('created_at', [$start, $end])
             ->selectRaw('product_id, sum(quantity) as quantity')
             ->get();

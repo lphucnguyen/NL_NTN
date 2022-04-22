@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OrderEmail;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class CheckoutController extends Controller
 {
@@ -43,12 +46,12 @@ class CheckoutController extends Controller
         $orderInfo = "Thanh toán qua MoMo";
         $amount = (int) $amount;
         $orderId = time() ."";
-        $redirectUrl = "http://localhost:8000/home/process/return-momo/$idOrder";
-        $ipnUrl = "http://localhost:8000/home/process/return-momo/$idOrder";
+        $redirectUrl = url("home/process/return-momo/$idOrder");
+        $ipnUrl = url("home/process/return-momo/$idOrder");
         $extraData = "";
 
         $requestId = time() . "";
-        $requestType = "payWithATM";
+        $requestType = "onDelivery";
         // $extraData = ($_POST["extraData"] ? $_POST["extraData"] : "");
         //before sign HMAC SHA256 signature
         $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
@@ -88,7 +91,7 @@ class CheckoutController extends Controller
         $vnp_TmnCode = "9U6ZKSYR"; //Mã website tại VNPAY 
         $vnp_HashSecret = "EYNUXNVNDAARRLXHNSFLHBQSOJCFQTLW"; //Chuỗi bí mật
         $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        $vnp_Returnurl = "http://localhost:8000/home/process/return-vnpay/$idOrder";
+        $vnp_Returnurl = url("home/process/return-vnpay/$idOrder");
         $vnp_TxnRef = date("YmdHis"); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
         $vnp_OrderInfo = "Thanh toán hóa đơn phí dich vụ";
         $vnp_OrderType = 'billpayment';
@@ -148,6 +151,9 @@ class CheckoutController extends Controller
         $order->status_payment = 1;
         $order->save();
 
+        $emailTo = Auth::user()->email;
+        Mail::to($emailTo)->send(new OrderEmail($order));
+
         return redirect('/home/profile');
     }
 
@@ -159,6 +165,9 @@ class CheckoutController extends Controller
 
         $order->status_payment = 1;
         $order->save();
+
+        $emailTo = Auth::user()->email;
+        Mail::to($emailTo)->send(new OrderEmail($order));
 
         return redirect('/home/profile');
     }

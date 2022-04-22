@@ -36,6 +36,7 @@ return array(
     'App\\Http\\Middleware\\UserAdmin' => $baseDir . '/app/Http/Middleware/UserAdmin.php',
     'App\\Http\\Middleware\\UserClient' => $baseDir . '/app/Http/Middleware/UserClient.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Mail\\OrderEmail' => $baseDir . '/app/Mail/OrderEmail.php',
     'App\\Models\\Evaluate' => $baseDir . '/app/Models/Evaluate.php',
     'App\\Models\\Guarantee' => $baseDir . '/app/Models/Guarantee.php',
     'App\\Models\\Order' => $baseDir . '/app/Models/Order.php',

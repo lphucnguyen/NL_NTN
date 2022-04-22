@@ -1,0 +1,3 @@
+[
+    "*/5 * * * * php -d max_execution_time=300 $ROOT/artisan queue:work --tries=3 --once"
+]
