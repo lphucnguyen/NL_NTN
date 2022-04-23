@@ -115,7 +115,7 @@ $percent_statis4 = round((($statis_thisweek4 - $statis_lastweek4) / $statis_last
                     <i class="fa fa-sort-desc"></i>{{ abs($percent_statis) }}%
                 </i>
                 @endif
-                From last Week
+                So với tuần trước
             </span>
         </div>
         <div class="col-md-2 col-sm-4 col tile_stats_count ps-3 ml-4">
@@ -132,7 +132,7 @@ $percent_statis4 = round((($statis_thisweek4 - $statis_lastweek4) / $statis_last
                     <i class="fa fa-sort-desc"></i>{{ abs($percent_statis1) }}%
                 </i>
                 @endif
-                From last Week
+                So với tuần trước
             </span>
         </div>
         <div class="col-md-2 col-sm-4 col tile_stats_count ps-3 ml-4">
@@ -149,7 +149,7 @@ $percent_statis4 = round((($statis_thisweek4 - $statis_lastweek4) / $statis_last
                     <i class="fa fa-sort-desc"></i>{{ abs($percent_statis2) }}%
                 </i>
                 @endif
-                From last Week
+                So với tuần trước
             </span>
         </div>
         <div class="col-md-2 col-sm-4 col tile_stats_count ps-3 ml-4">
@@ -166,7 +166,7 @@ $percent_statis4 = round((($statis_thisweek4 - $statis_lastweek4) / $statis_last
                     <i class="fa fa-sort-desc"></i>{{ abs($percent_statis3) }}%
                 </i>
                 @endif
-                From last Week
+                So với tuần trước
             </span>
         </div>
         <div class="col-md-2 col-sm-4 col tile_stats_count ps-3 ml-4">
@@ -183,7 +183,7 @@ $percent_statis4 = round((($statis_thisweek4 - $statis_lastweek4) / $statis_last
                     <i class="fa fa-sort-desc"></i>{{ abs($percent_statis4) }}%
                 </i>
                 @endif
-                From last Week
+                So với tuần trước
             </span>
         </div>
     </div>
