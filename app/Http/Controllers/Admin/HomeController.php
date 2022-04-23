@@ -565,7 +565,7 @@ class HomeController extends Controller
         return view('admin.back.statistical', compact('order', 'order_detail', 'order_detail_groupby'));
     }
 
-    //subtmit statistical
+    //submit statistical
     public function submit_statistical(Request $request)
     {
         $start = $request->start_date;
