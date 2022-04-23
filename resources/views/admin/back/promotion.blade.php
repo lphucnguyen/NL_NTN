@@ -32,8 +32,8 @@
                     <td>{{ $v->code }}</td>
                     <td>{{ $v->percent }}%</td>
                     <td class="text-left">{{ $v->content }}</td>
-                    <td>{{ date('d/m/Y h:m:s', $v->start_at) }}</td>
-                    <td>{{ date('d/m/Y h:m:s', $v->end_at) }}</td>
+                    <td>{{ date('d/m/Y h:m:s', strtotime($v->start_date)) }}</td>
+                    <td>{{ date('d/m/Y h:m:s', strtotime($v->end_date) )}}</td>
                     <td>
                         {{-- <button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Sửa</button> --}}
                         <a class="btn btn-danger btn-sm text-light" href="/admin/promotion/del/{{ $v->id }}">

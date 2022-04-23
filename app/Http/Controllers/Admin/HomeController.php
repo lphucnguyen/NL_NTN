@@ -494,6 +494,7 @@ class HomeController extends Controller
     public function promotion()
     {
         $list = Promotion::all();
+        
         return view('admin.back.promotion', compact('list'));
     }
 
