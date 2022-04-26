@@ -84,8 +84,8 @@
                 <div class="left_col scroll-view no-print">
                     <div class="navbar nav_title" style="border: 0;">
                         <a href="/admin" class="site_title">
-                            <img src="{{ asset('images/system/logo.png') }}" class="bg-light rounded-circle" width="40"
-                                alt="logo" />
+                            <img src="{{ asset('images/system/logo.png') }}"
+                                class="bg-light rounded-circle" width="40" alt="logo" />
                             <span>𝓝𝓣𝓝 𝓢𝓽𝓸𝓻𝓮</span>
                         </a>
                     </div>
@@ -95,8 +95,8 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img src="{{ asset('images/avatar/' . Auth::user()->avatar) }}" alt="..."
-                                class="img-circle profile_img" width="90">
+                            <img src="{{ asset('images/avatar/' . Auth::user()->avatar) }}"
+                                alt="..." class="img-circle profile_img" width="90">
                         </div>
                         <div class="profile_info">
                             <span>Xin chào,</span>
@@ -114,24 +114,23 @@
                             <h3>Quản lí cửa hàng</h3>
                             <ul class="nav side-menu">
                                 <li>
-                                    <a><i class="fa fa-cubes"></i> Sản phẩm <span
-                                            class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-cubes"></i> Sản phẩm <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/product">Danh sách sản phẩm</a></li>
                                         <li><a href="/admin/addproduct/list">Thêm nhiều sản phẩm</a></li>
                                         <li><a href="/admin/product_type">Dánh sách loại sản phẩm</a></li>
-                                        @if (Auth::id() == 1)
-                                            <li><a href="{{ route('admin.product.deletelist') }}">Dánh sách sản phẩm
+                                        @if(Auth::id() == 1)
+                                            <li><a href="{{ route('admin.product.deletelist') }}">Dánh
+                                                    sách sản phẩm
                                                     đã xóa</a></li>
                                         @endif
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-user"></i> Nhân viên <span
-                                            class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-user"></i> Nhân viên <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/staff">Danh sách nhân viên</a></li>
-                                        @if (Auth::id() == 1)
+                                        @if(Auth::id() == 1)
                                             <li><a href="/admin/addstaff">Tạo tài khoản</a></li>
                                         @endif
                                     </ul>
@@ -175,8 +174,8 @@
                             <li class="nav-item dropdown open" style="padding-left: 15px;">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
                                     id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{ asset('images/avatar/' . Auth::user()->avatar) }}" --}} alt=""
-                                        class="img-circle">{{ Auth::user()->fullname }}
+                                    <img src="{{ asset('images/avatar/' . Auth::user()->avatar) }}"
+                                        --}} alt="" class="img-circle">{{ Auth::user()->fullname }}
                                 </a>
                                 <div class="dropdown-menu dropdown-usermenu pull-right mt-3"
                                     aria-labelledby="navbarDropdown">
@@ -205,21 +204,19 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    @if (session('notify_success'))
+                                    @if(session('notify_success'))
                                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                                             {{ session('notify_success') }}
-                                            <button type="button" class="close" data-dismiss="alert"
-                                                aria-label="Close">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                     @endif
 
-                                    @if (session('notify_fail'))
+                                    @if(session('notify_fail'))
                                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                             {{ session('notify_fail') }}
-                                            <button type="button" class="close" data-dismiss="alert"
-                                                aria-label="Close">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
@@ -250,7 +247,8 @@
     </div>
 
     <!-- Modal Product Detail-->
-    <div class="modal fade " id="viewProductDetail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade " id="viewProductDetail" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 100vh">
             <div class="modal-content">
 
@@ -266,7 +264,23 @@
             </div>
         </div>
     </div>
+    <!-- Modal Edit Product-->
+    <div class="modal fade " id="editProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 100vh">
+            <div class="modal-content">
 
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><b> Chỉnh sửa sản phẩm </b></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body" id="modal_editProduct">
+                    {{-- content modal --}}
+                </div>
+
+            </div>
+        </div>
+    </div>
     <!-- jQuery -->
     <script src="https://colorlib.com/polygon/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -301,7 +315,9 @@
     <!-- starrr -->
     <script src="https://colorlib.com/polygon/vendors/starrr/dist/starrr.js"></script>
     <!-- Datatables -->
-    <script src="{{ asset('admin_template/vendors/datatables.net/js/jquery.dataTables.js') }}"></script>
+    <script
+        src="{{ asset('admin_template/vendors/datatables.net/js/jquery.dataTables.js') }}">
+    </script>
     <script src="https://colorlib.com/polygon/vendors/datatables.net-bs/js/dataTables.bootstrap.js"></script>
     <script src="https://colorlib.com/polygon/vendors/datatables.net-buttons/js/dataTables.buttons.js"></script>
     <script src="https://colorlib.com/polygon/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.js"></script>

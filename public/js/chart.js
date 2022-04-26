@@ -1,3 +1,4 @@
+
 function createChart(idChart, titleChart, type, label, data) {
     let myChart = document.getElementById(idChart).getContext('2d');
 
@@ -68,6 +69,6 @@ createChart('myChart', title1, 'bar', status_order, data)
 createChart('myChart2', title2, 'pie', status_order2, data2)
 
 function statistical(start_date, end_date) {
-    $('#start_date').val(start_date)
-    $('#end_date').val(end_date)
+    $('#start_date').val(start_date+"T00:00")
+    $('#end_date').val(end_date+"T23:59")
 }

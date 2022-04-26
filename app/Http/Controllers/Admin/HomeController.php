@@ -316,9 +316,9 @@ class HomeController extends Controller
                     ]);
             }
 
-            return redirect('/admin/product')->with('notify_success', 'Thay đổi thông tin sán phẩm thành công!');
+            return back()->with('notify_success', 'Thay đổi thông tin sán phẩm thành công!');
         } else {
-            return redirect('/admin/product')->with('notify_fail', 'Thay đổi thông tin sản phẩm thất bại');
+            return back()->with('notify_fail', 'Thay đổi thông tin sản phẩm thất bại');
         }
     }
 
@@ -494,7 +494,7 @@ class HomeController extends Controller
     public function promotion()
     {
         $list = Promotion::all();
-        
+
         return view('admin.back.promotion', compact('list'));
     }
 
@@ -556,6 +556,7 @@ class HomeController extends Controller
     public function statistical()
     {
         $order = Order::all();
+        $out_of_stock = Product::where('quantity', '<=', 10)->get();
         $order_detail = OrderDetail::withTrashed()->get();
         $order_detail_groupby = OrderDetail::withTrashed()->groupby('product_id')
             ->selectRaw('product_id, sum(quantity) as quantity')
@@ -563,7 +564,7 @@ class HomeController extends Controller
             ->take(5)
             ->get();
 
-        return view('admin.back.statistical', compact('order', 'order_detail', 'order_detail_groupby'));
+        return view('admin.back.statistical', compact('order', 'order_detail', 'order_detail_groupby', 'out_of_stock'));
     }
 
     //submit statistical
@@ -571,7 +572,8 @@ class HomeController extends Controller
     {
         $start = $request->start_date;
         $end = $request->end_date;
-        
+        $out_of_stock = Product::where('quantity', '<=', 10)->get();
+
         $order = Order::whereBetween('created_at', [$start, $end])->get();
 
         $order_detail = OrderDetail::withTrashed()->whereBetween('created_at', [$start, $end])->get();
@@ -586,10 +588,10 @@ class HomeController extends Controller
             ->whereBetween('created_at', [$start, $end])
             ->selectRaw('product_id, sum(quantity) as quantity')
             ->get();
-            
+
         return view(
             'admin.back.statistical',
-            compact('order', 'order_detail', 'start', 'end', 'order_detail_groupby')
+            compact('order', 'order_detail', 'start', 'end', 'order_detail_groupby', 'out_of_stock')
         );
     }
 
