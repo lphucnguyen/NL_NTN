@@ -193,12 +193,14 @@ class HomeController extends Controller
     //ajax product detail
     public function product_detail($id)
     {
-        $product = DB::table('product as a')
-            ->leftJoin('product_type as b', 'a.type', 'b.id')
-            ->select('a.*', 'b.name_type')
-            ->where('a.id', $id)->first();
+        if (!Product::withTrashed()->find($id)) {
+            return "<h1>Không tìm thấy thông tin sản phẩm</h1>";
+        }
 
-        $img = DB::table('product_images')->where('product_id', $id)->get();
+        $product = Product::withTrashed()->find($id);
+        $product->name_type = ProductType::find(Product::withTrashed()->find($id)->type)->name_type;
+
+        $img = Product::withTrashed()->find($id)->images;
         return view('admin.ajax.product_detail', compact('product', 'img'));
     }
 
@@ -556,23 +558,42 @@ class HomeController extends Controller
     public function statistical()
     {
         $order = Order::all();
-        $out_of_stock = Product::where('quantity', '<=', 10)->get();
+
+        $out_of_stock = Product::where('quantity', '<=', 10)->orderBy('quantity', 'ASC')->get();
+
+        $ton_kho = Product::where('quantity', '>', 0)->get();
+
         $order_detail = OrderDetail::withTrashed()->get();
+
         $order_detail_groupby = OrderDetail::withTrashed()->groupby('product_id')
             ->selectRaw('product_id, sum(quantity) as quantity')
             ->orderBy('quantity', 'DESC')
             ->take(5)
             ->get();
 
-        return view('admin.back.statistical', compact('order', 'order_detail', 'order_detail_groupby', 'out_of_stock'));
+        return view('admin.back.statistical', compact('order', 'order_detail', 'order_detail_groupby', 'out_of_stock', 'ton_kho'));
+    }
+
+    //statistical product | statis product
+    public function statistical_product()
+    {
+        $out_of_stock = Product::where('quantity', '<=', 10)->orderBy('quantity', 'ASC')->get();
+
+        $ton_kho = Product::where('quantity', '>', 0)->get();
+
+        return view('admin.back.statis_product', compact('out_of_stock', 'ton_kho'));
     }
 
     //submit statistical
     public function submit_statistical(Request $request)
     {
         $start = $request->start_date;
+
         $end = $request->end_date;
-        $out_of_stock = Product::where('quantity', '<=', 10)->get();
+
+        $out_of_stock = Product::where('quantity', '<=', 10)->orderBy('quatity', 'ASC')->get();
+
+        $ton_kho = Product::where('quantity', '>', 0)->get();
 
         $order = Order::whereBetween('created_at', [$start, $end])->get();
 
@@ -591,7 +612,7 @@ class HomeController extends Controller
 
         return view(
             'admin.back.statistical',
-            compact('order', 'order_detail', 'start', 'end', 'order_detail_groupby', 'out_of_stock')
+            compact('order', 'order_detail', 'start', 'end', 'order_detail_groupby', 'out_of_stock', 'ton_kho')
         );
     }
 

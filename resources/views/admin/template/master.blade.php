@@ -154,6 +154,7 @@
                                             class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/admin/statistical">Thống kê đơn hàng</a></li>
+                                        <li><a href="/admin/statistical/product">Thống kê sản phẩm</a></li>
                                     </ul>
                                 </li>
                             </ul>

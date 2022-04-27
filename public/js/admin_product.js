@@ -6,7 +6,7 @@ function showPD(id){
         }
     });
     $.ajax({
-        type: 'post',
+        type: 'get',
         url: '/admin/product/pd/'+id,
         success: function(result){
             $('#modal_product_detail').html(result);

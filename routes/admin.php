@@ -23,7 +23,7 @@ Route::get('/product', [HomeController::class, 'product'])->name('admin.product'
 Route::post('/addproduct', [HomeController::class, 'post_add_product'])->name('admin.product.add');
 Route::get('/addproduct/list', [HomeController::class, 'add_product_list'])->name('admin.product.addlist');
 Route::post('/addproduct/list', [HomeController::class, 'post_add_product_list']);
-Route::post('/product/pd/{id}', [HomeController::class, 'product_detail']);
+Route::get('/product/pd/{id}', [HomeController::class, 'product_detail']);
 Route::get('/product_delete', [HomeController::class, 'product_delete_list'])->name('admin.product.deletelist')->middleware('UserAdmin');
 Route::get('/product/delete/{id}', [HomeController::class, 'delete_product']);
 Route::post('/product/delete/list', [HomeController::class, 'delete_product_list'])->name('admin.product.deletes');
@@ -55,6 +55,7 @@ Route::post('/profile/edit', [HomeController::class, 'post_edit_profile'])->name
 
 //statistical
 Route::get('/statistical', [HomeController::class, 'statistical'])->name('admin.statistical');
+Route::get('/statistical/product', [HomeController::class, 'statistical_product'])->name('admin.statistical.product');
 Route::post('/statistical', [HomeController::class, 'submit_statistical']);
 
 //product_type
