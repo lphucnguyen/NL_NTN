@@ -591,7 +591,7 @@ class HomeController extends Controller
 
         $end = $request->end_date;
 
-        $out_of_stock = Product::where('quantity', '<=', 10)->orderBy('quatity', 'ASC')->get();
+        $out_of_stock = Product::where('quantity', '<=', 10)->orderBy('quantity', 'ASC')->get();
 
         $ton_kho = Product::where('quantity', '>', 0)->get();
 
